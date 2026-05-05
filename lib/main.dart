@@ -9,12 +9,23 @@ Future<void> main() async {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
   @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  late AppRouter appRouter;
+  @override
+  initState() {
+    super.initState();
+    appRouter = AppRouter();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final appRouter = AppRouter();
     return MaterialApp.router(
       title: 'Student Manager',
       theme: AppTheme.lightTheme,

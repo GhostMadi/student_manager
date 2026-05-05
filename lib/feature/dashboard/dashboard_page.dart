@@ -3,10 +3,10 @@ import 'dart:ui';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:student_manager/core/colors/app_colors.dart';
 import 'package:student_manager/core/router/app_router.dart';
 
 @RoutePage()
-
 class DashboardPage extends StatelessWidget {
   const DashboardPage({super.key});
 
@@ -18,24 +18,16 @@ class DashboardPage extends StatelessWidget {
         final tabsRouter = AutoTabsRouter.of(context);
 
         return Scaffold(
-          extendBody: true, // Контент будет виден под баром
+          extendBody: true,
+          backgroundColor: AppColors.scaffoldBackground,
           body: Stack(
             children: [
               child,
-              // Плавающий бар и кнопка поиска
               Positioned(
-                bottom: 24, // Отступ от низа экрана
-                left: 20,
-                right: 20,
-                child: Row(
-                  children: [
-                    // Основная капсула
-                    Expanded(child: _buildFloatingCapsule(tabsRouter)),
-                    const SizedBox(width: 12),
-                    // Отдельная кнопка поиска
-                    _buildSearchButton(),
-                  ],
-                ),
+                bottom: 30,
+                left: 60, // Сделали капсулу короче для минимализма
+                right: 60,
+                child: _buildMinimalCapsule(tabsRouter),
               ),
             ],
           ),
@@ -44,27 +36,25 @@ class DashboardPage extends StatelessWidget {
     );
   }
 
-  // Виджет основной капсулы
-  Widget _buildFloatingCapsule(TabsRouter tabsRouter) {
+  Widget _buildMinimalCapsule(TabsRouter tabsRouter) {
     return ClipRRect(
-      borderRadius: BorderRadius.circular(30),
+      borderRadius: BorderRadius.circular(40),
       child: BackdropFilter(
-        filter: ImageFilter.blur(sigmaX: 15, sigmaY: 15),
+        filter: ImageFilter.blur(sigmaX: 20, sigmaY: 20),
         child: Container(
-          height: 70,
-          padding: const EdgeInsets.symmetric(horizontal: 10),
+          height: 64,
           decoration: BoxDecoration(
-            color: Colors.black.withOpacity(0.6), // Темный полупрозрачный фон
-            borderRadius: BorderRadius.circular(30),
-            border: Border.all(color: Colors.white.withOpacity(0.1), width: 0.5),
+            color: AppColors.deepBlack.withOpacity(0.9),
+            borderRadius: BorderRadius.circular(40),
           ),
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              _buildNavItem(0, CupertinoIcons.person_2, 'Contacts', tabsRouter),
-              _buildNavItem(1, CupertinoIcons.phone, 'Calls', tabsRouter),
-              _buildNavItem(2, CupertinoIcons.chat_bubble_2, 'Chats', tabsRouter, badge: '1.7K'),
-              _buildNavItem(3, CupertinoIcons.settings, 'Settings', tabsRouter),
+              _buildIcon(0, CupertinoIcons.house_fill, tabsRouter),
+              _buildIcon(1, CupertinoIcons.chart_bar_fill, tabsRouter),
+              _buildIcon(2, CupertinoIcons.calendar, tabsRouter),
+              _buildIcon(3, CupertinoIcons.check_mark_circled, tabsRouter),
+              _buildIcon(4, CupertinoIcons.person_fill, tabsRouter),
             ],
           ),
         ),
@@ -72,59 +62,32 @@ class DashboardPage extends StatelessWidget {
     );
   }
 
-  // Элемент навигации
-  Widget _buildNavItem(int index, IconData icon, String label, TabsRouter tabsRouter, {String? badge}) {
+  Widget _buildIcon(int index, IconData icon, TabsRouter tabsRouter) {
     final isSelected = tabsRouter.activeIndex == index;
-    final color = isSelected ? Colors.blueAccent : Colors.white.withOpacity(0.6);
 
     return GestureDetector(
       onTap: () => tabsRouter.setActiveIndex(index),
       behavior: HitTestBehavior.opaque,
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Stack(
-            clipBehavior: Clip.none,
-            children: [
-              Icon(icon, color: color, size: 24),
-              if (badge != null)
-                Positioned(
-                  top: -5,
-                  right: -12,
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 2),
-                    decoration: BoxDecoration(color: Colors.red, borderRadius: BorderRadius.circular(10)),
-                    constraints: const BoxConstraints(minWidth: 16),
-                    child: Text(
-                      badge,
-                      style: const TextStyle(color: Colors.white, fontSize: 8, fontWeight: FontWeight.bold),
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
-                ),
+      child: AnimatedScale(
+        scale: isSelected ? 1.25 : 0.9, // Неактивные чуть меньше
+        duration: const Duration(milliseconds: 250),
+        curve: Curves.easeOutCubic,
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 250),
+          padding: const EdgeInsets.all(10),
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            // Мягкое оранжевое свечение только для активной иконки
+            boxShadow: [
+              if (isSelected)
+                BoxShadow(color: AppColors.primaryOrange.withOpacity(0.3), blurRadius: 15, spreadRadius: 2),
             ],
           ),
-          const SizedBox(height: 4),
-          Text(label, style: TextStyle(color: color, fontSize: 10)),
-        ],
-      ),
-    );
-  }
-
-  // Кнопка поиска
-  Widget _buildSearchButton() {
-    return ClipOval(
-      child: BackdropFilter(
-        filter: ImageFilter.blur(sigmaX: 15, sigmaY: 15),
-        child: Container(
-          height: 70,
-          width: 70,
-          decoration: BoxDecoration(
-            color: Colors.black.withOpacity(0.6),
-            shape: BoxShape.circle,
-            border: Border.all(color: Colors.white.withOpacity(0.1), width: 0.5),
+          child: Icon(
+            icon,
+            color: isSelected ? AppColors.primaryOrange : Colors.white.withOpacity(0.3),
+            size: 24,
           ),
-          child: const Icon(CupertinoIcons.search, color: Colors.white, size: 28),
         ),
       ),
     );

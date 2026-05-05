@@ -52,7 +52,7 @@ class StorageService {
 
 class AuthService {
   // Моковые данные пользователя
-  static const String _mockEmail = "  ";
+  static const String _mockEmail = "aruka@gmail.com";
   static const String _mockPassword = "password123";
 
   static Future<bool> login(String email, String password) async {

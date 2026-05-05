@@ -59,6 +59,50 @@ class HomeRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [LessonPage]
+class LessonRoute extends PageRouteInfo<LessonRouteArgs> {
+  LessonRoute({Key? key, required Lesson lesson, List<PageRouteInfo>? children})
+    : super(
+        LessonRoute.name,
+        args: LessonRouteArgs(key: key, lesson: lesson),
+        initialChildren: children,
+      );
+
+  static const String name = 'LessonRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<LessonRouteArgs>();
+      return LessonPage(key: args.key, lesson: args.lesson);
+    },
+  );
+}
+
+class LessonRouteArgs {
+  const LessonRouteArgs({this.key, required this.lesson});
+
+  final Key? key;
+
+  final Lesson lesson;
+
+  @override
+  String toString() {
+    return 'LessonRouteArgs{key: $key, lesson: $lesson}';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (other is! LessonRouteArgs) return false;
+    return key == other.key && lesson == other.lesson;
+  }
+
+  @override
+  int get hashCode => key.hashCode ^ lesson.hashCode;
+}
+
+/// generated route for
 /// [LoginPage]
 class LoginRoute extends PageRouteInfo<void> {
   const LoginRoute({List<PageRouteInfo>? children})
@@ -86,6 +130,22 @@ class MarkRoute extends PageRouteInfo<void> {
     name,
     builder: (data) {
       return const MarkPage();
+    },
+  );
+}
+
+/// generated route for
+/// [ProfileDetailPage]
+class ProfileDetailRoute extends PageRouteInfo<void> {
+  const ProfileDetailRoute({List<PageRouteInfo>? children})
+    : super(ProfileDetailRoute.name, initialChildren: children);
+
+  static const String name = 'ProfileDetailRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const ProfileDetailPage();
     },
   );
 }
@@ -136,6 +196,53 @@ class ScheduleRoute extends PageRouteInfo<void> {
       return const SchedulePage();
     },
   );
+}
+
+/// generated route for
+/// [TaskDetailsPage]
+class TaskDetailsRoute extends PageRouteInfo<TaskDetailsRouteArgs> {
+  TaskDetailsRoute({
+    Key? key,
+    required TaskItem task,
+    List<PageRouteInfo>? children,
+  }) : super(
+         TaskDetailsRoute.name,
+         args: TaskDetailsRouteArgs(key: key, task: task),
+         initialChildren: children,
+       );
+
+  static const String name = 'TaskDetailsRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<TaskDetailsRouteArgs>();
+      return TaskDetailsPage(key: args.key, task: args.task);
+    },
+  );
+}
+
+class TaskDetailsRouteArgs {
+  const TaskDetailsRouteArgs({this.key, required this.task});
+
+  final Key? key;
+
+  final TaskItem task;
+
+  @override
+  String toString() {
+    return 'TaskDetailsRouteArgs{key: $key, task: $task}';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (other is! TaskDetailsRouteArgs) return false;
+    return key == other.key && task == other.task;
+  }
+
+  @override
+  int get hashCode => key.hashCode ^ task.hashCode;
 }
 
 /// generated route for
