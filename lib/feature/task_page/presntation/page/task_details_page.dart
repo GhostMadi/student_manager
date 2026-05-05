@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:student_manager/core/colors/app_colors.dart';
+import 'package:student_manager/core/extension/context.dart';
 import 'package:student_manager/core/style/app_text_style.dart';
 import 'package:student_manager/core/widgets/button.dart';
 import 'package:student_manager/feature/task_page/presntation/page/task_model.dart';
@@ -31,6 +32,7 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
     return Scaffold(
       backgroundColor: AppColors.scaffoldBackground,
       appBar: AppBar(
@@ -74,10 +76,10 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
 
                     const SizedBox(height: 32),
 
-                    Text('Описание', style: AppTextStyles.h2.copyWith(fontSize: 18)),
+                    Text(l10n.descriptionTitle, style: AppTextStyles.h2.copyWith(fontSize: 18)),
                     const SizedBox(height: 12),
                     Text(
-                      'Необходимо выполнить задание до дедлайна. Проверьте все требования преподавателя, подготовьте необходимые материалы и убедитесь, что решение соответствует стандартам учебного заведения.',
+                      l10n.descriptionText,
                       style: AppTextStyles.body.copyWith(color: AppColors.textSecondary, height: 1.5),
                     ),
                   ],
@@ -94,18 +96,19 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
   }
 
   Widget _buildStatusBadge() {
+    final l10n = context.l10n;
     Color color;
     String text;
 
     if (_isDone) {
       color = Colors.green;
-      text = 'Завершено';
+      text = l10n.taskStatusCompleted;
     } else if (_isInProgress) {
       color = AppColors.primaryOrange;
-      text = 'В работе';
+      text = l10n.taskStatusInProgress;
     } else {
       color = Colors.blueGrey;
-      text = 'В очереди';
+      text = l10n.taskStatusQueued;
     }
 
     return Container(
@@ -119,6 +122,7 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
   }
 
   Widget _buildInfoCard() {
+    final l10n = context.l10n;
     return Container(
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(color: AppColors.surfaceWhite, borderRadius: BorderRadius.circular(24)),
@@ -126,13 +130,13 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
         children: [
           _buildInfoRow(
             CupertinoIcons.calendar,
-            'Дедлайн',
+            l10n.deadlineInfo,
             '${widget.task.deadline.day}.${widget.task.deadline.month}.${widget.task.deadline.year}',
           ),
           const Padding(padding: EdgeInsets.symmetric(vertical: 12), child: Divider(height: 1)),
-          _buildInfoRow(CupertinoIcons.flag, 'Приоритет', 'Высокий'),
+          _buildInfoRow(CupertinoIcons.flag, l10n.priorityInfo, l10n.highPriority),
           const Padding(padding: EdgeInsets.symmetric(vertical: 12), child: Divider(height: 1)),
-          _buildInfoRow(CupertinoIcons.tag, 'Категория', 'Учеба'),
+          _buildInfoRow(CupertinoIcons.tag, l10n.categoryInfo, l10n.categoryStudy),
         ],
       ),
     );
@@ -151,6 +155,7 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
   }
 
   Widget _buildBottomActions() {
+    final l10n = context.l10n;
     return Container(
       padding: const EdgeInsets.fromLTRB(24, 16, 24, 32),
       decoration: BoxDecoration(
@@ -162,7 +167,7 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
       ),
       child: _isDone
           ? AppButton(
-              text: 'Вернуть в работу',
+              text: l10n.returnToWork,
               onPressed: () => setState(() {
                 _isDone = false;
                 _isInProgress = false;
@@ -174,7 +179,7 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
                 if (!_isInProgress)
                   Expanded(
                     child: AppButton(
-                      text: 'Приступить',
+                      text: l10n.startTask,
                       onPressed: () => setState(() {
                         _isInProgress = true;
                         widget.task.isDone = false;
@@ -184,7 +189,7 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
                 else
                   Expanded(
                     child: AppButton(
-                      text: 'Завершить',
+                      text: l10n.finishTask,
                       onPressed: () => setState(() {
                         _isDone = true;
                         _isInProgress = false;

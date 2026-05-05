@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:student_manager/core/colors/app_colors.dart';
+import 'package:student_manager/core/extension/context.dart';
 import 'package:student_manager/core/router/app_router.dart';
 import 'package:student_manager/core/storage/storage_service.dart';
 import 'package:student_manager/core/style/app_text_style.dart';
@@ -22,45 +23,38 @@ class _LoginPageState extends State<LoginPage> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
 
-  // Состояние загрузки
   bool _isLoading = false;
+
   @override
   void initState() {
     super.initState();
-    // Проверяем статус входа при инициализации экрана
     _checkAuthStatus();
   }
 
   void _checkAuthStatus() {
-    // Ждем окончания отрисовки первого кадра, чтобы безопасно использовать context.router
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (StorageService.instance.isLoggedIn) {
-        // Если флаг в StorageService равен true, сразу летим в Dashboard
         context.router.replace(const DashboardRoute());
       }
     });
   }
 
   Future<void> _handleLogin() async {
-    // 1. Сначала проверяем валидаторы (формат почты и пароля)
     if (_formKey.currentState!.validate()) {
       setState(() => _isLoading = true);
 
-      // 2. Вызываем сервис аутентификации
       final success = await AuthService.login(_emailController.text.trim(), _passwordController.text.trim());
 
       if (!mounted) return;
       setState(() => _isLoading = false);
 
       if (success) {
-        // 3. Если данные верны (admin@mail.com / password123)
-        AppSnackBar.show(context, message: 'Успешный вход!', isError: false);
-
-        // Переходим на главную и очищаем стек навигации
+        // Локализация сообщения успеха
+        AppSnackBar.show(context, message: context.l10n.loginSuccess, isError: false);
         context.router.replace(DashboardRoute());
       } else {
-        // 4. Если моковый юзер не совпал
-        AppSnackBar.show(context, message: 'Неверный email или пароль', isError: true);
+        // Локализация сообщения ошибки
+        AppSnackBar.show(context, message: context.l10n.loginError, isError: true);
       }
     }
   }
@@ -74,6 +68,9 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
+    // Вынес для удобства чтения
+    final l10n = context.l10n;
+
     return Scaffold(
       backgroundColor: AppColors.scaffoldBackground,
       body: SafeArea(
@@ -87,11 +84,11 @@ class _LoginPageState extends State<LoginPage> {
                 children: [
                   const Icon(Icons.school_rounded, size: 48, color: AppColors.primaryOrange),
                   const SizedBox(height: 24),
-                  Text('Student Manager', style: AppTextStyles.h1.copyWith(letterSpacing: -1, fontSize: 28)),
+                  Text(l10n.appTitle, style: AppTextStyles.h1.copyWith(letterSpacing: -1, fontSize: 28)),
                   const SizedBox(height: 40),
 
                   AppTextField(
-                    label: 'Email',
+                    label: l10n.email,
                     controller: _emailController,
                     keyboardType: TextInputType.emailAddress,
                     validator: AppValidators.email,
@@ -99,7 +96,7 @@ class _LoginPageState extends State<LoginPage> {
                   const SizedBox(height: 20),
 
                   AppTextField(
-                    label: 'Пароль',
+                    label: l10n.password,
                     controller: _passwordController,
                     obscureText: true,
                     validator: AppValidators.password,
@@ -109,15 +106,14 @@ class _LoginPageState extends State<LoginPage> {
                     alignment: Alignment.centerRight,
                     child: TextButton(
                       onPressed: () => context.router.push(const ForgetPasswordRoute()),
-                      child: Text('Забыли пароль?', style: AppTextStyles.caption.copyWith(fontSize: 12)),
+                      child: Text(l10n.forgotPassword, style: AppTextStyles.caption.copyWith(fontSize: 12)),
                     ),
                   ),
 
                   const SizedBox(height: 40),
 
-                  // Кнопка теперь сама показывает индикатор загрузки
                   AppButton(
-                    text: 'Войти',
+                    text: l10n.loginButton,
                     isLoading: _isLoading,
                     variant: AppButtonVariant.primary,
                     onPressed: _handleLogin,
@@ -128,11 +124,11 @@ class _LoginPageState extends State<LoginPage> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text('Впервые здесь?', style: AppTextStyles.caption),
+                      Text(l10n.newHere, style: AppTextStyles.caption),
                       TextButton(
                         onPressed: () => context.router.push(const RegisterRoute()),
                         child: Text(
-                          'Создать аккаунт',
+                          l10n.createAccount,
                           style: AppTextStyles.accent.copyWith(fontWeight: FontWeight.bold, fontSize: 14),
                         ),
                       ),

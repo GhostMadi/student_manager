@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:student_manager/core/colors/app_colors.dart';
+import 'package:student_manager/core/extension/context.dart';
 import 'package:student_manager/core/router/app_router.dart';
 import 'package:student_manager/core/style/app_text_style.dart';
 import 'package:student_manager/core/widgets/button.dart';
@@ -18,7 +19,7 @@ class TaskPage extends StatefulWidget {
 
 class _TaskPageState extends State<TaskPage> {
   // Фильтр статусов
-  String _currentFilter = 'Все';
+  String _currentFilter = 'allFilter';
 
   // Список задач
   final List<TaskItem> _tasks = [
@@ -39,12 +40,26 @@ class _TaskPageState extends State<TaskPage> {
     });
   }
 
+  String _getFilterText(String filterKey) {
+    final l10n = context.l10n;
+    switch (filterKey) {
+      case 'allFilter':
+        return l10n.allFilter;
+      case 'inProgressFilter':
+        return l10n.inProgressFilter;
+      case 'completedFilter':
+        return l10n.completedFilter;
+      default:
+        return filterKey;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     // Логика фильтрации
     final filteredTasks = _tasks.where((task) {
-      if (_currentFilter == 'В процессе') return !task.isDone;
-      if (_currentFilter == 'Выполнено') return task.isDone;
+      if (_currentFilter == 'inProgressFilter') return !task.isDone;
+      if (_currentFilter == 'completedFilter') return task.isDone;
       return true;
     }).toList();
 
@@ -60,7 +75,7 @@ class _TaskPageState extends State<TaskPage> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text('Задачи', style: AppTextStyles.h1.copyWith(fontSize: 28)),
+                  Text(context.l10n.tasksTitle, style: AppTextStyles.h1.copyWith(fontSize: 28)),
                   IconButton(
                     onPressed: () => _showAddTaskSheet(context),
                     icon: const Icon(
@@ -78,7 +93,7 @@ class _TaskPageState extends State<TaskPage> {
               scrollDirection: Axis.horizontal,
               padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
               child: Row(
-                children: ['Все', 'В процессе', 'Выполнено'].map((filter) {
+                children: ['allFilter', 'inProgressFilter', 'completedFilter'].map((filter) {
                   final isSelected = _currentFilter == filter;
                   return GestureDetector(
                     onTap: () => setState(() => _currentFilter = filter),
@@ -91,7 +106,7 @@ class _TaskPageState extends State<TaskPage> {
                         borderRadius: BorderRadius.circular(20),
                       ),
                       child: Text(
-                        filter,
+                        _getFilterText(filter),
                         style: AppTextStyles.body.copyWith(
                           fontSize: 13,
                           fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
@@ -201,7 +216,7 @@ class _TaskPageState extends State<TaskPage> {
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: Text(
-                  task.isDone ? 'Готово' : 'В процессе',
+                  task.isDone ? context.l10n.doneText : context.l10n.inProgressText,
                   style: TextStyle(
                     fontSize: 10,
                     fontWeight: FontWeight.bold,
@@ -237,9 +252,9 @@ class _TaskPageState extends State<TaskPage> {
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('Новая задача', style: AppTextStyles.h2),
+              Text(context.l10n.newTaskTitle, style: AppTextStyles.h2),
               const SizedBox(height: 24),
-              AppTextField(label: 'Что нужно сделать?', controller: titleController),
+              AppTextField(label: context.l10n.whatToDoLabel, controller: titleController),
               const SizedBox(height: 20),
 
               // Селектор даты
@@ -264,7 +279,7 @@ class _TaskPageState extends State<TaskPage> {
                       const Icon(CupertinoIcons.calendar, color: AppColors.primaryOrange),
                       const SizedBox(width: 12),
                       Text(
-                        'Дедлайн: ${tempDate.day}.${tempDate.month}.${tempDate.year}',
+                        context.l10n.deadlineLabel('${tempDate.day}.${tempDate.month}.${tempDate.year}'),
                         style: AppTextStyles.body.copyWith(fontWeight: FontWeight.bold),
                       ),
                       const Spacer(),
@@ -275,7 +290,7 @@ class _TaskPageState extends State<TaskPage> {
               ),
               const SizedBox(height: 32),
               AppButton(
-                text: 'Создать задачу',
+                text: context.l10n.createTaskButton,
                 onPressed: () {
                   if (titleController.text.isNotEmpty) {
                     _addTask(titleController.text, tempDate);
@@ -297,7 +312,7 @@ class _TaskPageState extends State<TaskPage> {
         children: [
           Icon(CupertinoIcons.tray, size: 64, color: AppColors.textSecondary.withOpacity(0.3)),
           const SizedBox(height: 16),
-          Text('Задач пока нет', style: AppTextStyles.caption),
+          Text(context.l10n.noTasksYet, style: AppTextStyles.caption),
         ],
       ),
     );

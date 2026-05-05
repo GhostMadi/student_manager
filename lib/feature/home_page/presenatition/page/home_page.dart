@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:student_manager/core/colors/app_colors.dart';
+import 'package:student_manager/core/extension/context.dart';
 import 'package:student_manager/core/router/app_router.dart';
 import 'package:student_manager/core/style/app_text_style.dart';
 import 'package:student_manager/feature/schedule_page/presntation/page/lesson_model.dart';
@@ -18,6 +19,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
     return Scaffold(
       backgroundColor: AppColors.scaffoldBackground,
       body: SafeArea(
@@ -33,7 +35,7 @@ class _HomePageState extends State<HomePage> {
               // 2. Ближайшие занятия (Горизонтальный список)
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 24),
-                child: _buildSectionHeader('Ближайшие занятия', () {
+                child: _buildSectionHeader(l10n.upcomingLessons, () {
                   context.tabsRouter.setActiveIndex(2);
                 }),
               ),
@@ -47,7 +49,7 @@ class _HomePageState extends State<HomePage> {
                     const SizedBox(height: 32),
 
                     // 3. Текущие задания (Вертикальный список)
-                    _buildSectionHeader('Текущие задания', () {
+                    _buildSectionHeader(l10n.currentTasks, () {
                       context.tabsRouter.setActiveIndex(3);
                     }),
                     const SizedBox(height: 16),
@@ -65,6 +67,8 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget _buildGPACard() {
+    final l10n = context.l10n;
+
     return Container(
       padding: const EdgeInsets.all(24),
       decoration: BoxDecoration(color: AppColors.deepBlack, borderRadius: BorderRadius.circular(28)),
@@ -74,7 +78,7 @@ class _HomePageState extends State<HomePage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('Итоговый GPA', style: AppTextStyles.caption.copyWith(color: Colors.white60)),
+                Text(l10n.totalGPA, style: AppTextStyles.caption.copyWith(color: Colors.white60)),
                 const SizedBox(height: 4),
                 Text('4.46', style: AppTextStyles.h1.copyWith(color: Colors.white, fontSize: 32)),
               ],
@@ -86,15 +90,17 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget _buildHeader() {
+    final l10n = context.l10n;
+
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('Привет, Студент! 👋', style: AppTextStyles.h1.copyWith(fontSize: 24)),
+            Text(l10n.greeting, style: AppTextStyles.h1.copyWith(fontSize: 24)),
             const SizedBox(height: 4),
-            Text('Сегодня отличный день для учебы', style: AppTextStyles.caption),
+            Text(l10n.todayStudyDay, style: AppTextStyles.caption),
           ],
         ),
         // Виджет среднего балла
@@ -210,6 +216,8 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget _buildCurrentTasks() {
+    final l10n = context.l10n;
+
     return Column(
       children: List.generate(2, (index) {
         return GestureDetector(
@@ -245,11 +253,11 @@ class _HomePageState extends State<HomePage> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Лабораторная №${index + 3}',
+                        l10n.labTaskNumber(index + 3),
                         style: AppTextStyles.body.copyWith(fontWeight: FontWeight.bold),
                       ),
                       const SizedBox(height: 4),
-                      Text('Срок: завтра', style: AppTextStyles.caption.copyWith(color: Colors.redAccent)),
+                      Text(l10n.deadlineTomorrow, style: AppTextStyles.caption.copyWith(color: Colors.redAccent)),
                     ],
                   ),
                 ),

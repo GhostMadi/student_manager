@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:student_manager/core/colors/app_colors.dart';
+import 'package:student_manager/core/extension/context.dart';
 import 'package:student_manager/core/style/app_text_style.dart';
 import 'package:student_manager/core/validator/validators.dart';
 import 'package:student_manager/core/widgets/button.dart';
@@ -51,6 +52,7 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
     return Scaffold(
       backgroundColor: AppColors.scaffoldBackground,
       appBar: AppBar(
@@ -88,6 +90,8 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
 
   // 1. ВВОД EMAIL
   Widget _buildEmailStep() {
+    final l10n = context.l10n;
+
     return Padding(
       key: const ValueKey('email'),
       padding: const EdgeInsets.symmetric(horizontal: 30.0),
@@ -97,18 +101,18 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const SizedBox(height: 20),
-            Text('Восстановление', style: AppTextStyles.h1),
+            Text(l10n.forgetPasswordTitle, style: AppTextStyles.h1),
             const SizedBox(height: 8),
-            Text('Введите вашу почту', style: AppTextStyles.caption),
+            Text(l10n.forgetPasswordEnterEmail, style: AppTextStyles.caption),
             const SizedBox(height: 40),
             AppTextField(
-              label: 'Email',
+              label: l10n.email,
               controller: _emailController,
               validator: AppValidators.email,
               keyboardType: TextInputType.emailAddress,
             ),
             const SizedBox(height: 40),
-            AppButton(text: 'Отправить код', onPressed: _nextStep),
+            AppButton(text: l10n.sendCodeButton, onPressed: _nextStep),
           ],
         ),
       ),
@@ -117,6 +121,8 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
 
   // 2. ВВОД OTP
   Widget _buildOtpStep() {
+    final l10n = context.l10n;
+
     return Padding(
       key: const ValueKey('otp'),
       padding: const EdgeInsets.symmetric(horizontal: 30.0),
@@ -124,9 +130,9 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const SizedBox(height: 20),
-          Text('Введите код', style: AppTextStyles.h1),
+          Text(l10n.enterCodeTitle, style: AppTextStyles.h1),
           const SizedBox(height: 8),
-          Text('Код отправлен на ${_emailController.text}', style: AppTextStyles.caption),
+          Text(l10n.codeSentTo(_emailController.text), style: AppTextStyles.caption),
           const SizedBox(height: 40),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -141,6 +147,8 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
 
   // 3. НОВЫЙ ПАРОЛЬ
   Widget _buildNewPasswordStep() {
+    final l10n = context.l10n;
+
     return Padding(
       key: const ValueKey('password'),
       padding: const EdgeInsets.symmetric(horizontal: 30.0),
@@ -150,25 +158,25 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const SizedBox(height: 20),
-            Text('Новый пароль', style: AppTextStyles.h1),
+            Text(l10n.newPasswordTitle, style: AppTextStyles.h1),
             const SizedBox(height: 8),
-            Text('Придумайте сложный пароль', style: AppTextStyles.caption),
+            Text(l10n.newPasswordSubtitle, style: AppTextStyles.caption),
             const SizedBox(height: 40),
             AppTextField(
-              label: 'Новый пароль',
+              label: l10n.newPasswordField,
               controller: _passController,
               obscureText: true,
               validator: AppValidators.password,
             ),
             const SizedBox(height: 16),
             AppTextField(
-              label: 'Повторите пароль',
+              label: l10n.repeatPasswordField,
               controller: _confirmPassController,
               obscureText: true,
               validator: (v) => AppValidators.confirmPassword(v, _passController.text),
             ),
             const SizedBox(height: 40),
-            AppButton(text: 'Сохранить и войти', variant: AppButtonVariant.primary, onPressed: _nextStep),
+            AppButton(text: l10n.saveAndLogin, variant: AppButtonVariant.primary, onPressed: _nextStep),
           ],
         ),
       ),

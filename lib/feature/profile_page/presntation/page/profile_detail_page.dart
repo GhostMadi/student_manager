@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:student_manager/core/colors/app_colors.dart';
+import 'package:student_manager/core/extension/context.dart';
 
 @RoutePage()
 class ProfileDetailPage extends StatefulWidget {
@@ -27,15 +28,15 @@ class _ProfileDetailPageState extends State<ProfileDetailPage> {
           icon: const Icon(Icons.west, color: AppColors.deepBlack),
           onPressed: () => Navigator.pop(context),
         ),
-        title: const Text(
-          "Профиль",
+        title: Text(
+          context.l10n.profileTitle,
           style: TextStyle(color: AppColors.deepBlack, fontSize: 17, fontWeight: FontWeight.w500),
         ),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: const Text(
-              "Готово",
+            child: Text(
+              context.l10n.doneButton,
               style: TextStyle(color: AppColors.primaryOrange, fontWeight: FontWeight.w600),
             ),
           ),
@@ -67,9 +68,9 @@ class _ProfileDetailPageState extends State<ProfileDetailPage> {
               ),
             ),
             const SizedBox(height: 40),
-            _buildField("Имя", _nameController, enabled: true),
-            _buildField("Email", TextEditingController(text: _userEmail), enabled: false),
-            _buildField("Телефон", _phoneController, enabled: true),
+            _buildField(context.l10n.nameLabel, _nameController, enabled: true),
+            _buildField(context.l10n.email, TextEditingController(text: _userEmail), enabled: false),
+            _buildField(context.l10n.phoneLabel, _phoneController, enabled: true),
           ],
         ),
       ),

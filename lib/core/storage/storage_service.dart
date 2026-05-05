@@ -12,6 +12,7 @@ class StorageService {
   static const String _keyIsLoggedIn = 'is_logged_in';
   static const String _keyUserToken = 'user_token';
   static const String _keyUserName = 'user_name';
+  static const String _keyLanguageCode = 'language_code';
 
   // Инициализация (вызываем один раз в main.dart)
   Future<void> init() async {
@@ -32,11 +33,16 @@ class StorageService {
     return await _prefs.setString(_keyUserName, name);
   }
 
+  Future<bool> setLanguageCode(String code) async {
+    return await _prefs.setString(_keyLanguageCode, code);
+  }
+
   // --- МЕТОДЫ ЧТЕНИЯ ---
 
   bool get isLoggedIn => _prefs.getBool(_keyIsLoggedIn) ?? false;
   String? get token => _prefs.getString(_keyUserToken);
   String? get userName => _prefs.getString(_keyUserName);
+  String get languageCode => _prefs.getString(_keyLanguageCode) ?? 'en';
 
   // --- УДАЛЕНИЕ ---
 

@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:student_manager/core/colors/app_colors.dart';
+import 'package:student_manager/core/extension/context.dart';
 import 'package:student_manager/feature/schedule_page/presntation/page/lesson_model.dart';
 
 @RoutePage()
@@ -12,6 +13,7 @@ class LessonPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n; // Получаем локализацию
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -36,8 +38,8 @@ class LessonPage extends StatelessWidget {
             const SizedBox(height: 10),
             // Категория или тип занятия
             Text(
-              "ЛЕКЦИЯ",
-              style: TextStyle(
+              context.l10n.lecture.toUpperCase(), // Используем .toUpperCase() для стиля
+              style: const TextStyle(
                 color: AppColors.primaryOrange,
                 fontWeight: FontWeight.bold,
                 letterSpacing: 1.2,
@@ -45,7 +47,7 @@ class LessonPage extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 8),
-            // Название предмета
+            // Название предмета (уже локализовано в модели Lesson)
             Text(
               lesson.subject,
               style: const TextStyle(fontSize: 28, fontWeight: FontWeight.bold, color: AppColors.deepBlack),
@@ -62,39 +64,39 @@ class LessonPage extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  _buildInfoItem(CupertinoIcons.clock, "Время", lesson.time),
+                  _buildInfoItem(CupertinoIcons.clock, context.l10n.time, lesson.time),
                   Container(width: 1, height: 40, color: Colors.grey.withOpacity(0.2)),
-                  _buildInfoItem(CupertinoIcons.location, "Кабинет", lesson.room),
+                  _buildInfoItem(CupertinoIcons.location, context.l10n.room, lesson.room),
                 ],
               ),
             ),
 
             const SizedBox(height: 32),
 
-            // Блок контента (Моки)
-            _buildSectionTitle("Тема занятия"),
-            const Text(
-              "Основы интегрального исчисления и применение определенных интегралов в физических задачах.",
-              style: TextStyle(fontSize: 16, color: AppColors.charcoal, height: 1.5),
+            // Блок контента
+            _buildSectionTitle(context.l10n.lessonTopic),
+            Text(
+              context.l10n.mockLessonTopicDescription,
+              style: const TextStyle(fontSize: 16, color: AppColors.charcoal, height: 1.5),
             ),
 
             const SizedBox(height: 32),
 
-            _buildSectionTitle("Домашнее задание"),
-            _buildHomeworkItem("Решить задачи №452, 455 из сборника Демидовича."),
-            _buildHomeworkItem("Подготовиться к коллоквиуму по первой главе."),
+            _buildSectionTitle(context.l10n.homework),
+            _buildHomeworkItem(context.l10n.mockHomework1),
+            _buildHomeworkItem(context.l10n.mockHomework2),
 
             const SizedBox(height: 32),
 
-            _buildSectionTitle("Преподаватель"),
-            const ListTile(
+            _buildSectionTitle(context.l10n.teacher),
+            ListTile(
               contentPadding: EdgeInsets.zero,
-              leading: CircleAvatar(
+              leading: const CircleAvatar(
                 backgroundColor: AppColors.surfaceWhite,
                 child: Icon(Icons.person, color: AppColors.primaryOrange),
               ),
-              title: Text("Иванов Иван Иванович"),
-              subtitle: Text("Профессор, доктор физ-мат наук"),
+              title: Text(context.l10n.mockTeacherName),
+              subtitle: Text(context.l10n.mockTeacherStatus),
             ),
             const SizedBox(height: 40),
           ],

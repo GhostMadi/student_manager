@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:student_manager/core/colors/app_colors.dart';
+import 'package:student_manager/core/extension/context.dart';
 import 'package:student_manager/core/style/app_text_style.dart';
 import 'package:student_manager/core/widgets/button.dart';
 import 'package:student_manager/feature/mark_page/presntation/page/subject_model.dart';
@@ -16,23 +17,31 @@ class MarkPage extends StatefulWidget {
 
 class _MarkPageState extends State<MarkPage> {
   // Список доступных предметов для селектора
-  final List<String> _availableSubjects = [
-    'Высшая математика',
-    'Физика',
-    'История',
-    'Программирование',
-    'Английский язык',
-    'Экономика',
-    'Базы данных',
-  ];
+  late List<String> _availableSubjects;
 
   // Моковые данные
-  final List<SubjectMarks> _subjects = [
-    SubjectMarks(id: '1', name: 'Высшая математика', marks: [95, 88, 92]),
-    SubjectMarks(id: '2', name: 'Физика', marks: [70, 65, 80]),
-    SubjectMarks(id: '3', name: 'История', marks: [100, 95]),
-    SubjectMarks(id: '4', name: 'Программирование', marks: [85, 90, 78]),
-  ];
+  late List<SubjectMarks> _subjects;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    final l10n = context.l10n;
+    _availableSubjects = [
+      l10n.subjectMath,
+      l10n.subjectPhysics,
+      l10n.subjectHistory,
+      l10n.subjectProgramming,
+      l10n.subjectEnglish,
+      l10n.subjectEconomics,
+      l10n.subjectDatabases,
+    ];
+    _subjects = [
+      SubjectMarks(id: '1', name: l10n.subjectMath, marks: [95, 88, 92]),
+      SubjectMarks(id: '2', name: l10n.subjectPhysics, marks: [70, 65, 80]),
+      SubjectMarks(id: '3', name: l10n.subjectHistory, marks: [100, 95]),
+      SubjectMarks(id: '4', name: l10n.subjectProgramming, marks: [85, 90, 78]),
+    ];
+  }
 
   double _calculateTotalGPA() {
     if (_subjects.isEmpty) return 0.0;
@@ -42,6 +51,8 @@ class _MarkPageState extends State<MarkPage> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
+
     return Scaffold(
       backgroundColor: AppColors.scaffoldBackground,
       body: SafeArea(
@@ -56,7 +67,7 @@ class _MarkPageState extends State<MarkPage> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text('Успеваемость', style: AppTextStyles.h1.copyWith(fontSize: 28)),
+                      Text(l10n.performanceTitle, style: AppTextStyles.h1.copyWith(fontSize: 28)),
                       IconButton(
                         onPressed: _showAddSubjectSheet,
                         icon: const Icon(
@@ -87,6 +98,7 @@ class _MarkPageState extends State<MarkPage> {
 
   Widget _buildGPACard() {
     final gpa = _calculateTotalGPA();
+    final l10n = context.l10n;
     return Container(
       padding: const EdgeInsets.all(24),
       decoration: BoxDecoration(color: AppColors.deepBlack, borderRadius: BorderRadius.circular(28)),
@@ -96,7 +108,7 @@ class _MarkPageState extends State<MarkPage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('Итоговый GPA', style: AppTextStyles.caption.copyWith(color: Colors.white60)),
+                Text(l10n.overallGpa, style: AppTextStyles.caption.copyWith(color: Colors.white60)),
                 const SizedBox(height: 4),
                 Text(
                   gpa.toStringAsFixed(2),
@@ -159,6 +171,7 @@ class _MarkPageState extends State<MarkPage> {
 
   // 1. Детальная модалка предмета
   void _showSubjectDetails(SubjectMarks subject) {
+    final l10n = context.l10n;
     showModalBottomSheet(
       context: context,
       backgroundColor: Colors.white,
@@ -177,11 +190,11 @@ class _MarkPageState extends State<MarkPage> {
               ],
             ),
             const SizedBox(height: 32),
-            _buildInfoRow("Всего оценок", "${subject.marks.length}"),
-            _buildInfoRow("Средний балл", "${subject.average.toStringAsFixed(1)}%"),
-            _buildInfoRow("Статус", subject.average >= 70 ? "Проходной" : "Низкий"),
+            _buildInfoRow(l10n.totalMarks, "${subject.marks.length}"),
+            _buildInfoRow(l10n.averageScore, "${subject.average.toStringAsFixed(1)}%"),
+            _buildInfoRow(l10n.statusLabel, subject.average >= 70 ? l10n.passingStatus : l10n.lowStatus),
             const SizedBox(height: 32),
-            AppButton(text: "Закрыть", onPressed: () => Navigator.pop(context)),
+            AppButton(text: l10n.closeButton, onPressed: () => Navigator.pop(context)),
             const SizedBox(height: 16),
           ],
         ),
@@ -191,7 +204,17 @@ class _MarkPageState extends State<MarkPage> {
 
   // 2. Селектор создания нового предмета
   void _showAddSubjectSheet() {
-    String selectedSubject = _availableSubjects[0];
+    final l10n = context.l10n;
+    final availableSubjects = [
+      l10n.subjectMath,
+      l10n.subjectPhysics,
+      l10n.subjectHistory,
+      l10n.subjectProgramming,
+      l10n.subjectEnglish,
+      l10n.subjectEconomics,
+      l10n.subjectDatabases,
+    ];
+    String selectedSubject = availableSubjects[0];
 
     showModalBottomSheet(
       context: context,
@@ -208,7 +231,7 @@ class _MarkPageState extends State<MarkPage> {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Text('Новый предмет', style: AppTextStyles.h2),
+              Text(l10n.newSubjectTitle, style: AppTextStyles.h2),
               const SizedBox(height: 24),
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -221,7 +244,7 @@ class _MarkPageState extends State<MarkPage> {
                     value: selectedSubject,
                     isExpanded: true,
                     icon: const Icon(Icons.keyboard_arrow_down, color: AppColors.primaryOrange),
-                    items: _availableSubjects.map((String value) {
+                    items: availableSubjects.map((String value) {
                       return DropdownMenuItem<String>(value: value, child: Text(value));
                     }).toList(),
                     onChanged: (val) {
@@ -232,7 +255,7 @@ class _MarkPageState extends State<MarkPage> {
               ),
               const SizedBox(height: 24),
               AppButton(
-                text: 'Добавить в список',
+                text: l10n.addToList,
                 onPressed: () {
                   setState(() {
                     _subjects.add(
@@ -287,18 +310,19 @@ class _MarkPageState extends State<MarkPage> {
 
   void _showAddMarkDialog(SubjectMarks subject) {
     final controller = TextEditingController();
+    final l10n = context.l10n;
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Введите балл (0-100)'),
+        title: Text(l10n.enterScoreTitle),
         content: TextField(
           controller: controller,
           keyboardType: TextInputType.number,
           autofocus: true,
-          decoration: const InputDecoration(hintText: "Например: 85"),
+          decoration: InputDecoration(hintText: l10n.scoreExample),
         ),
         actions: [
-          TextButton(onPressed: () => Navigator.pop(context), child: const Text('Отмена')),
+          TextButton(onPressed: () => Navigator.pop(context), child: Text(l10n.cancelButton)),
           TextButton(
             onPressed: () {
               final val = int.tryParse(controller.text);
@@ -307,7 +331,7 @@ class _MarkPageState extends State<MarkPage> {
                 Navigator.pop(context);
               }
             },
-            child: const Text('Добавить'),
+            child: Text(l10n.addButton),
           ),
         ],
       ),

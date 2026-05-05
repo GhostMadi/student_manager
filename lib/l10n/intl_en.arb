@@ -1,0 +1,218 @@
+{
+    "@@locale": "en",
+    "appTitle": "Student Manager",
+    "welcomeMessage": "Welcome to Student Manager",
+    "email": "Email",
+    "password": "Password",
+    "forgotPassword": "Forgot password?",
+    "loginButton": "Login",
+    "loginSuccess": "Login successful!",
+    "loginError": "Invalid email or password",
+    "newHere": "New here?",
+    "createAccount": "Create account",
+    "registerSubtitle": "Fill in the details to get started",
+    "fullName": "Full name",
+    "confirmPassword": "Confirm password",
+    "registerButton": "Register",
+    "termsAndPrivacyDisclamer": "By registering, you agree to the terms of use and privacy policy.",
+    "forgetPasswordTitle": "Password recovery",
+    "forgetPasswordEnterEmail": "Enter your email",
+    "sendCodeButton": "Send code",
+    "enterCodeTitle": "Enter code",
+    "codeSentTo": "A code was sent to {email}",
+    "confirmButton": "Confirm",
+    "newPasswordTitle": "New password",
+    "newPasswordSubtitle": "Choose a strong password",
+    "newPasswordField": "New password",
+    "repeatPasswordField": "Repeat password",
+    "saveAndLogin": "Save and login",
+    "scheduleTitle": "Schedule",
+    "editText": "Edit",
+    "deleteText": "Delete",
+    "newLesson": "New lesson",
+    "lessonEdit": "Editing",
+    "lessonSubjectLabel": "Subject",
+    "startLabel": "Start",
+    "endLabel": "End",
+    "audienceLabel": "Room",
+    "saveButton": "Save",
+    "noLessonsToday": "No lessons for this day",
+    "addToList": "Add to list",
+    "mondayShort": "Mon",
+    "tuesdayShort": "Tue",
+    "wednesdayShort": "Wed",
+    "thursdayShort": "Thu",
+    "fridayShort": "Fri",
+    "saturdayShort": "Sat",
+    "upcomingLessons": "Upcoming lessons",
+    "seeAll": "See all",
+    "currentTasks": "Current tasks",
+    "totalGPA": "Total GPA",
+    "profileTitle": "Profile",
+    "greeting": "Hello, Student! 👋",
+    "todayStudyDay": "Today is a great day for studying",
+    "labTaskNumber": "Lab task №{number}",
+    "deadlineTomorrow": "Due: tomorrow",
+    "tasksTitle": "Tasks",
+    "allFilter": "All",
+    "inProgressFilter": "In Progress",
+    "completedFilter": "Completed",
+    "newTaskTitle": "New task",
+    "whatToDoLabel": "What needs to be done?",
+    "deadlineLabel": "Deadline: {date}",
+    "createTaskButton": "Create task",
+    "noTasksYet": "No tasks yet",
+    "doneText": "Done",
+    "inProgressText": "In progress",
+    "returnToWork": "Return to work",
+    "startTask": "Start",
+    "finishTask": "Finish",
+    "descriptionTitle": "Description",
+    "descriptionText": "Complete the task before the deadline. Check all requirements, prepare the necessary materials, and make sure the solution meets academic standards.",
+    "taskStatusCompleted": "Completed",
+    "taskStatusInProgress": "In progress",
+    "taskStatusQueued": "Queued",
+    "deadlineInfo": "Deadline",
+    "priorityInfo": "Priority",
+    "categoryInfo": "Category",
+    "highPriority": "High",
+    "categoryStudy": "Study",
+    "closeButton": "Close",
+    "profileTitle": "Profile",
+    "doneButton": "Done",
+    "personalData": "Personal data",
+    "security": "Security",
+    "logOut": "Log out",
+    "overallGpa": "Overall GPA",
+    "topPercentage": "Top 5%",
+    "idLabel": "ID: {id}",
+    "nameLabel": "Name",
+    "phoneLabel": "Phone",
+    "lectureLabel": "LECTURE",
+    "timeLabel": "Time",
+    "roomLabel": "Room",
+    "lessonTopic": "Lesson topic",
+    "homework": "Homework",
+    "professor": "Professor",
+    "homeworkItem1": "Solve problems №452, 455 from the Demidovich collection.",
+    "homeworkItem2": "Prepare for the quiz on the first chapter.",
+    "roomAbbr": "rm.",
+    "auditoriumAbbr": "aud.",
+    "labAbbr": "Lab",
+    "lecture": "Lecture",
+    "gym": "Gym",
+    "compClass1": "Comp. class 1",
+    "militaryBase": "Mil. corp.",
+    "subjectHistory": "History",
+    "subjectProgramming": "Programming",
+    "subjectMath": "Higher Mathematics",
+    "subjectPhysics": "Physics",
+    "subjectInformatics": "Informatics",
+    "subjectEnglish": "English Language",
+    "subjectHistoryKaz": "History of Kazakhstan",
+    "subjectPhysicalEducation": "Physical Education",
+    "subjectDiscreteMath": "Discrete Mathematics",
+    "subjectPython": "Python Programming",
+    "subjectEconomics": "Economics",
+    "subjectCulturalStudies": "Cultural Studies",
+    "subjectStatistics": "Statistics",
+    "subjectDatabases": "Databases",
+    "subjectComputerArch": "Computer Architecture",
+    "subjectMilitary": "Military Department",
+    "time": "Time",
+    "room": "Room",
+    "lessonTopic": "Lesson Topic",
+    "homework": "Homework",
+    "teacher": "Teacher",
+    "lecture": "Lecture",
+    "mockLessonTopicDescription": "Basics of integral calculus and the application of definite integrals in physical problems.",
+    "mockHomework1": "Solve problems No. 452, 455 from the Demidovich collection.",
+    "mockHomework2": "Prepare for the colloquium on the first chapter.",
+    "mockTeacherName": "Ivanov Ivan Ivanovich",
+    "mockTeacherStatus": "Professor, Doctor of Physical and Mathematical Sciences",
+    "performanceTitle": "Performance",
+    "newSubjectTitle": "New subject",
+    "totalMarks": "Total marks",
+    "averageScore": "Average score",
+    "statusLabel": "Status",
+    "passingStatus": "Passing",
+    "lowStatus": "Low",
+    "enterScoreTitle": "Enter score (0-100)",
+    "scoreExample": "For example: 85",
+    "cancelButton": "Cancel",
+    "addButton": "Add",
+    "language": "Language",
+    "selectLanguage": "Select language",
+    "notification": "Notifications",
+    "notifications": "Notifications",
+    "today": "Today",
+    "yesterday": "Yesterday",
+    "math": "Math",
+    "physics": "Physics",
+    "history": "History",
+    "deadlineTitle": "Deadline is close!",
+    "scheduleChangeTitle": "Schedule Change",
+    "systemUpdateTitle": "System Update",
+    "newGradeTitle": "New grade in {subject}",
+    "@newGradeTitle": {
+        "placeholders": {
+            "subject": {
+                "type": "String"
+            }
+        }
+    },
+    "newGradeSubtitle": "You received \"{grade}\" for {workName}",
+    "@newGradeSubtitle": {
+        "placeholders": {
+            "grade": {
+                "type": "String"
+            },
+            "workName": {
+                "type": "String"
+            }
+        }
+    },
+    "deadlineSubtitle": "Tomorrow is the last day to submit the {subject} project",
+    "@deadlineSubtitle": {
+        "placeholders": {
+            "subject": {
+                "type": "String"
+            }
+        }
+    },
+    "scheduleChangeSubtitle": "The {subject} class has been moved to room {room}",
+    "@scheduleChangeSubtitle": {
+        "placeholders": {
+            "subject": {
+                "type": "String"
+            },
+            "room": {
+                "type": "String"
+            }
+        }
+    },
+    "systemUpdateSubtitle": "App updated to version {version}",
+    "@systemUpdateSubtitle": {
+        "placeholders": {
+            "version": {
+                "type": "String"
+            }
+        }
+    },
+    "minutesAgo": "{count} min ago",
+    "@minutesAgo": {
+        "placeholders": {
+            "count": {
+                "type": "int"
+            }
+        }
+    },
+    "hoursAgo": "{count} hours ago",
+    "@hoursAgo": {
+        "placeholders": {
+            "count": {
+                "type": "int"
+            }
+        }
+    }
+}

@@ -1,0 +1,214 @@
+{
+    "@@locale": "kk",
+    "appTitle": "Student Manager",
+    "welcomeMessage": "Student Manager-ге қош келдіңіз",
+    "email": "Email",
+    "password": "Құпия сөз",
+    "forgotPassword": "Құпия сөзді ұмыттыңыз ба?",
+    "loginButton": "Кіру",
+    "loginSuccess": "Жүйеге сәтті кірдіңіз!",
+    "loginError": "Email немесе құпия сөз қате",
+    "newHere": "Алғаш рет пе?",
+    "createAccount": "Тіркелу",
+    "registerSubtitle": "Жұмысты бастау үшін деректерді толтырыңыз",
+    "fullName": "Толық аты-жөніңіз",
+    "confirmPassword": "Құпия сөзді растаңыз",
+    "registerButton": "Тіркелу",
+    "termsAndPrivacyDisclamer": "Тіркеле отырып, сіз пайдалану шарттарымен және құпиялылық саясатымен келісесіз.",
+    "forgetPasswordTitle": "Құпия сөзді қалпына келтіру",
+    "forgetPasswordEnterEmail": "Поштаңызды енгізіңіз",
+    "sendCodeButton": "Кодты жіберу",
+    "enterCodeTitle": "Кодты енгізіңіз",
+    "codeSentTo": "Код {email} адресіне жіберілді",
+    "confirmButton": "Растау",
+    "newPasswordTitle": "Жаңа құпия сөз",
+    "newPasswordSubtitle": "Күрделі құпия сөз ойлап табыңыз",
+    "newPasswordField": "Жаңа құпия сөз",
+    "repeatPasswordField": "Құпия сөзді қайталаңыз",
+    "saveAndLogin": "Сақтау және кіру",
+    "scheduleTitle": "Сабақ кестесі",
+    "editText": "Өңдеу",
+    "deleteText": "Өшіру",
+    "newLesson": "Жаңа сабақ",
+    "lessonEdit": "Өңдеу",
+    "lessonSubjectLabel": "Пән",
+    "startLabel": "Басталуы",
+    "endLabel": "Аяқталуы",
+    "audienceLabel": "Аудитория",
+    "saveButton": "Сақтау",
+    "noLessonsToday": "Бұл күнге сабақ жоқ",
+    "addToList": "Тізімге қосу",
+    "mondayShort": "Дс",
+    "tuesdayShort": "Сс",
+    "wednesdayShort": "Ср",
+    "thursdayShort": "Бс",
+    "fridayShort": "Жм",
+    "saturdayShort": "Сн",
+    "upcomingLessons": "Жақын арадағы сабақтар",
+    "seeAll": "Барлығы",
+    "currentTasks": "Ағымдағы тапсырмалар",
+    "totalGPA": "Қорытынды GPA",
+    "profileTitle": "Профиль",
+    "greeting": "Сәлем, Студент! 👋",
+    "todayStudyDay": "Бүгін оқу үшін тамаша күн",
+    "labTaskNumber": "Зертханалық жұмыс №{number}",
+    "deadlineTomorrow": "Мерзімі: ертең",
+    "tasksTitle": "Тапсырмалар",
+    "allFilter": "Барлығы",
+    "inProgressFilter": "Орындалуда",
+    "completedFilter": "Орындалды",
+    "newTaskTitle": "Жаңа тапсырма",
+    "whatToDoLabel": "Не істеу керек?",
+    "deadlineLabel": "Дедлайн: {date}",
+    "createTaskButton": "Тапсырма құру",
+    "noTasksYet": "Әзірге тапсырмалар жоқ",
+    "doneText": "Дайын",
+    "inProgressText": "Орындалуда",
+    "returnToWork": "Жұмысқа қайтару",
+    "startTask": "Бастау",
+    "finishTask": "Аяқтау",
+    "descriptionTitle": "Сипаттама",
+    "descriptionText": "Тапсырманы дедлайнға дейін орындау қажет. Оқытушының барлық талаптарын тексеріп, қажетті материалдарды дайындаңыз және шешімнің оқу орны стандарттарына сәйкестігіне көз жеткізіңіз.",
+    "taskStatusCompleted": "Аяқталды",
+    "taskStatusInProgress": "Орындалуда",
+    "taskStatusQueued": "Кезекте",
+    "deadlineInfo": "Дедлайн",
+    "priorityInfo": "Приоритет",
+    "categoryInfo": "Санат",
+    "highPriority": "Жоғары",
+    "categoryStudy": "Оқу",
+    "closeButton": "Жабу",
+    "doneButton": "Дайын",
+    "personalData": "Жеке деректер",
+    "security": "Қауіпсіздік",
+    "logOut": "Жүйеден шығу",
+    "overallGpa": "Жалпы GPA",
+    "topPercentage": "Топ 5%",
+    "idLabel": "ID: {id}",
+    "nameLabel": "Есімі",
+    "phoneLabel": "Телефон",
+    "lectureLabel": "ДӘРІС",
+    "timeLabel": "Уақыты",
+    "roomLabel": "Кабинет",
+    "lessonTopic": "Сабақ тақырыбы",
+    "homework": "Үй тапсырмасы",
+    "professor": "Оқытушы",
+    "homeworkItem1": "Демидович жинағынан №452, 455 есептерді шығару.",
+    "homeworkItem2": "Бірінші тарау бойынша коллоквиумға дайындалу.",
+    "roomAbbr": "каб.",
+    "auditoriumAbbr": "ауд.",
+    "labAbbr": "Зерт.",
+    "lecture": "Дәріс",
+    "gym": "Спортзал",
+    "compClass1": "Комп. класс 1",
+    "militaryBase": "Әскери корпус",
+    "subjectHistory": "Тарих",
+    "subjectProgramming": "Бағдарламалау",
+    "subjectMath": "Жоғары математика",
+    "subjectPhysics": "Физика",
+    "subjectInformatics": "Информатика",
+    "subjectEnglish": "Ағылшын тілі",
+    "subjectHistoryKaz": "Қазақстан тарихы",
+    "subjectPhysicalEducation": "Дене шынықтыру",
+    "subjectDiscreteMath": "Дискретті математика",
+    "subjectPython": "Python бағдарламалау",
+    "subjectEconomics": "Экономика",
+    "subjectCulturalStudies": "Мәдениеттану",
+    "subjectStatistics": "Статистика",
+    "subjectDatabases": "Мәліметтер базасы",
+    "subjectComputerArch": "Компьютерлік архитектура",
+    "subjectMilitary": "Әскери дайындық",
+    "time": "Уақыты",
+    "room": "Кабинет",
+    "teacher": "Оқытушы",
+    "mockLessonTopicDescription": "Интегралдық есептеу негіздері және физикалық есептерде анықталған интегралдарды қолдану.",
+    "mockHomework1": "Демидович жинағынан №452, 455 есептерді шығару.",
+    "mockHomework2": "Бірінші тарау бойынша коллоквиумға дайындалу.",
+    "mockTeacherName": "Иванов Иван Иванович",
+    "mockTeacherStatus": "Профессор, физика-математика ғылымдарының докторы",
+    "performanceTitle": "Үлгерім",
+    "newSubjectTitle": "Жаңа пән",
+    "totalMarks": "Барлық бағалар",
+    "averageScore": "Орташа балл",
+    "statusLabel": "Статус",
+    "passingStatus": "Өту балы",
+    "lowStatus": "Төмен",
+    "enterScoreTitle": "Баллды енгізіңіз (0-100)",
+    "scoreExample": "Мысалы: 85",
+    "cancelButton": "Болдырмау",
+    "addButton": "Қосу",
+    "language": "Тіл",
+    "selectLanguage": "Тілді таңдаңыз",
+    "notification": "Хабарламалар",
+    "notifications": "Хабарландырулар",
+    "today": "Бүгін",
+    "yesterday": "Кеше",
+    "math": "Математика",
+    "physics": "Физика",
+    "history": "Тарих",
+    "deadlineTitle": "Тапсыру мерзімі жақын!",
+    "scheduleChangeTitle": "Сабақ кестесіндегі өзгеріс",
+    "systemUpdateTitle": "Жүйелік жаңарту",
+    "newGradeTitle": "{subject} пәнінен жаңа баға",
+    "@newGradeTitle": {
+        "placeholders": {
+            "subject": {
+                "type": "String"
+            }
+        }
+    },
+    "newGradeSubtitle": "Сіз {workName} үшін \"{grade}\" алдыңыз",
+    "@newGradeSubtitle": {
+        "placeholders": {
+            "grade": {
+                "type": "String"
+            },
+            "workName": {
+                "type": "String"
+            }
+        }
+    },
+    "deadlineSubtitle": "Ертең — {subject} жобасын тапсырудың соңғы күні",
+    "@deadlineSubtitle": {
+        "placeholders": {
+            "subject": {
+                "type": "String"
+            }
+        }
+    },
+    "scheduleChangeSubtitle": "{subject} сабағы {room} аудиториясына ауыстырылды",
+    "@scheduleChangeSubtitle": {
+        "placeholders": {
+            "subject": {
+                "type": "String"
+            },
+            "room": {
+                "type": "String"
+            }
+        }
+    },
+    "systemUpdateSubtitle": "Қолданба {version} нұсқасына жаңартылды",
+    "@systemUpdateSubtitle": {
+        "placeholders": {
+            "version": {
+                "type": "String"
+            }
+        }
+    },
+    "minutesAgo": "{count} мин бұрын",
+    "@minutesAgo": {
+        "placeholders": {
+            "count": {
+                "type": "int"
+            }
+        }
+    },
+    "hoursAgo": "{count} сағат бұрын",
+    "@hoursAgo": {
+        "placeholders": {
+            "count": {
+                "type": "int"
+            }
+        }
+    }
+}

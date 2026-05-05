@@ -135,6 +135,22 @@ class MarkRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [NotificationPage]
+class NotificationRoute extends PageRouteInfo<void> {
+  const NotificationRoute({List<PageRouteInfo>? children})
+    : super(NotificationRoute.name, initialChildren: children);
+
+  static const String name = 'NotificationRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const NotificationPage();
+    },
+  );
+}
+
+/// generated route for
 /// [ProfileDetailPage]
 class ProfileDetailRoute extends PageRouteInfo<void> {
   const ProfileDetailRoute({List<PageRouteInfo>? children})

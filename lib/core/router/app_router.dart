@@ -4,6 +4,7 @@ import 'package:student_manager/feature/dashboard/dashboard_page.dart';
 import 'package:student_manager/feature/forget_password/forget_password_page.dart';
 import 'package:student_manager/feature/home_page/presenatition/page/home_page.dart';
 import 'package:student_manager/feature/mark_page/presntation/page/mark_page.dart';
+import 'package:student_manager/feature/notification/notifciation_page.dart';
 import 'package:student_manager/feature/profile_page/presntation/page/profile_detail_page.dart';
 import 'package:student_manager/feature/profile_page/presntation/page/profile_page.dart';
 import 'package:student_manager/feature/register_page/register_page.dart';
@@ -32,6 +33,7 @@ class AppRouter extends RootStackRouter {
     AutoRoute(page: ProfileDetailRoute.page),
     AutoRoute(page: LessonRoute.page),
     AutoRoute(page: TaskDetailsRoute.page),
+    AutoRoute(page: NotificationRoute.page),
 
     AutoRoute(
       page: DashboardRoute.page,

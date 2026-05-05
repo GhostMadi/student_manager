@@ -1,0 +1,214 @@
+{
+    "@@locale": "ru",
+    "appTitle": "Student Manager",
+    "welcomeMessage": "Добро пожаловать в Student Manager",
+    "email": "Email",
+    "password": "Пароль",
+    "forgotPassword": "Забыли пароль?",
+    "loginButton": "Войти",
+    "loginSuccess": "Успешный вход!",
+    "loginError": "Неверный email или пароль",
+    "newHere": "Впервые здесь?",
+    "createAccount": "Создать аккаунт",
+    "registerSubtitle": "Заполните данные, чтобы начать работу",
+    "fullName": "Полное имя",
+    "confirmPassword": "Подтвердите пароль",
+    "registerButton": "Зарегистрироваться",
+    "termsAndPrivacyDisclamer": "Регистрируясь, вы соглашаетесь с условиями использования и политикой конфиденциальности.",
+    "forgetPasswordTitle": "Восстановление пароля",
+    "forgetPasswordEnterEmail": "Введите вашу почту",
+    "sendCodeButton": "Отправить код",
+    "enterCodeTitle": "Введите код",
+    "codeSentTo": "Код отправлен на {email}",
+    "confirmButton": "Подтвердить",
+    "newPasswordTitle": "Новый пароль",
+    "newPasswordSubtitle": "Придумайте сложный пароль",
+    "newPasswordField": "Новый пароль",
+    "repeatPasswordField": "Повторите пароль",
+    "saveAndLogin": "Сохранить и войти",
+    "scheduleTitle": "Расписание",
+    "editText": "Редактировать",
+    "deleteText": "Удалить",
+    "newLesson": "Новое занятие",
+    "lessonEdit": "Редактирование",
+    "lessonSubjectLabel": "Предмет",
+    "startLabel": "Начало",
+    "endLabel": "Конец",
+    "audienceLabel": "Аудитория",
+    "saveButton": "Сохранить",
+    "noLessonsToday": "На этот день занятий нет",
+    "addToList": "Добавить в список",
+    "mondayShort": "Пн",
+    "tuesdayShort": "Вт",
+    "wednesdayShort": "Ср",
+    "thursdayShort": "Чт",
+    "fridayShort": "Пт",
+    "saturdayShort": "Сб",
+    "upcomingLessons": "Ближайшие занятия",
+    "seeAll": "Все",
+    "currentTasks": "Текущие задания",
+    "totalGPA": "Итоговый GPA",
+    "profileTitle": "Профиль",
+    "greeting": "Привет, Студент! 👋",
+    "todayStudyDay": "Сегодня отличный день для учебы",
+    "labTaskNumber": "Лабораторная №{number}",
+    "deadlineTomorrow": "Срок: завтра",
+    "tasksTitle": "Задачи",
+    "allFilter": "Все",
+    "inProgressFilter": "В процессе",
+    "completedFilter": "Выполнено",
+    "newTaskTitle": "Новая задача",
+    "whatToDoLabel": "Что нужно сделать?",
+    "deadlineLabel": "Дедлайн: {date}",
+    "createTaskButton": "Создать задачу",
+    "noTasksYet": "Задач пока нет",
+    "doneText": "Готово",
+    "inProgressText": "В процессе",
+    "returnToWork": "Вернуть в работу",
+    "startTask": "Приступить",
+    "finishTask": "Завершить",
+    "descriptionTitle": "Описание",
+    "descriptionText": "Необходимо выполнить задание до дедлайна. Проверьте все требования преподавателя, подготовьте необходимые материалы и убедитесь, что решение соответствует стандартам учебного заведения.",
+    "taskStatusCompleted": "Завершено",
+    "taskStatusInProgress": "В работе",
+    "taskStatusQueued": "В очереди",
+    "deadlineInfo": "Дедлайн",
+    "priorityInfo": "Приоритет",
+    "categoryInfo": "Категория",
+    "highPriority": "Высокий",
+    "categoryStudy": "Учеба",
+    "closeButton": "Закрыть",
+    "doneButton": "Готово",
+    "personalData": "Личные данные",
+    "security": "Безопасность",
+    "logOut": "Выйти из системы",
+    "overallGpa": "Общий GPA",
+    "topPercentage": "Топ 5%",
+    "idLabel": "ID: {id}",
+    "nameLabel": "Имя",
+    "phoneLabel": "Телефон",
+    "lectureLabel": "ЛЕКЦИЯ",
+    "timeLabel": "Время",
+    "roomLabel": "Кабинет",
+    "lessonTopic": "Тема занятия",
+    "homework": "Домашнее задание",
+    "professor": "Преподаватель",
+    "homeworkItem1": "Решить задачи №452, 455 из сборника Демидовича.",
+    "homeworkItem2": "Подготовиться к коллоквиуму по первой главе.",
+    "roomAbbr": "каб.",
+    "auditoriumAbbr": "ауд.",
+    "labAbbr": "Лаб.",
+    "lecture": "Лекция",
+    "gym": "Спортзал",
+    "compClass1": "Комп. класс 1",
+    "militaryBase": "Военный корпус",
+    "subjectHistory": "История",
+    "subjectProgramming": "Программирование",
+    "subjectMath": "Высшая математика",
+    "subjectPhysics": "Физика",
+    "subjectInformatics": "Информатика",
+    "subjectEnglish": "Английский язык",
+    "subjectHistoryKaz": "История Казахстана",
+    "subjectPhysicalEducation": "Физическая культура",
+    "subjectDiscreteMath": "Дискретная математика",
+    "subjectPython": "Программирование на Python",
+    "subjectEconomics": "Экономика",
+    "subjectCulturalStudies": "Культурология",
+    "subjectStatistics": "Статистика",
+    "subjectDatabases": "Базы данных",
+    "subjectComputerArch": "Архитектура компьютеров",
+    "subjectMilitary": "Военная подготовка",
+    "time": "Время",
+    "room": "Кабинет",
+    "teacher": "Преподаватель",
+    "mockLessonTopicDescription": "Основы интегрального исчисления и применение определенных интегралов в физических задачах.",
+    "mockHomework1": "Решить задачи №452, 455 из сборника Демидовича.",
+    "mockHomework2": "Подготовиться к коллоквиуму по первой главе.",
+    "mockTeacherName": "Иванов Иван Иванович",
+    "mockTeacherStatus": "Профессор, доктор физико-математических наук",
+    "performanceTitle": "Успеваемость",
+    "newSubjectTitle": "Новый предмет",
+    "totalMarks": "Всего оценок",
+    "averageScore": "Средний балл",
+    "statusLabel": "Статус",
+    "passingStatus": "Проходной",
+    "lowStatus": "Низкий",
+    "enterScoreTitle": "Введите балл (0-100)",
+    "scoreExample": "Например: 85",
+    "cancelButton": "Отмена",
+    "addButton": "Добавить",
+    "language": "Язык",
+    "selectLanguage": "Выберите язык",
+    "notification": "Уведомления",
+    "notifications": "Уведомления",
+    "today": "Сегодня",
+    "yesterday": "Вчера",
+    "math": "Математике",
+    "physics": "Физике",
+    "history": "Истории",
+    "deadlineTitle": "Дедлайн близко!",
+    "scheduleChangeTitle": "Изменение в расписании",
+    "systemUpdateTitle": "Системное обновление",
+    "newGradeTitle": "Новая оценка по {subject}",
+    "@newGradeTitle": {
+        "placeholders": {
+            "subject": {
+                "type": "String"
+            }
+        }
+    },
+    "newGradeSubtitle": "Вы получили \"{grade}\" за {workName}",
+    "@newGradeSubtitle": {
+        "placeholders": {
+            "grade": {
+                "type": "String"
+            },
+            "workName": {
+                "type": "String"
+            }
+        }
+    },
+    "deadlineSubtitle": "Завтра последний день сдачи проекта по {subject}",
+    "@deadlineSubtitle": {
+        "placeholders": {
+            "subject": {
+                "type": "String"
+            }
+        }
+    },
+    "scheduleChangeSubtitle": "Пара по {subject} перенесена в аудиторию {room}",
+    "@scheduleChangeSubtitle": {
+        "placeholders": {
+            "subject": {
+                "type": "String"
+            },
+            "room": {
+                "type": "String"
+            }
+        }
+    },
+    "systemUpdateSubtitle": "Приложение обновлено до версии {version}",
+    "@systemUpdateSubtitle": {
+        "placeholders": {
+            "version": {
+                "type": "String"
+            }
+        }
+    },
+    "minutesAgo": "{count} мин. назад",
+    "@minutesAgo": {
+        "placeholders": {
+            "count": {
+                "type": "int"
+            }
+        }
+    },
+    "hoursAgo": "{count} часа назад",
+    "@hoursAgo": {
+        "placeholders": {
+            "count": {
+                "type": "int"
+            }
+        }
+    }
+}

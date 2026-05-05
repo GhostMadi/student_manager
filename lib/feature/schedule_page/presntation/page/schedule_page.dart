@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:student_manager/core/colors/app_colors.dart';
+import 'package:student_manager/core/extension/context.dart';
 import 'package:student_manager/core/router/app_router.dart';
 import 'package:student_manager/core/style/app_text_style.dart';
 import 'package:student_manager/core/widgets/button.dart';
@@ -17,37 +18,128 @@ class SchedulePage extends StatefulWidget {
 
 class _SchedulePageState extends State<SchedulePage> {
   int _selectedDay = 0; // Текущий выбранный день (0 = Понедельник)
-  final List<String> _days = ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'];
 
   // Моковые данные
   // Обновленные моковые данные для расписания
-  final List<Lesson> _schedule = [
-    // Понедельник (dayIndex: 0)
-    Lesson(id: '1', subject: 'Высшая математика', time: '09:00 - 10:30', room: '402 каб.', dayIndex: 0),
-    Lesson(id: '2', subject: 'Физика (Лекция)', time: '10:45 - 12:15', room: '105 ауд.', dayIndex: 0),
-    Lesson(id: '3', subject: 'Информатика', time: '13:00 - 14:30', room: 'Комп. класс 1', dayIndex: 0),
+  List<Lesson> _schedule = [];
 
-    // Вторник (dayIndex: 1)
-    Lesson(id: '4', subject: 'Английский язык', time: '09:00 - 10:30', room: '301 каб.', dayIndex: 1),
-    Lesson(id: '5', subject: 'История Казахстана', time: '10:45 - 12:15', room: '215 ауд.', dayIndex: 1),
-    Lesson(id: '6', subject: 'Физкультура', time: '15:00 - 16:30', room: 'Спортзал', dayIndex: 1),
+  @override
+  void didChangeDependencies() {
+    // TODO: implement didChangeDependencies
+    super.didChangeDependencies();
+    final l10n = context.l10n;
+    _schedule = [
+      // Понедельник (dayIndex: 0)
+      Lesson(
+        id: '1',
+        subject: l10n.subjectMath,
+        time: '09:00 - 10:30',
+        room: '402 ${l10n.roomAbbr}',
+        dayIndex: 0,
+      ),
+      Lesson(
+        id: '2',
+        subject: '${l10n.subjectPhysics} (${l10n.lecture})',
+        time: '10:45 - 12:15',
+        room: '105 ${l10n.auditoriumAbbr}',
+        dayIndex: 0,
+      ),
+      Lesson(
+        id: '3',
+        subject: l10n.subjectInformatics,
+        time: '13:00 - 14:30',
+        room: l10n.compClass1,
+        dayIndex: 0,
+      ),
 
-    // Среда (dayIndex: 2)
-    Lesson(id: '7', subject: 'Дискретная математика', time: '10:45 - 12:15', room: '410 каб.', dayIndex: 2),
-    Lesson(id: '8', subject: 'Программирование Python', time: '12:30 - 14:00', room: 'Лаб 4', dayIndex: 2),
+      // Вторник (dayIndex: 1)
+      Lesson(
+        id: '4',
+        subject: l10n.subjectEnglish,
+        time: '09:00 - 10:30',
+        room: '301 ${l10n.roomAbbr}',
+        dayIndex: 1,
+      ),
+      Lesson(
+        id: '5',
+        subject: l10n.subjectHistoryKaz,
+        time: '10:45 - 12:15',
+        room: '215 ${l10n.auditoriumAbbr}',
+        dayIndex: 1,
+      ),
+      Lesson(
+        id: '6',
+        subject: l10n.subjectPhysicalEducation,
+        time: '15:00 - 16:30',
+        room: l10n.gym,
+        dayIndex: 1,
+      ),
 
-    // Четверг (dayIndex: 3)
-    Lesson(id: '9', subject: 'Экономика', time: '09:00 - 10:30', room: '112 ауд.', dayIndex: 3),
-    Lesson(id: '10', subject: 'Культурология', time: '10:45 - 12:15', room: '305 каб.', dayIndex: 3),
-    Lesson(id: '11', subject: 'Статистика', time: '13:00 - 14:30', room: '402 каб.', dayIndex: 3),
+      // Среда (dayIndex: 2)
+      Lesson(
+        id: '7',
+        subject: l10n.subjectDiscreteMath,
+        time: '10:45 - 12:15',
+        room: '410 ${l10n.roomAbbr}',
+        dayIndex: 2,
+      ),
+      Lesson(
+        id: '8',
+        subject: l10n.subjectPython,
+        time: '12:30 - 14:00',
+        room: '${l10n.labAbbr} 4',
+        dayIndex: 2,
+      ),
 
-    // Пятница (dayIndex: 4)
-    Lesson(id: '12', subject: 'Базы данных', time: '10:45 - 12:15', room: 'Лаб 2', dayIndex: 4),
-    Lesson(id: '13', subject: 'Архитектура ЭВМ', time: '12:30 - 14:00', room: '208 каб.', dayIndex: 4),
+      // Четверг (dayIndex: 3)
+      Lesson(
+        id: '9',
+        subject: l10n.subjectEconomics,
+        time: '09:00 - 10:30',
+        room: '112 ${l10n.auditoriumAbbr}',
+        dayIndex: 3,
+      ),
+      Lesson(
+        id: '10',
+        subject: l10n.subjectCulturalStudies,
+        time: '10:45 - 12:15',
+        room: '305 ${l10n.roomAbbr}',
+        dayIndex: 3,
+      ),
+      Lesson(
+        id: '11',
+        subject: l10n.subjectStatistics,
+        time: '13:00 - 14:30',
+        room: '402 ${l10n.roomAbbr}',
+        dayIndex: 3,
+      ),
 
-    // Суббота (dayIndex: 5)
-    Lesson(id: '14', subject: 'Военная кафедра', time: '08:30 - 16:00', room: 'Пл. корп.', dayIndex: 5),
-  ];
+      // Пятница (dayIndex: 4)
+      Lesson(
+        id: '12',
+        subject: l10n.subjectDatabases,
+        time: '10:45 - 12:15',
+        room: '${l10n.labAbbr} 2',
+        dayIndex: 4,
+      ),
+      Lesson(
+        id: '13',
+        subject: l10n.subjectComputerArch,
+        time: '12:30 - 14:00',
+        room: '208 ${l10n.roomAbbr}',
+        dayIndex: 4,
+      ),
+
+      // Суббота (dayIndex: 5)
+      Lesson(
+        id: '14',
+        subject: l10n.subjectMilitary,
+        time: '08:30 - 16:00',
+        room: l10n.militaryBase,
+        dayIndex: 5,
+      ),
+    ];
+  }
 
   void _addOrEditLesson({Lesson? lesson}) {
     _showLessonSheet(context, lesson: lesson);
@@ -59,6 +151,15 @@ class _SchedulePageState extends State<SchedulePage> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
+    final days = [
+      l10n.mondayShort,
+      l10n.tuesdayShort,
+      l10n.wednesdayShort,
+      l10n.thursdayShort,
+      l10n.fridayShort,
+      l10n.saturdayShort,
+    ];
     final dailyLessons = _schedule.where((l) => l.dayIndex == _selectedDay).toList();
 
     return Scaffold(
@@ -73,7 +174,7 @@ class _SchedulePageState extends State<SchedulePage> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text('Расписание', style: AppTextStyles.h1.copyWith(fontSize: 28)),
+                  Text(l10n.scheduleTitle, style: AppTextStyles.h1.copyWith(fontSize: 28)),
                   IconButton(
                     onPressed: () => _addOrEditLesson(),
                     icon: const Icon(
@@ -93,7 +194,7 @@ class _SchedulePageState extends State<SchedulePage> {
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
                 padding: const EdgeInsets.symmetric(horizontal: 20),
-                itemCount: _days.length,
+                itemCount: days.length,
                 itemBuilder: (context, index) {
                   final isSelected = _selectedDay == index;
                   return GestureDetector(
@@ -112,7 +213,7 @@ class _SchedulePageState extends State<SchedulePage> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            _days[index],
+                            days[index],
                             style: TextStyle(
                               color: isSelected ? Colors.white : AppColors.textSecondary,
                               fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
@@ -143,6 +244,8 @@ class _SchedulePageState extends State<SchedulePage> {
   }
 
   Widget _buildLessonCard(Lesson lesson) {
+    final l10n = context.l10n;
+
     return GestureDetector(
       onTap: () {
         context.router.push(LessonRoute(lesson: lesson));
@@ -181,10 +284,10 @@ class _SchedulePageState extends State<SchedulePage> {
               if (value == 'delete') _deleteLesson(lesson.id);
             },
             itemBuilder: (context) => [
-              const PopupMenuItem(value: 'edit', child: Text('Редактировать')),
-              const PopupMenuItem(
+              PopupMenuItem(value: 'edit', child: Text(l10n.editText)),
+              PopupMenuItem(
                 value: 'delete',
-                child: Text('Удалить', style: TextStyle(color: Colors.red)),
+                child: Text(l10n.deleteText, style: const TextStyle(color: Colors.red)),
               ),
             ],
           ),
@@ -194,6 +297,7 @@ class _SchedulePageState extends State<SchedulePage> {
   }
 
   void _showLessonSheet(BuildContext context, {Lesson? lesson}) {
+    final l10n = context.l10n;
     // Списки для выбора
     final List<String> subjects = [
       'Высшая математика',
@@ -202,11 +306,26 @@ class _SchedulePageState extends State<SchedulePage> {
       'Английский язык',
       'История',
     ];
-    final List<String> rooms = ['101 каб.', '105 ауд.', '208 каб.', '301 каб.', '402 каб.', 'Лаб 1'];
+    final List<String> rooms = [
+      '101 ${l10n.roomAbbr}',
+      '105 ${l10n.auditoriumAbbr}',
+      '208 ${l10n.roomAbbr}',
+      '301 ${l10n.roomAbbr}',
+      '402 ${l10n.roomAbbr}',
+      '${l10n.labAbbr} 1',
+    ];
 
     // Текущие значения (берем из урока или ставим дефолт)
     String selectedSubject = lesson?.subject ?? subjects[0];
     String selectedRoom = lesson?.room ?? rooms[0];
+    if (lesson != null) {
+      if (!subjects.contains(selectedSubject)) {
+        subjects.insert(0, selectedSubject);
+      }
+      if (!rooms.contains(selectedRoom)) {
+        rooms.insert(0, selectedRoom);
+      }
+    }
     TimeOfDay startTime = const TimeOfDay(hour: 9, minute: 0);
     TimeOfDay endTime = const TimeOfDay(hour: 10, minute: 30);
 
@@ -239,12 +358,12 @@ class _SchedulePageState extends State<SchedulePage> {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Text(lesson == null ? 'Новое занятие' : 'Редактирование', style: AppTextStyles.h2),
+              Text(lesson == null ? l10n.newLesson : l10n.lessonEdit, style: AppTextStyles.h2),
               const SizedBox(height: 24),
 
               // Выбор предмета
               _buildPickerField(
-                label: 'Предмет',
+                label: l10n.lessonSubjectLabel,
                 value: selectedSubject,
                 items: subjects,
                 onChanged: (val) => setSheetState(() => selectedSubject = val!),
@@ -256,7 +375,7 @@ class _SchedulePageState extends State<SchedulePage> {
                 children: [
                   Expanded(
                     child: _buildManualSelector(
-                      label: 'Начало',
+                      label: l10n.startLabel,
                       text: startTime.format(context),
                       onTap: () async {
                         final picked = await selectTime(context, startTime);
@@ -267,7 +386,7 @@ class _SchedulePageState extends State<SchedulePage> {
                   const SizedBox(width: 16),
                   Expanded(
                     child: _buildManualSelector(
-                      label: 'Конец',
+                      label: l10n.endLabel,
                       text: endTime.format(context),
                       onTap: () async {
                         final picked = await selectTime(context, endTime);
@@ -281,7 +400,7 @@ class _SchedulePageState extends State<SchedulePage> {
 
               // Выбор аудитории
               _buildPickerField(
-                label: 'Аудитория',
+                label: l10n.audienceLabel,
                 value: selectedRoom,
                 items: rooms,
                 onChanged: (val) => setSheetState(() => selectedRoom = val!),
@@ -289,7 +408,7 @@ class _SchedulePageState extends State<SchedulePage> {
               const SizedBox(height: 24),
 
               AppButton(
-                text: 'Сохранить',
+                text: l10n.saveButton,
                 onPressed: () {
                   final timeRange = "${startTime.format(context)} - ${endTime.format(context)}";
                   setState(() {
@@ -375,13 +494,15 @@ class _SchedulePageState extends State<SchedulePage> {
   }
 
   Widget _buildEmptyState() {
+    final l10n = context.l10n;
+
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Icon(CupertinoIcons.book, size: 64, color: AppColors.textSecondary.withOpacity(0.2)),
           const SizedBox(height: 16),
-          Text('На этот день занятий нет', style: AppTextStyles.caption),
+          Text(l10n.noLessonsToday, style: AppTextStyles.caption),
         ],
       ),
     );

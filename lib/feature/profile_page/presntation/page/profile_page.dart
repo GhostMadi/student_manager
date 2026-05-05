@@ -1,11 +1,14 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:student_manager/core/colors/app_colors.dart';
+import 'package:student_manager/core/extension/context.dart';
 import 'package:student_manager/core/router/app_router.dart';
 import 'package:student_manager/core/storage/storage_service.dart';
 import 'package:student_manager/core/style/app_text_style.dart';
 import 'package:student_manager/core/widgets/button.dart';
+import 'package:student_manager/feature/language/language_cubit.dart';
 
 @RoutePage()
 class ProfilePage extends StatefulWidget {
@@ -27,8 +30,50 @@ class _ProfilePageState extends State<ProfilePage> {
     context.router.replace(const LoginRoute());
   }
 
+  void _showLanguageSelector() {
+    final cubit = context.read<LanguageCubit>();
+    showModalBottomSheet(
+      context: context,
+      shape: const RoundedRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(20))),
+      builder: (context) {
+        return BlocBuilder<LanguageCubit, Locale>(
+          builder: (context, locale) {
+            return Container(
+              padding: const EdgeInsets.all(24),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    context.l10n.selectLanguage, // Можно локализировать, но пока hardcoded
+                    style: AppTextStyles.h2,
+                  ),
+                  const SizedBox(height: 16),
+                  ...cubit.availableLanguages.map((lang) {
+                    final isSelected = locale.languageCode == lang['code'];
+                    return ListTile(
+                      title: Text(lang['name']!),
+                      trailing: isSelected
+                          ? const Icon(CupertinoIcons.checkmark, color: AppColors.primaryOrange)
+                          : null,
+                      onTap: () {
+                        cubit.changeLanguage(lang['code']!);
+                        Navigator.pop(context);
+                      },
+                    );
+                  }),
+                ],
+              ),
+            );
+          },
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
     return Scaffold(
       backgroundColor: AppColors.scaffoldBackground,
       body: SafeArea(
@@ -63,7 +108,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       ),
                       const SizedBox(height: 16),
                       Text(userName, style: AppTextStyles.h1.copyWith(fontSize: 24)),
-                      Text('ID: 220104032', style: AppTextStyles.caption),
+                      Text(l10n.idLabel('220104032'), style: AppTextStyles.caption),
                     ],
                   ),
                 ),
@@ -75,28 +120,35 @@ class _ProfilePageState extends State<ProfilePage> {
               _buildGpaCard(),
 
               const SizedBox(height: 32),
-
+              _buildMenuTile(
+                icon: CupertinoIcons.bell,
+                title: l10n.notification,
+                onTap: () {
+                  context.router.push(const NotificationRoute());
+                },
+              ),
               // 3. Меню настроек
               _buildMenuTile(
                 icon: CupertinoIcons.person_crop_square,
-                title: 'Личные данные',
+                title: l10n.personalData,
                 onTap: () {
                   context.router.push(const ProfileDetailRoute());
                 },
               ),
               _buildMenuTile(
                 icon: CupertinoIcons.shield_lefthalf_fill,
-                title: 'Безопасность',
+                title: l10n.security,
                 onTap: () {
                   context.router.push(const ForgetPasswordRoute());
                 },
               ),
+              _buildMenuTile(icon: CupertinoIcons.globe, title: l10n.language, onTap: _showLanguageSelector),
 
               const SizedBox(height: 40),
 
               // 4. Кнопка выхода (Используем наш AppButton)
               AppButton(
-                text: 'Выйти из системы',
+                text: l10n.logOut,
                 variant: AppButtonVariant.primary, // Черная кнопка
                 onPressed: _handleLogout,
               ),
@@ -110,6 +162,8 @@ class _ProfilePageState extends State<ProfilePage> {
 
   // Карточка с GPA
   Widget _buildGpaCard() {
+    final l10n = context.l10n;
+
     return GestureDetector(
       onTap: () {
         context.tabsRouter.setActiveIndex(1);
@@ -124,7 +178,7 @@ class _ProfilePageState extends State<ProfilePage> {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('Общий GPA', style: AppTextStyles.caption.copyWith(color: Colors.white70)),
+                Text(l10n.overallGpa, style: AppTextStyles.caption.copyWith(color: Colors.white70)),
                 const SizedBox(height: 4),
                 Text('4.46', style: AppTextStyles.h1.copyWith(color: Colors.white, fontSize: 32)),
               ],
@@ -135,7 +189,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 color: AppColors.primaryOrange,
                 borderRadius: BorderRadius.circular(12),
               ),
-              child: Text('Топ 5%', style: AppTextStyles.button.copyWith(fontSize: 12)),
+              child: Text(l10n.topPercentage, style: AppTextStyles.button.copyWith(fontSize: 12)),
             ),
           ],
         ),
