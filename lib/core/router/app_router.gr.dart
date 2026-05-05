@@ -11,6 +11,22 @@
 part of 'app_router.dart';
 
 /// generated route for
+/// [DashboardPage]
+class DashboardRoute extends PageRouteInfo<void> {
+  const DashboardRoute({List<PageRouteInfo>? children})
+    : super(DashboardRoute.name, initialChildren: children);
+
+  static const String name = 'DashboardRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const DashboardPage();
+    },
+  );
+}
+
+/// generated route for
 /// [ForgetPasswordPage]
 class ForgetPasswordRoute extends PageRouteInfo<void> {
   const ForgetPasswordRoute({List<PageRouteInfo>? children})
@@ -22,6 +38,22 @@ class ForgetPasswordRoute extends PageRouteInfo<void> {
     name,
     builder: (data) {
       return const ForgetPasswordPage();
+    },
+  );
+}
+
+/// generated route for
+/// [HomePage]
+class HomeRoute extends PageRouteInfo<void> {
+  const HomeRoute({List<PageRouteInfo>? children})
+    : super(HomeRoute.name, initialChildren: children);
+
+  static const String name = 'HomeRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const HomePage();
     },
   );
 }
@@ -43,6 +75,38 @@ class LoginRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [MarkPage]
+class MarkRoute extends PageRouteInfo<void> {
+  const MarkRoute({List<PageRouteInfo>? children})
+    : super(MarkRoute.name, initialChildren: children);
+
+  static const String name = 'MarkRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const MarkPage();
+    },
+  );
+}
+
+/// generated route for
+/// [ProfilePage]
+class ProfileRoute extends PageRouteInfo<void> {
+  const ProfileRoute({List<PageRouteInfo>? children})
+    : super(ProfileRoute.name, initialChildren: children);
+
+  static const String name = 'ProfileRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const ProfilePage();
+    },
+  );
+}
+
+/// generated route for
 /// [RegisterPage]
 class RegisterRoute extends PageRouteInfo<void> {
   const RegisterRoute({List<PageRouteInfo>? children})
@@ -54,6 +118,38 @@ class RegisterRoute extends PageRouteInfo<void> {
     name,
     builder: (data) {
       return const RegisterPage();
+    },
+  );
+}
+
+/// generated route for
+/// [SchedulePage]
+class ScheduleRoute extends PageRouteInfo<void> {
+  const ScheduleRoute({List<PageRouteInfo>? children})
+    : super(ScheduleRoute.name, initialChildren: children);
+
+  static const String name = 'ScheduleRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const SchedulePage();
+    },
+  );
+}
+
+/// generated route for
+/// [TaskPage]
+class TaskRoute extends PageRouteInfo<void> {
+  const TaskRoute({List<PageRouteInfo>? children})
+    : super(TaskRoute.name, initialChildren: children);
+
+  static const String name = 'TaskRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const TaskPage();
     },
   );
 }

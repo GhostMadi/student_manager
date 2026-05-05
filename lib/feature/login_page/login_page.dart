@@ -2,9 +2,11 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:student_manager/core/colors/app_colors.dart';
 import 'package:student_manager/core/router/app_router.dart';
+import 'package:student_manager/core/storage/storage_service.dart';
 import 'package:student_manager/core/style/app_text_style.dart';
 import 'package:student_manager/core/validator/validators.dart';
 import 'package:student_manager/core/widgets/button.dart';
+import 'package:student_manager/core/widgets/snack_bar.dart';
 import 'package:student_manager/core/widgets/text_field.dart';
 
 @RoutePage()
@@ -16,19 +18,50 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  // Ключ для валидации формы
   final _formKey = GlobalKey<FormState>();
-
-  // Контроллеры для получения текста
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
 
-  void _handleLogin() {
-    // Проверка всех валидаторов в форме
+  // Состояние загрузки
+  bool _isLoading = false;
+  @override
+  void initState() {
+    super.initState();
+    // Проверяем статус входа при инициализации экрана
+    _checkAuthStatus();
+  }
+
+  void _checkAuthStatus() {
+    // Ждем окончания отрисовки первого кадра, чтобы безопасно использовать context.router
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (StorageService.instance.isLoggedIn) {
+        // Если флаг в StorageService равен true, сразу летим в Dashboard
+        context.router.replace(const DashboardRoute());
+      }
+    });
+  }
+
+  Future<void> _handleLogin() async {
+    // 1. Сначала проверяем валидаторы (формат почты и пароля)
     if (_formKey.currentState!.validate()) {
-      // Если всё ок — логика входа
-      print("Email: ${_emailController.text}");
-      print("Password: ${_passwordController.text}");
+      setState(() => _isLoading = true);
+
+      // 2. Вызываем сервис аутентификации
+      final success = await AuthService.login(_emailController.text.trim(), _passwordController.text.trim());
+
+      if (!mounted) return;
+      setState(() => _isLoading = false);
+
+      if (success) {
+        // 3. Если данные верны (admin@mail.com / password123)
+        AppSnackBar.show(context, message: 'Успешный вход!', isError: false);
+
+        // Переходим на главную и очищаем стек навигации
+        context.router.replace(DashboardRoute());
+      } else {
+        // 4. Если моковый юзер не совпал
+        AppSnackBar.show(context, message: 'Неверный email или пароль', isError: true);
+      }
     }
   }
 
@@ -48,22 +81,20 @@ class _LoginPageState extends State<LoginPage> {
           child: SingleChildScrollView(
             padding: const EdgeInsets.symmetric(horizontal: 30.0),
             child: Form(
-              key: _formKey, // Привязываем ключ формы
+              key: _formKey,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const Icon(Icons.school_rounded, size: 48, color: AppColors.primaryOrange),
                   const SizedBox(height: 24),
-
                   Text('Student Manager', style: AppTextStyles.h1.copyWith(letterSpacing: -1, fontSize: 28)),
                   const SizedBox(height: 40),
 
-                  // Использование переиспользуемого виджета AppTextField
                   AppTextField(
                     label: 'Email',
                     controller: _emailController,
                     keyboardType: TextInputType.emailAddress,
-                    validator: AppValidators.email, // Валидатор из файла
+                    validator: AppValidators.email,
                   ),
                   const SizedBox(height: 20),
 
@@ -71,7 +102,7 @@ class _LoginPageState extends State<LoginPage> {
                     label: 'Пароль',
                     controller: _passwordController,
                     obscureText: true,
-                    validator: AppValidators.password, // Валидатор из файла
+                    validator: AppValidators.password,
                   ),
 
                   Align(
@@ -84,10 +115,11 @@ class _LoginPageState extends State<LoginPage> {
 
                   const SizedBox(height: 40),
 
-                  // Использование переиспользуемого виджета AppButton
+                  // Кнопка теперь сама показывает индикатор загрузки
                   AppButton(
                     text: 'Войти',
-                    variant: AppButtonVariant.primary, // Черная по дизайну
+                    isLoading: _isLoading,
+                    variant: AppButtonVariant.primary,
                     onPressed: _handleLogin,
                   ),
 

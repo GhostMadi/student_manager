@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:student_manager/core/colors/app_colors.dart';
 import 'package:student_manager/core/style/app_text_style.dart';
+import 'package:student_manager/core/validator/validators.dart';
+import 'package:student_manager/core/widgets/button.dart';
+import 'package:student_manager/core/widgets/text_field.dart';
 
-// Состояния экрана
 enum ForgetPasswordState { email, otp, newPassword }
 
 @RoutePage()
@@ -18,31 +20,33 @@ class ForgetPasswordPage extends StatefulWidget {
 class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
   ForgetPasswordState _currentState = ForgetPasswordState.email;
   final _formKey = GlobalKey<FormState>();
-  final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _passController = TextEditingController();
 
-  // Валидация Email
-  String? _validateEmail(String? value) {
-    if (value == null || value.isEmpty) return 'Введите email';
-    if (!RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$').hasMatch(value)) {
-      return 'Некорректный формат почты';
-    }
-    return null;
-  }
+  final _emailController = TextEditingController();
+  final _passController = TextEditingController();
+  final _confirmPassController = TextEditingController();
 
   void _nextStep() {
-    setState(() {
-      if (_currentState == ForgetPasswordState.email) {
-        if (_formKey.currentState!.validate()) {
-          _currentState = ForgetPasswordState.otp;
-        }
-      } else if (_currentState == ForgetPasswordState.otp) {
-        _currentState = ForgetPasswordState.newPassword;
-      } else {
-        // После сохранения пароля — на страницу логина
-        Navigator.pop(context);
+    if (_currentState == ForgetPasswordState.email) {
+      if (_formKey.currentState!.validate()) {
+        setState(() => _currentState = ForgetPasswordState.otp);
       }
-    });
+    } else if (_currentState == ForgetPasswordState.otp) {
+      // Здесь можно добавить проверку заполненности всех 4 полей OTP
+      setState(() => _currentState = ForgetPasswordState.newPassword);
+    } else {
+      if (_formKey.currentState!.validate()) {
+        // Имитация сохранения и возврат
+        context.router.back();
+      }
+    }
+  }
+
+  @override
+  void dispose() {
+    _emailController.dispose();
+    _passController.dispose();
+    _confirmPassController.dispose();
+    super.dispose();
   }
 
   @override
@@ -56,7 +60,7 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
           icon: const Icon(Icons.arrow_back_ios_new, size: 20, color: AppColors.deepBlack),
           onPressed: () {
             if (_currentState == ForgetPasswordState.email) {
-              Navigator.pop(context);
+              context.router.back();
             } else if (_currentState == ForgetPasswordState.otp) {
               setState(() => _currentState = ForgetPasswordState.email);
             } else {
@@ -97,13 +101,14 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
             const SizedBox(height: 8),
             Text('Введите вашу почту', style: AppTextStyles.caption),
             const SizedBox(height: 40),
-            TextFormField(
+            AppTextField(
+              label: 'Email',
               controller: _emailController,
-              validator: _validateEmail,
-              decoration: _inputDecoration('Email'),
+              validator: AppValidators.email,
+              keyboardType: TextInputType.emailAddress,
             ),
             const SizedBox(height: 40),
-            _buildButton('Отправить код', _nextStep),
+            AppButton(text: 'Отправить код', onPressed: _nextStep),
           ],
         ),
       ),
@@ -125,10 +130,10 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
           const SizedBox(height: 40),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: List.generate(4, (index) => _buildOTPBox(context)),
+            children: List.generate(4, (index) => _buildOTPBox()),
           ),
           const SizedBox(height: 40),
-          _buildButton('Подтвердить', _nextStep),
+          AppButton(text: 'Подтвердить', onPressed: _nextStep),
         ],
       ),
     );
@@ -139,54 +144,38 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
     return Padding(
       key: const ValueKey('password'),
       padding: const EdgeInsets.symmetric(horizontal: 30.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const SizedBox(height: 20),
-          Text('Новый пароль', style: AppTextStyles.h1),
-          const SizedBox(height: 8),
-          Text('Придумайте сложный пароль', style: AppTextStyles.caption),
-          const SizedBox(height: 40),
-          TextField(
-            controller: _passController,
-            obscureText: true,
-            decoration: _inputDecoration('Новый пароль'),
-          ),
-          const SizedBox(height: 16),
-          TextField(obscureText: true, decoration: _inputDecoration('Повторите пароль')),
-          const SizedBox(height: 40),
-          _buildButton('Сохранить и войти', _nextStep),
-        ],
-      ),
-    );
-  }
-
-  // ВСПОМОГАТЕЛЬНЫЕ ВИДЖЕТЫ
-  InputDecoration _inputDecoration(String label) {
-    return InputDecoration(
-      labelText: label,
-      filled: true,
-      fillColor: AppColors.surfaceWhite,
-      border: OutlineInputBorder(borderRadius: BorderRadius.circular(16), borderSide: BorderSide.none),
-    );
-  }
-
-  Widget _buildButton(String text, VoidCallback onPressed) {
-    return SizedBox(
-      width: double.infinity,
-      height: 56,
-      child: ElevatedButton(
-        onPressed: onPressed,
-        style: ElevatedButton.styleFrom(
-          backgroundColor: AppColors.deepBlack,
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+      child: Form(
+        key: _formKey, // Используем тот же ключ или создаем новый для этого этапа
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const SizedBox(height: 20),
+            Text('Новый пароль', style: AppTextStyles.h1),
+            const SizedBox(height: 8),
+            Text('Придумайте сложный пароль', style: AppTextStyles.caption),
+            const SizedBox(height: 40),
+            AppTextField(
+              label: 'Новый пароль',
+              controller: _passController,
+              obscureText: true,
+              validator: AppValidators.password,
+            ),
+            const SizedBox(height: 16),
+            AppTextField(
+              label: 'Повторите пароль',
+              controller: _confirmPassController,
+              obscureText: true,
+              validator: (v) => AppValidators.confirmPassword(v, _passController.text),
+            ),
+            const SizedBox(height: 40),
+            AppButton(text: 'Сохранить и войти', variant: AppButtonVariant.primary, onPressed: _nextStep),
+          ],
         ),
-        child: Text(text, style: AppTextStyles.button.copyWith(color: Colors.white)),
       ),
     );
   }
 
-  Widget _buildOTPBox(BuildContext context) {
+  Widget _buildOTPBox() {
     return SizedBox(
       height: 64,
       width: 64,
@@ -194,11 +183,19 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
         onChanged: (v) => v.length == 1 ? FocusScope.of(context).nextFocus() : null,
         textAlign: TextAlign.center,
         keyboardType: TextInputType.number,
+        style: AppTextStyles.h2,
         inputFormatters: [LengthLimitingTextInputFormatter(1), FilteringTextInputFormatter.digitsOnly],
         decoration: InputDecoration(
           filled: true,
           fillColor: AppColors.surfaceWhite,
-          border: OutlineInputBorder(borderRadius: BorderRadius.circular(16), borderSide: BorderSide.none),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(16),
+            borderSide: BorderSide.none,
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(16),
+            borderSide: const BorderSide(color: AppColors.primaryOrange, width: 1.5),
+          ),
         ),
       ),
     );

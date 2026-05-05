@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:student_manager/core/router/app_router.dart';
+import 'package:student_manager/core/storage/storage_service.dart';
 import 'package:student_manager/core/theme/app_theme.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await StorageService.instance.init();
   runApp(const MyApp());
 }
 
