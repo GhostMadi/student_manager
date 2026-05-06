@@ -19,14 +19,12 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
-  // Получаем имя из нашего StorageService
   final String userName = StorageService.instance.userName ?? "Студент";
 
   void _handleLogout() async {
-    // Очищаем локальные данные через наш сервис
     await StorageService.instance.logout();
     if (!mounted) return;
-    // Возвращаемся на страницу логина
+
     context.router.replace(const LoginRoute());
   }
 
@@ -44,10 +42,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    context.l10n.selectLanguage, // Можно локализировать, но пока hardcoded
-                    style: AppTextStyles.h2,
-                  ),
+                  Text(context.l10n.selectLanguage, style: AppTextStyles.h2),
                   const SizedBox(height: 16),
                   ...cubit.availableLanguages.map((lang) {
                     final isSelected = locale.languageCode == lang['code'];
@@ -83,7 +78,6 @@ class _ProfilePageState extends State<ProfilePage> {
             children: [
               const SizedBox(height: 40),
 
-              // 1. Секция аватара и имени
               GestureDetector(
                 onTap: () {
                   context.router.push(const ProfileDetailRoute());
@@ -116,7 +110,6 @@ class _ProfilePageState extends State<ProfilePage> {
 
               const SizedBox(height: 32),
 
-              // 2. Виджет GPA (Акцентный)
               _buildGpaCard(),
 
               const SizedBox(height: 32),
@@ -127,7 +120,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   context.router.push(const NotificationRoute());
                 },
               ),
-              // 3. Меню настроек
+
               _buildMenuTile(
                 icon: CupertinoIcons.person_crop_square,
                 title: l10n.personalData,
@@ -146,13 +139,8 @@ class _ProfilePageState extends State<ProfilePage> {
 
               const SizedBox(height: 40),
 
-              // 4. Кнопка выхода (Используем наш AppButton)
-              AppButton(
-                text: l10n.logOut,
-                variant: AppButtonVariant.primary, // Черная кнопка
-                onPressed: _handleLogout,
-              ),
-              const SizedBox(height: 100), // Отступ под плавающий таб-бар
+              AppButton(text: l10n.logOut, variant: AppButtonVariant.primary, onPressed: _handleLogout),
+              const SizedBox(height: 100),
             ],
           ),
         ),
@@ -160,7 +148,6 @@ class _ProfilePageState extends State<ProfilePage> {
     );
   }
 
-  // Карточка с GPA
   Widget _buildGpaCard() {
     final l10n = context.l10n;
 
@@ -197,7 +184,6 @@ class _ProfilePageState extends State<ProfilePage> {
     );
   }
 
-  // Элемент списка меню
   Widget _buildMenuTile({required IconData icon, required String title, required VoidCallback onTap}) {
     return Container(
       margin: const EdgeInsets.only(bottom: 12),

@@ -16,10 +16,8 @@ class MarkPage extends StatefulWidget {
 }
 
 class _MarkPageState extends State<MarkPage> {
-  // Список доступных предметов для селектора
   late List<String> _availableSubjects;
 
-  // Моковые данные
   late List<SubjectMarks> _subjects;
 
   @override
@@ -126,7 +124,7 @@ class _MarkPageState extends State<MarkPage> {
     return Container(
       margin: const EdgeInsets.only(bottom: 16),
       child: InkWell(
-        onTap: () => _showSubjectDetails(subject), // Передаем сам предмет
+        onTap: () => _showSubjectDetails(subject),
         borderRadius: BorderRadius.circular(24),
         child: Ink(
           padding: const EdgeInsets.all(20),
@@ -167,9 +165,6 @@ class _MarkPageState extends State<MarkPage> {
     );
   }
 
-  // --- МОДАЛКИ И ДИАЛОГИ ---
-
-  // 1. Детальная модалка предмета
   void _showSubjectDetails(SubjectMarks subject) {
     final l10n = context.l10n;
     showModalBottomSheet(
@@ -202,7 +197,6 @@ class _MarkPageState extends State<MarkPage> {
     );
   }
 
-  // 2. Селектор создания нового предмета
   void _showAddSubjectSheet() {
     final l10n = context.l10n;
     final availableSubjects = [
@@ -272,7 +266,6 @@ class _MarkPageState extends State<MarkPage> {
     );
   }
 
-  // Вспомогательные виджеты
   Widget _buildInfoRow(String label, String value) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 10),

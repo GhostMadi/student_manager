@@ -28,7 +28,6 @@ class NotificationPage extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
         children: [
           _buildNotificationItem(
-            // Передаем локализованный предмет в параметр
             title: l10n.newGradeTitle(l10n.math),
             subtitle: l10n.newGradeSubtitle('A', '№3'),
             time: l10n.minutesAgo(10),
@@ -91,14 +90,13 @@ class NotificationPage extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Иконка типа уведомления
           Container(
             padding: const EdgeInsets.all(10),
             decoration: BoxDecoration(color: color.withOpacity(0.1), shape: BoxShape.circle),
             child: Icon(icon, color: color, size: 20),
           ),
           const SizedBox(width: 16),
-          // Текстовая информация
+
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,

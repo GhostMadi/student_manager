@@ -32,11 +32,9 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
         setState(() => _currentState = ForgetPasswordState.otp);
       }
     } else if (_currentState == ForgetPasswordState.otp) {
-      // Здесь можно добавить проверку заполненности всех 4 полей OTP
       setState(() => _currentState = ForgetPasswordState.newPassword);
     } else {
       if (_formKey.currentState!.validate()) {
-        // Имитация сохранения и возврат
         context.router.back();
       }
     }
@@ -88,7 +86,6 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
     }
   }
 
-  // 1. ВВОД EMAIL
   Widget _buildEmailStep() {
     final l10n = context.l10n;
 
@@ -108,7 +105,7 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
             AppTextField(
               label: l10n.email,
               controller: _emailController,
-              validator: AppValidators.email,
+              validator: (value) => AppValidators.email(value, context),
               keyboardType: TextInputType.emailAddress,
             ),
             const SizedBox(height: 40),
@@ -119,7 +116,6 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
     );
   }
 
-  // 2. ВВОД OTP
   Widget _buildOtpStep() {
     final l10n = context.l10n;
 
@@ -145,7 +141,6 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
     );
   }
 
-  // 3. НОВЫЙ ПАРОЛЬ
   Widget _buildNewPasswordStep() {
     final l10n = context.l10n;
 
@@ -153,7 +148,7 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
       key: const ValueKey('password'),
       padding: const EdgeInsets.symmetric(horizontal: 30.0),
       child: Form(
-        key: _formKey, // Используем тот же ключ или создаем новый для этого этапа
+        key: _formKey,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -166,14 +161,14 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
               label: l10n.newPasswordField,
               controller: _passController,
               obscureText: true,
-              validator: AppValidators.password,
+              validator: (value) => AppValidators.password(value, context),
             ),
             const SizedBox(height: 16),
             AppTextField(
               label: l10n.repeatPasswordField,
               controller: _confirmPassController,
               obscureText: true,
-              validator: (v) => AppValidators.confirmPassword(v, _passController.text),
+              validator: (value) => AppValidators.confirmPassword(value, _passController.text, context),
             ),
             const SizedBox(height: 40),
             AppButton(text: l10n.saveAndLogin, variant: AppButtonVariant.primary, onPressed: _nextStep),

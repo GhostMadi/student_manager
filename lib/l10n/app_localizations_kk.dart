@@ -501,4 +501,54 @@ class AppLocalizationsKk extends AppLocalizations {
   String hoursAgo(int count) {
     return '$count сағат бұрын';
   }
+
+  @override
+  String get enterEmail => 'Поштаны енгізіңіз';
+
+  @override
+  String get enterCode => 'Enter the code sent to your email';
+
+  @override
+  String get enterNewPassword => 'Enter your new password';
+
+  @override
+  String get confirmNewPassword => 'Confirm your new password';
+
+  @override
+  String get sendCode => 'Send code';
+
+  @override
+  String get confirm => 'Confirm';
+
+  @override
+  String get emailValidationError => 'Please enter a valid email address';
+
+  @override
+  String get passwordValidationError =>
+      'Password must be at least 8 characters long and include a number and a special character';
+
+  @override
+  String get confirmPasswordValidationError => 'Passwords do not match';
+
+  @override
+  String get fullNameValidationError => 'Please enter your full name';
+
+  @override
+  String get unexpectedError =>
+      'An unexpected error occurred. Please try again later.';
+
+  @override
+  String get invalidEmailFormat => 'Почта форматы дұрыс емес';
+
+  @override
+  String get enterPassword => 'Құпия сөзді енгізіңіз';
+
+  @override
+  String get passwordTooShort => 'Құпия сөз тым қысқа';
+
+  @override
+  String get passwordsDoNotMatch => 'Құпия сөздер сәйкес келмейді';
+
+  @override
+  String get enterName => 'Аты-жөніңізді енгізіңіз';
 }

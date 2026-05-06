@@ -28,11 +28,9 @@ class _HomePageState extends State<HomePage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // 1. Приветствие и GPA
               Padding(padding: const EdgeInsets.symmetric(horizontal: 24), child: _buildHeader()),
               const SizedBox(height: 32),
 
-              // 2. Ближайшие занятия (Горизонтальный список)
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 24),
                 child: _buildSectionHeader(l10n.upcomingLessons, () {
@@ -48,14 +46,13 @@ class _HomePageState extends State<HomePage> {
                   children: [
                     const SizedBox(height: 32),
 
-                    // 3. Текущие задания (Вертикальный список)
                     _buildSectionHeader(l10n.currentTasks, () {
                       context.tabsRouter.setActiveIndex(3);
                     }),
                     const SizedBox(height: 16),
                     _buildCurrentTasks(),
 
-                    const SizedBox(height: 100), // Отступ для навигации
+                    const SizedBox(height: 100),
                   ],
                 ),
               ),
@@ -103,7 +100,7 @@ class _HomePageState extends State<HomePage> {
             Text(l10n.todayStudyDay, style: AppTextStyles.caption),
           ],
         ),
-        // Виджет среднего балла
+
         GestureDetector(
           onTap: () {
             context.tabsRouter.setActiveIndex(1);
@@ -144,7 +141,7 @@ class _HomePageState extends State<HomePage> {
       height: 140,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
-        // Добавляем отступ в начало списка, чтобы карточки выравнивались по заголовку
+
         padding: const EdgeInsets.symmetric(horizontal: 24),
         itemCount: 3,
         itemBuilder: (context, index) {
@@ -152,13 +149,12 @@ class _HomePageState extends State<HomePage> {
 
           return GestureDetector(
             onTap: () {
-              // Создаем полноценный объект
               final lessonToOpen = Lesson(
-                id: DateTime.now().toString(), // Генерируем временный ID
+                id: DateTime.now().toString(),
                 subject: subjectName,
                 time: '09:00 - 10:30',
                 room: 'Ауд. 402',
-                dayIndex: 0, // Передаем корректный индекс дня
+                dayIndex: 0,
               );
 
               context.router.push(LessonRoute(lesson: lessonToOpen));
@@ -257,7 +253,10 @@ class _HomePageState extends State<HomePage> {
                         style: AppTextStyles.body.copyWith(fontWeight: FontWeight.bold),
                       ),
                       const SizedBox(height: 4),
-                      Text(l10n.deadlineTomorrow, style: AppTextStyles.caption.copyWith(color: Colors.redAccent)),
+                      Text(
+                        l10n.deadlineTomorrow,
+                        style: AppTextStyles.caption.copyWith(color: Colors.redAccent),
+                      ),
                     ],
                   ),
                 ),

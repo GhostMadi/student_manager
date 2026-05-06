@@ -18,10 +18,8 @@ class TaskPage extends StatefulWidget {
 }
 
 class _TaskPageState extends State<TaskPage> {
-  // Фильтр статусов
   String _currentFilter = 'allFilter';
 
-  // Список задач
   final List<TaskItem> _tasks = [
     TaskItem(title: 'Сдать модуль по калкулус', deadline: DateTime.now().add(const Duration(days: 2))),
     TaskItem(title: 'Подготовиться к экзамену', deadline: DateTime.now().add(const Duration(days: 5))),
@@ -56,7 +54,6 @@ class _TaskPageState extends State<TaskPage> {
 
   @override
   Widget build(BuildContext context) {
-    // Логика фильтрации
     final filteredTasks = _tasks.where((task) {
       if (_currentFilter == 'inProgressFilter') return !task.isDone;
       if (_currentFilter == 'completedFilter') return task.isDone;
@@ -69,7 +66,6 @@ class _TaskPageState extends State<TaskPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Заголовок
             Padding(
               padding: const EdgeInsets.fromLTRB(24, 20, 24, 8),
               child: Row(
@@ -88,7 +84,6 @@ class _TaskPageState extends State<TaskPage> {
               ),
             ),
 
-            // Горизонтальный фильтр (Чипсы)
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
@@ -119,7 +114,6 @@ class _TaskPageState extends State<TaskPage> {
               ),
             ),
 
-            // Список задач
             Expanded(
               child: filteredTasks.isEmpty
                   ? _buildEmptyState()
@@ -158,7 +152,6 @@ class _TaskPageState extends State<TaskPage> {
           decoration: BoxDecoration(color: AppColors.surfaceWhite, borderRadius: BorderRadius.circular(20)),
           child: Row(
             children: [
-              // Кастомный Чекбокс
               GestureDetector(
                 onTap: () => setState(() => task.isDone = !task.isDone),
                 child: AnimatedContainer(
@@ -178,7 +171,6 @@ class _TaskPageState extends State<TaskPage> {
               ),
               const SizedBox(width: 16),
 
-              // Информация о задаче
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -206,7 +198,6 @@ class _TaskPageState extends State<TaskPage> {
                 ),
               ),
 
-              // Статус-чип
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
                 decoration: BoxDecoration(
@@ -257,7 +248,6 @@ class _TaskPageState extends State<TaskPage> {
               AppTextField(label: context.l10n.whatToDoLabel, controller: titleController),
               const SizedBox(height: 20),
 
-              // Селектор даты
               InkWell(
                 onTap: () async {
                   final picked = await showDatePicker(

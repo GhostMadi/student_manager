@@ -214,5 +214,23 @@
                 "type": "int"
             }
         }
-    }
+    },
+    "enterEmail":"Enter your email",
+    "enterCode":"Enter the code sent to your email",
+    "enterNewPassword":"Enter your new password",
+    "confirmNewPassword":"Confirm your new password",
+    "sendCode":"Send code",
+    "confirm":"Confirm",
+    "saveAndLogin":"Save and login",
+    "emailValidationError":"Please enter a valid email address",
+    "passwordValidationError":"Password must be at least 8 characters long and include a number and a special character",
+    "confirmPasswordValidationError":"Passwords do not match",
+    "fullNameValidationError":"Please enter your full name",
+    "unexpectedError":"An unexpected error occurred. Please try again later.",
+    "invalidEmailFormat":"Invalid email format",
+    "enterPassword":"Enter password",
+    "passwordTooShort":"Password too short",
+    "passwordsDoNotMatch":"Passwords do not match",
+    "enterName" :"Enter your name"
+    
 }

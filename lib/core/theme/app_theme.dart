@@ -9,7 +9,6 @@ class AppTheme {
       brightness: Brightness.light,
       scaffoldBackgroundColor: AppColors.scaffoldBackground,
 
-      // Цветовая схема приложения
       colorScheme: const ColorScheme.light(
         primary: AppColors.primaryOrange,
         onPrimary: AppColors.textOnOrange,
@@ -21,7 +20,6 @@ class AppTheme {
         onError: Colors.white,
       ),
 
-      // Тема для AppBar
       appBarTheme: AppBarTheme(
         backgroundColor: AppColors.scaffoldBackground,
         foregroundColor: AppColors.deepBlack,
@@ -31,7 +29,6 @@ class AppTheme {
         iconTheme: const IconThemeData(color: AppColors.deepBlack),
       ),
 
-      // Тема для кнопок
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
           backgroundColor: AppColors.primaryOrange,
@@ -42,7 +39,6 @@ class AppTheme {
         ),
       ),
 
-      // Тема для текстовых полей (InputDecoration)
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
         fillColor: AppColors.surfaceWhite,
@@ -54,7 +50,6 @@ class AppTheme {
         labelStyle: AppTextStyles.caption,
       ),
 
-      // Глобальная тема текста
       textTheme: TextTheme(
         displayLarge: AppTextStyles.h1,
         headlineMedium: AppTextStyles.h2,

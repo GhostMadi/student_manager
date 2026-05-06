@@ -49,11 +49,9 @@ class _LoginPageState extends State<LoginPage> {
       setState(() => _isLoading = false);
 
       if (success) {
-        // Локализация сообщения успеха
         AppSnackBar.show(context, message: context.l10n.loginSuccess, isError: false);
         context.router.replace(DashboardRoute());
       } else {
-        // Локализация сообщения ошибки
         AppSnackBar.show(context, message: context.l10n.loginError, isError: true);
       }
     }
@@ -68,7 +66,6 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-    // Вынес для удобства чтения
     final l10n = context.l10n;
 
     return Scaffold(
@@ -91,7 +88,7 @@ class _LoginPageState extends State<LoginPage> {
                     label: l10n.email,
                     controller: _emailController,
                     keyboardType: TextInputType.emailAddress,
-                    validator: AppValidators.email,
+                    validator: (value) => AppValidators.email(value, context),
                   ),
                   const SizedBox(height: 20),
 
@@ -99,7 +96,7 @@ class _LoginPageState extends State<LoginPage> {
                     label: l10n.password,
                     controller: _passwordController,
                     obscureText: true,
-                    validator: AppValidators.password,
+                    validator: (value) => AppValidators.password(value, context),
                   ),
 
                   Align(

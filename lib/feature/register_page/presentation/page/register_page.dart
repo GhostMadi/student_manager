@@ -25,7 +25,6 @@ class _RegisterPageState extends State<RegisterPage> {
 
   void _handleRegister() {
     if (_formKey.currentState!.validate()) {
-      // Логика регистрации
       print("Регистрация пользователя: ${_nameController.text}");
     }
   }
@@ -67,43 +66,38 @@ class _RegisterPageState extends State<RegisterPage> {
                 Text(l10n.registerSubtitle, style: AppTextStyles.caption),
                 const SizedBox(height: 40),
 
-                // Поле Имя
                 AppTextField(
                   label: l10n.fullName,
                   controller: _nameController,
-                  validator: AppValidators.name,
+                  validator: (value) => AppValidators.name(value, context),
                 ),
                 const SizedBox(height: 16),
 
-                // Поле Email
                 AppTextField(
                   label: l10n.email,
                   controller: _emailController,
                   keyboardType: TextInputType.emailAddress,
-                  validator: AppValidators.email,
+                  validator: (value) => AppValidators.email(value, context),
                 ),
                 const SizedBox(height: 16),
 
-                // Поле Пароль
                 AppTextField(
                   label: l10n.password,
                   controller: _passwordController,
                   obscureText: true,
-                  validator: AppValidators.password,
+                  validator: (value) => AppValidators.password(value, context),
                 ),
                 const SizedBox(height: 16),
 
-                // Повтор пароля
                 AppTextField(
                   label: l10n.confirmPassword,
                   controller: _confirmPasswordController,
                   obscureText: true,
-                  validator: (value) => AppValidators.confirmPassword(value, _passwordController.text),
+                  validator: (value) => AppValidators.confirmPassword(value, _passwordController.text, context),
                 ),
 
                 const SizedBox(height: 40),
 
-                // Кнопка регистрации
                 AppButton(
                   text: l10n.registerButton,
                   variant: AppButtonVariant.secondary,
@@ -112,7 +106,6 @@ class _RegisterPageState extends State<RegisterPage> {
 
                 const SizedBox(height: 24),
 
-                // Условия использования
                 Center(
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 20),

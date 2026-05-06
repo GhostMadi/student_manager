@@ -23,12 +23,7 @@ class DashboardPage extends StatelessWidget {
           body: Stack(
             children: [
               child,
-              Positioned(
-                bottom: 30,
-                left: 60, // Сделали капсулу короче для минимализма
-                right: 60,
-                child: _buildMinimalCapsule(tabsRouter),
-              ),
+              Positioned(bottom: 30, left: 60, right: 60, child: _buildMinimalCapsule(tabsRouter)),
             ],
           ),
         );
@@ -69,7 +64,7 @@ class DashboardPage extends StatelessWidget {
       onTap: () => tabsRouter.setActiveIndex(index),
       behavior: HitTestBehavior.opaque,
       child: AnimatedScale(
-        scale: isSelected ? 1.25 : 0.9, // Неактивные чуть меньше
+        scale: isSelected ? 1.25 : 0.9,
         duration: const Duration(milliseconds: 250),
         curve: Curves.easeOutCubic,
         child: AnimatedContainer(
@@ -77,7 +72,7 @@ class DashboardPage extends StatelessWidget {
           padding: const EdgeInsets.all(10),
           decoration: BoxDecoration(
             shape: BoxShape.circle,
-            // Мягкое оранжевое свечение только для активной иконки
+
             boxShadow: [
               if (isSelected)
                 BoxShadow(color: AppColors.primaryOrange.withOpacity(0.3), blurRadius: 15, spreadRadius: 2),

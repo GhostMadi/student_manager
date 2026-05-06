@@ -18,7 +18,7 @@ class TaskDetailsPage extends StatefulWidget {
 }
 
 class _TaskDetailsPageState extends State<TaskDetailsPage> {
-  // Имитация состояний (в идеале управляется через BLoC/Cubit)
+ 
   late bool _isDone;
   bool _isInProgress = false;
 
@@ -26,7 +26,7 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
   void initState() {
     super.initState();
     _isDone = widget.task.isDone;
-    // Если задача не сделана, но мы хотим имитировать переход в статус "В работе"
+ 
     _isInProgress = false;
   }
 
@@ -46,7 +46,7 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
           IconButton(
             icon: const Icon(CupertinoIcons.trash, color: Colors.redAccent),
             onPressed: () {
-              // Логика удаления
+ 
               context.router.back();
             },
           ),
@@ -71,7 +71,7 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
 
                     const SizedBox(height: 32),
 
-                    // Блок с параметрами
+ 
                     _buildInfoCard(),
 
                     const SizedBox(height: 32),
@@ -87,7 +87,7 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
               ),
             ),
 
-            // Кнопочная панель снизу
+ 
             _buildBottomActions(),
           ],
         ),

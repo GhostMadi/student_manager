@@ -13,7 +13,7 @@ class LessonPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final l10n = context.l10n; // Получаем локализацию
+    final l10n = context.l10n; 
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -26,7 +26,7 @@ class LessonPage extends StatelessWidget {
         actions: [
           IconButton(
             icon: const Icon(CupertinoIcons.pencil_circle, color: AppColors.primaryOrange),
-            onPressed: () {}, // Логика редактирования
+            onPressed: () {}, 
           ),
         ],
       ),
@@ -36,9 +36,9 @@ class LessonPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const SizedBox(height: 10),
-            // Категория или тип занятия
+ 
             Text(
-              context.l10n.lecture.toUpperCase(), // Используем .toUpperCase() для стиля
+              context.l10n.lecture.toUpperCase(), 
               style: const TextStyle(
                 color: AppColors.primaryOrange,
                 fontWeight: FontWeight.bold,
@@ -47,14 +47,14 @@ class LessonPage extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 8),
-            // Название предмета (уже локализовано в модели Lesson)
+ 
             Text(
               lesson.subject,
               style: const TextStyle(fontSize: 28, fontWeight: FontWeight.bold, color: AppColors.deepBlack),
             ),
             const SizedBox(height: 24),
 
-            // Карточка с основной инфой
+ 
             Container(
               padding: const EdgeInsets.all(20),
               decoration: BoxDecoration(
@@ -73,7 +73,7 @@ class LessonPage extends StatelessWidget {
 
             const SizedBox(height: 32),
 
-            // Блок контента
+ 
             _buildSectionTitle(context.l10n.lessonTopic),
             Text(
               context.l10n.mockLessonTopicDescription,

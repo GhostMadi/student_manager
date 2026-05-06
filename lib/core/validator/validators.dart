@@ -1,39 +1,38 @@
+import 'package:flutter/material.dart';
+import 'package:student_manager/core/extension/context.dart';
+
 class AppValidators {
-  // Валидация Email
-  static String? email(String? value) {
+  static String? email(String? value, BuildContext context) {
     if (value == null || value.isEmpty) {
-      return 'Введите email';
+      return context.l10n.enterEmail;
     }
     final emailRegExp = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
     if (!emailRegExp.hasMatch(value)) {
-      return 'Некорректный формат почты';
+      return context.l10n.invalidEmailFormat;
     }
     return null;
   }
 
-  // Валидация Пароля (минимум 6 символов)
-  static String? password(String? value) {
+  static String? password(String? value, BuildContext context) {
     if (value == null || value.isEmpty) {
-      return 'Введите пароль';
+      return context.l10n.enterPassword;
     }
     if (value.length < 6) {
-      return 'Пароль должен быть не менее 6 символов';
+      return context.l10n.passwordTooShort;
     }
     return null;
   }
 
-  // Сравнение паролей
-  static String? confirmPassword(String? value, String password) {
+  static String? confirmPassword(String? value, String password, BuildContext context) {
     if (value != password) {
-      return 'Пароли не совпадают';
+      return context.l10n.passwordsDoNotMatch;
     }
     return null;
   }
 
-  // Валидация имени
-  static String? name(String? value) {
+  static String? name(String? value, BuildContext context) {
     if (value == null || value.isEmpty) {
-      return 'Введите имя';
+      return context.l10n.enterName;
     }
     return null;
   }

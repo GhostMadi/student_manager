@@ -20,7 +20,6 @@ class AppButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Выбираем цвет в зависимости от варианта
     final backgroundColor = variant == AppButtonVariant.primary
         ? AppColors.deepBlack
         : AppColors.primaryOrange;

@@ -17,19 +17,19 @@ class SchedulePage extends StatefulWidget {
 }
 
 class _SchedulePageState extends State<SchedulePage> {
-  int _selectedDay = 0; // Текущий выбранный день (0 = Понедельник)
+  int _selectedDay = 0; 
 
-  // Моковые данные
-  // Обновленные моковые данные для расписания
+ 
+ 
   List<Lesson> _schedule = [];
 
   @override
   void didChangeDependencies() {
-    // TODO: implement didChangeDependencies
+ 
     super.didChangeDependencies();
     final l10n = context.l10n;
     _schedule = [
-      // Понедельник (dayIndex: 0)
+ 
       Lesson(
         id: '1',
         subject: l10n.subjectMath,
@@ -52,7 +52,7 @@ class _SchedulePageState extends State<SchedulePage> {
         dayIndex: 0,
       ),
 
-      // Вторник (dayIndex: 1)
+ 
       Lesson(
         id: '4',
         subject: l10n.subjectEnglish,
@@ -75,7 +75,7 @@ class _SchedulePageState extends State<SchedulePage> {
         dayIndex: 1,
       ),
 
-      // Среда (dayIndex: 2)
+ 
       Lesson(
         id: '7',
         subject: l10n.subjectDiscreteMath,
@@ -91,7 +91,7 @@ class _SchedulePageState extends State<SchedulePage> {
         dayIndex: 2,
       ),
 
-      // Четверг (dayIndex: 3)
+ 
       Lesson(
         id: '9',
         subject: l10n.subjectEconomics,
@@ -114,7 +114,7 @@ class _SchedulePageState extends State<SchedulePage> {
         dayIndex: 3,
       ),
 
-      // Пятница (dayIndex: 4)
+ 
       Lesson(
         id: '12',
         subject: l10n.subjectDatabases,
@@ -130,7 +130,7 @@ class _SchedulePageState extends State<SchedulePage> {
         dayIndex: 4,
       ),
 
-      // Суббота (dayIndex: 5)
+ 
       Lesson(
         id: '14',
         subject: l10n.subjectMilitary,
@@ -168,7 +168,7 @@ class _SchedulePageState extends State<SchedulePage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Заголовок и кнопка добавления
+ 
             Padding(
               padding: const EdgeInsets.fromLTRB(24, 20, 24, 8),
               child: Row(
@@ -187,7 +187,7 @@ class _SchedulePageState extends State<SchedulePage> {
               ),
             ),
 
-            // Селектор дней недели
+ 
             Container(
               height: 90,
               padding: const EdgeInsets.symmetric(vertical: 12),
@@ -227,7 +227,7 @@ class _SchedulePageState extends State<SchedulePage> {
               ),
             ),
 
-            // Список занятий
+ 
             Expanded(
               child: dailyLessons.isEmpty
                   ? _buildEmptyState()
@@ -298,7 +298,7 @@ class _SchedulePageState extends State<SchedulePage> {
 
   void _showLessonSheet(BuildContext context, {Lesson? lesson}) {
     final l10n = context.l10n;
-    // Списки для выбора
+ 
     final List<String> subjects = [
       'Высшая математика',
       'Физика',
@@ -315,7 +315,7 @@ class _SchedulePageState extends State<SchedulePage> {
       '${l10n.labAbbr} 1',
     ];
 
-    // Текущие значения (берем из урока или ставим дефолт)
+ 
     String selectedSubject = lesson?.subject ?? subjects[0];
     String selectedRoom = lesson?.room ?? rooms[0];
     if (lesson != null) {
@@ -329,7 +329,7 @@ class _SchedulePageState extends State<SchedulePage> {
     TimeOfDay startTime = const TimeOfDay(hour: 9, minute: 0);
     TimeOfDay endTime = const TimeOfDay(hour: 10, minute: 30);
 
-    // Функция селектора времени
+ 
     Future<TimeOfDay?> selectTime(BuildContext context, TimeOfDay initial) async {
       return await showTimePicker(
         context: context,
@@ -361,7 +361,7 @@ class _SchedulePageState extends State<SchedulePage> {
               Text(lesson == null ? l10n.newLesson : l10n.lessonEdit, style: AppTextStyles.h2),
               const SizedBox(height: 24),
 
-              // Выбор предмета
+ 
               _buildPickerField(
                 label: l10n.lessonSubjectLabel,
                 value: selectedSubject,
@@ -370,7 +370,7 @@ class _SchedulePageState extends State<SchedulePage> {
               ),
               const SizedBox(height: 16),
 
-              // Селекторы времени
+ 
               Row(
                 children: [
                   Expanded(
@@ -398,7 +398,7 @@ class _SchedulePageState extends State<SchedulePage> {
               ),
               const SizedBox(height: 16),
 
-              // Выбор аудитории
+ 
               _buildPickerField(
                 label: l10n.audienceLabel,
                 value: selectedRoom,
@@ -438,7 +438,7 @@ class _SchedulePageState extends State<SchedulePage> {
     );
   }
 
-  // Виджет для выбора из списка (Dropdown)
+ 
   Widget _buildPickerField({
     required String label,
     required String value,
@@ -467,7 +467,7 @@ class _SchedulePageState extends State<SchedulePage> {
     );
   }
 
-  // Виджет-кнопка для вызова таймпикера
+ 
   Widget _buildManualSelector({required String label, required String text, required VoidCallback onTap}) {
     return GestureDetector(
       onTap: onTap,

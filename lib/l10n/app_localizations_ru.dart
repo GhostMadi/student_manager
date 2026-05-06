@@ -501,4 +501,54 @@ class AppLocalizationsRu extends AppLocalizations {
   String hoursAgo(int count) {
     return '$count часа назад';
   }
+
+  @override
+  String get enterEmail => 'Введите вашу почту';
+
+  @override
+  String get enterCode => 'Enter the code sent to your email';
+
+  @override
+  String get enterNewPassword => 'Enter your new password';
+
+  @override
+  String get confirmNewPassword => 'Confirm your new password';
+
+  @override
+  String get sendCode => 'Send code';
+
+  @override
+  String get confirm => 'Confirm';
+
+  @override
+  String get emailValidationError => 'Please enter a valid email address';
+
+  @override
+  String get passwordValidationError =>
+      'Password must be at least 8 characters long and include a number and a special character';
+
+  @override
+  String get confirmPasswordValidationError => 'Passwords do not match';
+
+  @override
+  String get fullNameValidationError => 'Please enter your full name';
+
+  @override
+  String get unexpectedError =>
+      'An unexpected error occurred. Please try again later.';
+
+  @override
+  String get invalidEmailFormat => 'Неверный формат почты';
+
+  @override
+  String get enterPassword => 'Введите пароль';
+
+  @override
+  String get passwordTooShort => 'Пароль слишком короткий';
+
+  @override
+  String get passwordsDoNotMatch => 'Пароли не совпадают';
+
+  @override
+  String get enterName => 'Введите ваше имя';
 }

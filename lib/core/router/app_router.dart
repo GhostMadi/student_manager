@@ -7,7 +7,7 @@ import 'package:student_manager/feature/mark_page/presntation/page/mark_page.dar
 import 'package:student_manager/feature/notification/notifciation_page.dart';
 import 'package:student_manager/feature/profile_page/presntation/page/profile_detail_page.dart';
 import 'package:student_manager/feature/profile_page/presntation/page/profile_page.dart';
-import 'package:student_manager/feature/register_page/register_page.dart';
+import 'package:student_manager/feature/register_page/presentation/page/register_page.dart';
 import 'package:student_manager/feature/schedule_page/presntation/page/lesson_model.dart';
 import 'package:student_manager/feature/schedule_page/presntation/page/lesson_page.dart';
 import 'package:student_manager/feature/schedule_page/presntation/page/schedule_page.dart';
@@ -24,7 +24,7 @@ part 'app_router.gr.dart';
 class AppRouter extends RootStackRouter {
   @override
   List<AutoRoute> get routes => [
-    // Define your routes here
+ 
     AutoRoute(page: LoginRoute.page),
     AutoRoute(page: SplashRoute.page, initial: true),
 
@@ -45,6 +45,6 @@ class AppRouter extends RootStackRouter {
         AutoRoute(page: ProfileRoute.page),
       ],
     ),
-    // Add more routes as needed
+ 
   ];
 }

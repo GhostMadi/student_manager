@@ -4,7 +4,7 @@ class Lesson {
   String subject;
   String time;
   String room;
-  int dayIndex; // 0 - Пн, 1 - Вт и т.д.
+  int dayIndex; 
 
   Lesson({
     required this.id,

@@ -27,7 +27,7 @@ class _SplashPageState extends State<SplashPage> {
   }
 
   void _startAnimation() {
-    // Запускаем анимацию проявления через короткую задержку
+ 
     Future.delayed(const Duration(milliseconds: 200), () {
       if (mounted) {
         setState(() {
@@ -39,14 +39,14 @@ class _SplashPageState extends State<SplashPage> {
   }
 
   void _checkAuthStatus() {
-    // Даем пользователю насладиться анимацией (минимум 2 секунды)
+ 
     Timer(const Duration(seconds: 2), () {
       if (!mounted) return;
 
       if (StorageService.instance.isLoggedIn) {
         context.router.replace(const DashboardRoute());
       } else {
-        // Если не залогинен — отправляем на логин
+ 
         context.router.replace(const LoginRoute());
       }
     });
@@ -55,7 +55,7 @@ class _SplashPageState extends State<SplashPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.deepBlack, // Черный фон в твоем стиле
+      backgroundColor: AppColors.deepBlack, 
       body: Center(
         child: AnimatedScale(
           duration: const Duration(milliseconds: 1000),
@@ -67,7 +67,7 @@ class _SplashPageState extends State<SplashPage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                // Твой логотип или иконка
+ 
                 Container(
                   height: 100,
                   width: 100,

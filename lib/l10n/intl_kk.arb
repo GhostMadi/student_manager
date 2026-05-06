@@ -210,5 +210,17 @@
                 "type": "int"
             }
         }
-    }
+    },
+    "enterEmail":"Поштаны енгізіңіз",
+    "enterPassword":"Құпия сөзді енгізіңіз",
+    "enterFullName":"Толық аты-жөніңізді енгізіңіз",
+    "enterConfirmPassword":"Құпия сөзді растаңыз",
+    "enterTaskDescription":"Тапсырма сипаттамасын енгізіңіз",
+    "enterDeadline":"Дедлайнды енгізіңіз (мысалы: 2024-12-31)",
+    "enterScore":"Баллды енгізіңіз (0-100)" ,
+       "invalidEmailFormat":"Почта форматы дұрыс емес",
+    "enterPassword":"Құпия сөзді енгізіңіз",
+    "passwordTooShort":"Құпия сөз тым қысқа",
+    "passwordsDoNotMatch":"Құпия сөздер сәйкес келмейді",
+    "enterName" :"Аты-жөніңізді енгізіңіз"
 }

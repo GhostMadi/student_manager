@@ -210,5 +210,19 @@
                 "type": "int"
             }
         }
-    }
+    },
+    "enterEmail":"Введите вашу почту",
+    "enterPassword":"Введите пароль",
+    "enterFullName":"Введите ваше полное имя",
+    "enterConfirmPassword":"Подтвердите пароль",
+    "enterTaskDescription":"Введите описание задачи",
+    "enterDeadline":"Введите дедлайн (например: 2024-12-31)",
+    "enterScore":"Введите балл (0-100)",
+    "invalidEmailFormat":"Неверный формат почты",
+    "enterPassword":"Введите пароль",
+    "passwordTooShort":"Пароль слишком короткий",
+    "passwordsDoNotMatch":"Пароли не совпадают",
+    "enterName" :"Введите ваше имя"
+    
+
 }
