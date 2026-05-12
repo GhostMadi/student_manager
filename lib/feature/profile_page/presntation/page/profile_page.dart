@@ -19,7 +19,7 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
-  final String userName = StorageService.instance.userName ?? "Студент";
+  static const _avatarUrl = 'https://picsum.photos/seed/studentprofile/400/400';
 
   void _handleLogout() async {
     await StorageService.instance.logout();
@@ -91,18 +91,25 @@ class _ProfilePageState extends State<ProfilePage> {
                           shape: BoxShape.circle,
                           border: Border.all(color: AppColors.primaryOrange, width: 2),
                         ),
-                        child: const CircleAvatar(
+                        child: CircleAvatar(
                           radius: 50,
                           backgroundColor: AppColors.surfaceWhite,
-                          child: CircleAvatar(
-                            radius: 46,
-                            backgroundImage: AssetImage('assets/jpg/profile.jpg'),
+                          child: ClipOval(
+                            child: Image.network(
+                              _avatarUrl,
+                              width: 92,
+                              height: 92,
+                              fit: BoxFit.cover,
+                              errorBuilder: (context, error, stackTrace) {
+                                return Image.network(_avatarUrl, width: 92, height: 92, fit: BoxFit.cover);
+                              },
+                            ),
                           ),
                         ),
                       ),
                       const SizedBox(height: 16),
-                      Text(userName, style: AppTextStyles.h1.copyWith(fontSize: 24)),
-                      Text(l10n.idLabel('220104032'), style: AppTextStyles.caption),
+                      Text(l10n.profileStudentCardName, style: AppTextStyles.h1.copyWith(fontSize: 24)),
+                      Text(l10n.idLabel(l10n.profileStudentCardId), style: AppTextStyles.caption),
                     ],
                   ),
                 ),

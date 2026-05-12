@@ -11,6 +11,102 @@
 part of 'app_router.dart';
 
 /// generated route for
+/// [AdminAcademicPage]
+class AdminAcademicRoute extends PageRouteInfo<void> {
+  const AdminAcademicRoute({List<PageRouteInfo>? children})
+    : super(AdminAcademicRoute.name, initialChildren: children);
+
+  static const String name = 'AdminAcademicRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const AdminAcademicPage();
+    },
+  );
+}
+
+/// generated route for
+/// [AdminDashboardPage]
+class AdminDashboardRoute extends PageRouteInfo<void> {
+  const AdminDashboardRoute({List<PageRouteInfo>? children})
+    : super(AdminDashboardRoute.name, initialChildren: children);
+
+  static const String name = 'AdminDashboardRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const AdminDashboardPage();
+    },
+  );
+}
+
+/// generated route for
+/// [AdminHomePage]
+class AdminHomeRoute extends PageRouteInfo<void> {
+  const AdminHomeRoute({List<PageRouteInfo>? children})
+    : super(AdminHomeRoute.name, initialChildren: children);
+
+  static const String name = 'AdminHomeRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const AdminHomePage();
+    },
+  );
+}
+
+/// generated route for
+/// [AdminInsightsPage]
+class AdminInsightsRoute extends PageRouteInfo<void> {
+  const AdminInsightsRoute({List<PageRouteInfo>? children})
+    : super(AdminInsightsRoute.name, initialChildren: children);
+
+  static const String name = 'AdminInsightsRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const AdminInsightsPage();
+    },
+  );
+}
+
+/// generated route for
+/// [AdminPeoplePage]
+class AdminPeopleRoute extends PageRouteInfo<void> {
+  const AdminPeopleRoute({List<PageRouteInfo>? children})
+    : super(AdminPeopleRoute.name, initialChildren: children);
+
+  static const String name = 'AdminPeopleRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const AdminPeoplePage();
+    },
+  );
+}
+
+/// generated route for
+/// [AdminProfilePage]
+class AdminProfileRoute extends PageRouteInfo<void> {
+  const AdminProfileRoute({List<PageRouteInfo>? children})
+    : super(AdminProfileRoute.name, initialChildren: children);
+
+  static const String name = 'AdminProfileRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const AdminProfilePage();
+    },
+  );
+}
+
+/// generated route for
 /// [DashboardPage]
 class DashboardRoute extends PageRouteInfo<void> {
   const DashboardRoute({List<PageRouteInfo>? children})
@@ -289,6 +385,102 @@ class TaskRoute extends PageRouteInfo<void> {
     name,
     builder: (data) {
       return const TaskPage();
+    },
+  );
+}
+
+/// generated route for
+/// [TeacherDashboardPage]
+class TeacherDashboardRoute extends PageRouteInfo<void> {
+  const TeacherDashboardRoute({List<PageRouteInfo>? children})
+    : super(TeacherDashboardRoute.name, initialChildren: children);
+
+  static const String name = 'TeacherDashboardRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const TeacherDashboardPage();
+    },
+  );
+}
+
+/// generated route for
+/// [TeacherGroupsPage]
+class TeacherGroupsRoute extends PageRouteInfo<void> {
+  const TeacherGroupsRoute({List<PageRouteInfo>? children})
+    : super(TeacherGroupsRoute.name, initialChildren: children);
+
+  static const String name = 'TeacherGroupsRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const TeacherGroupsPage();
+    },
+  );
+}
+
+/// generated route for
+/// [TeacherHomePage]
+class TeacherHomeRoute extends PageRouteInfo<void> {
+  const TeacherHomeRoute({List<PageRouteInfo>? children})
+    : super(TeacherHomeRoute.name, initialChildren: children);
+
+  static const String name = 'TeacherHomeRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const TeacherHomePage();
+    },
+  );
+}
+
+/// generated route for
+/// [TeacherProfilePage]
+class TeacherProfileRoute extends PageRouteInfo<void> {
+  const TeacherProfileRoute({List<PageRouteInfo>? children})
+    : super(TeacherProfileRoute.name, initialChildren: children);
+
+  static const String name = 'TeacherProfileRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const TeacherProfilePage();
+    },
+  );
+}
+
+/// generated route for
+/// [TeacherSchedulePage]
+class TeacherScheduleRoute extends PageRouteInfo<void> {
+  const TeacherScheduleRoute({List<PageRouteInfo>? children})
+    : super(TeacherScheduleRoute.name, initialChildren: children);
+
+  static const String name = 'TeacherScheduleRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const TeacherSchedulePage();
+    },
+  );
+}
+
+/// generated route for
+/// [TeacherWorkPage]
+class TeacherWorkRoute extends PageRouteInfo<void> {
+  const TeacherWorkRoute({List<PageRouteInfo>? children})
+    : super(TeacherWorkRoute.name, initialChildren: children);
+
+  static const String name = 'TeacherWorkRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const TeacherWorkPage();
     },
   );
 }

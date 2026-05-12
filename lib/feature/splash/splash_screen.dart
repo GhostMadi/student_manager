@@ -4,6 +4,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:student_manager/core/colors/app_colors.dart';
 import 'package:student_manager/core/router/app_router.dart';
+import 'package:student_manager/core/router/role_dashboard_route.dart';
 import 'package:student_manager/core/storage/storage_service.dart';
 import 'package:student_manager/core/style/app_text_style.dart';
 
@@ -44,7 +45,7 @@ class _SplashPageState extends State<SplashPage> {
       if (!mounted) return;
 
       if (StorageService.instance.isLoggedIn) {
-        context.router.replace(const DashboardRoute());
+        context.router.replace(dashboardRouteForStoredRole());
       } else {
  
         context.router.replace(const LoginRoute());

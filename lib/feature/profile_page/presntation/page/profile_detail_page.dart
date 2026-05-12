@@ -12,12 +12,39 @@ class ProfileDetailPage extends StatefulWidget {
 }
 
 class _ProfileDetailPageState extends State<ProfileDetailPage> {
-  final TextEditingController _nameController = TextEditingController(text: "Aruka Aruka");
-  final TextEditingController _phoneController = TextEditingController(text: "+7 707 000 00 00");
-  final String _userEmail = "aruka@gmail.com";
+  static const _avatarUrl = 'https://picsum.photos/seed/studentprofile/400/400';
+
+  late final TextEditingController _nameController;
+  late final TextEditingController _emailController;
+  late final TextEditingController _phoneController;
+  var _controllersReady = false;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    if (_controllersReady) return;
+    final l10n = context.l10n;
+    _nameController = TextEditingController(text: l10n.profileStudentCardName);
+    _emailController = TextEditingController(text: l10n.profileStudentCardEmail);
+    _phoneController = TextEditingController(text: '+7 747 220 88 15');
+    _controllersReady = true;
+  }
+
+  @override
+  void dispose() {
+    if (_controllersReady) {
+      _nameController.dispose();
+      _emailController.dispose();
+      _phoneController.dispose();
+    }
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
+    if (!_controllersReady) {
+      return const Scaffold(body: SizedBox.shrink());
+    }
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -50,10 +77,25 @@ class _ProfileDetailPageState extends State<ProfileDetailPage> {
             Center(
               child: Stack(
                 children: [
-                  const CircleAvatar(
+                  CircleAvatar(
                     radius: 50,
                     backgroundColor: AppColors.surfaceWhite,
-                    backgroundImage: AssetImage('assets/jpg/profile.jpg'),
+                    child: ClipOval(
+                      child: Image.network(
+                        _avatarUrl,
+                        width: 92,
+                        height: 92,
+                        fit: BoxFit.cover,
+                        errorBuilder: (context, error, stackTrace) {
+                          return Image.asset(
+                            'assets/jpg/profile.jpg',
+                            width: 92,
+                            height: 92,
+                            fit: BoxFit.cover,
+                          );
+                        },
+                      ),
+                    ),
                   ),
                   Positioned(
                     bottom: 0,
@@ -69,7 +111,7 @@ class _ProfileDetailPageState extends State<ProfileDetailPage> {
             ),
             const SizedBox(height: 40),
             _buildField(context.l10n.nameLabel, _nameController, enabled: true),
-            _buildField(context.l10n.email, TextEditingController(text: _userEmail), enabled: false),
+            _buildField(context.l10n.email, _emailController, enabled: false),
             _buildField(context.l10n.phoneLabel, _phoneController, enabled: true),
           ],
         ),

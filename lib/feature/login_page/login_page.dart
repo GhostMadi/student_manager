@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:student_manager/core/colors/app_colors.dart';
 import 'package:student_manager/core/extension/context.dart';
 import 'package:student_manager/core/router/app_router.dart';
+import 'package:student_manager/core/router/role_dashboard_route.dart';
 import 'package:student_manager/core/storage/storage_service.dart';
 import 'package:student_manager/core/style/app_text_style.dart';
 import 'package:student_manager/core/validator/validators.dart';
@@ -34,7 +35,7 @@ class _LoginPageState extends State<LoginPage> {
   void _checkAuthStatus() {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (StorageService.instance.isLoggedIn) {
-        context.router.replace(const DashboardRoute());
+        context.router.replace(dashboardRouteForStoredRole());
       }
     });
   }
@@ -43,14 +44,14 @@ class _LoginPageState extends State<LoginPage> {
     if (_formKey.currentState!.validate()) {
       setState(() => _isLoading = true);
 
-      final success = await AuthService.login(_emailController.text.trim(), _passwordController.text.trim());
+      final role = await AuthService.login(_emailController.text.trim(), _passwordController.text.trim());
 
       if (!mounted) return;
       setState(() => _isLoading = false);
 
-      if (success) {
+      if (role != null) {
         AppSnackBar.show(context, message: context.l10n.loginSuccess, isError: false);
-        context.router.replace(DashboardRoute());
+        context.router.replace(dashboardRouteForStoredRole());
       } else {
         AppSnackBar.show(context, message: context.l10n.loginError, isError: true);
       }
@@ -88,7 +89,7 @@ class _LoginPageState extends State<LoginPage> {
                     label: l10n.email,
                     controller: _emailController,
                     keyboardType: TextInputType.emailAddress,
-                    validator: (value) => AppValidators.email(value, context),
+                    // validator: (value) => AppValidators.email(value, context),
                   ),
                   const SizedBox(height: 20),
 
@@ -116,6 +117,16 @@ class _LoginPageState extends State<LoginPage> {
                     onPressed: _handleLogin,
                   ),
 
+                  // const SizedBox(height: 16),
+                  // Text(
+                  //   l10n.loginDemoHint,
+                  //   textAlign: TextAlign.center,
+                  //   style: AppTextStyles.caption.copyWith(
+                  //     color: AppColors.textSecondary,
+                  //     fontSize: 11,
+                  //     height: 1.35,
+                  //   ),
+                  // ),
                   const SizedBox(height: 24),
 
                   Row(

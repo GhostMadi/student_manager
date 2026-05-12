@@ -6,24 +6,29 @@ import 'package:student_manager/core/router/app_router.dart';
 import 'package:student_manager/core/widgets/dashboard_capsule.dart';
 
 @RoutePage()
-class DashboardPage extends StatelessWidget {
-  const DashboardPage({super.key});
+class AdminDashboardPage extends StatelessWidget {
+  const AdminDashboardPage({super.key});
 
   static const _icons = <IconData>[
     CupertinoIcons.house_fill,
+    CupertinoIcons.person_2_fill,
+    CupertinoIcons.book_fill,
     CupertinoIcons.chart_bar_fill,
-    CupertinoIcons.calendar,
-    CupertinoIcons.check_mark_circled,
     CupertinoIcons.person_fill,
   ];
 
   @override
   Widget build(BuildContext context) {
     return AutoTabsRouter(
-      routes: const [HomeRoute(), MarkRoute(), ScheduleRoute(), TaskRoute(), ProfileRoute()],
+      routes: const [
+        AdminHomeRoute(),
+        AdminPeopleRoute(),
+        AdminAcademicRoute(),
+        AdminInsightsRoute(),
+        AdminProfileRoute(),
+      ],
       builder: (context, child) {
         final tabsRouter = AutoTabsRouter.of(context);
-
         return Scaffold(
           extendBody: true,
           backgroundColor: AppColors.scaffoldBackground,

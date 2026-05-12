@@ -551,4 +551,558 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get enterName => 'Введите ваше имя';
+
+  @override
+  String get adminGreeting => 'Здравствуйте, администратор';
+
+  @override
+  String get adminHomeSubtitle => 'Обзор системы и быстрый доступ';
+
+  @override
+  String get adminPeopleTitle => 'Управление пользователями';
+
+  @override
+  String get adminAcademicTitle => 'Учебная структура';
+
+  @override
+  String get adminInsightsTitle => 'Аналитика и коммуникации';
+
+  @override
+  String get adminRoleBadge => 'Администратор';
+
+  @override
+  String get adminSectionDashboard => 'Главная панель';
+
+  @override
+  String get adminDashHome => 'Главная';
+
+  @override
+  String get adminDashSystemStats => 'Статистика системы';
+
+  @override
+  String get adminDashStudentsCount => 'Количество студентов';
+
+  @override
+  String get adminDashTeachersCount => 'Количество преподавателей';
+
+  @override
+  String get adminDashGroupsCount => 'Количество групп';
+
+  @override
+  String get adminDashUserActivity => 'Активность пользователей';
+
+  @override
+  String get adminDashRecentNotifications => 'Последние уведомления';
+
+  @override
+  String get adminSectionStudents => 'Управление студентами';
+
+  @override
+  String get adminStudentAdd => 'Добавить студента';
+
+  @override
+  String get adminStudentEdit => 'Редактировать студента';
+
+  @override
+  String get adminStudentDelete => 'Удалить студента';
+
+  @override
+  String get adminStudentSearch => 'Поиск студентов';
+
+  @override
+  String get adminStudentList => 'Список студентов';
+
+  @override
+  String get adminStudentImport => 'Импорт студентов';
+
+  @override
+  String get adminStudentExport => 'Экспорт данных';
+
+  @override
+  String get adminSectionTeachers => 'Управление преподавателями';
+
+  @override
+  String get adminTeacherAdd => 'Добавить преподавателя';
+
+  @override
+  String get adminTeacherEdit => 'Редактировать преподавателя';
+
+  @override
+  String get adminTeacherDelete => 'Удалить преподавателя';
+
+  @override
+  String get adminTeacherAssignSubject => 'Назначить предмет';
+
+  @override
+  String get adminTeacherList => 'Список преподавателей';
+
+  @override
+  String get adminTeacherSearch => 'Поиск преподавателя';
+
+  @override
+  String get adminSectionGroups => 'Управление группами';
+
+  @override
+  String get adminGroupCreate => 'Создать группу';
+
+  @override
+  String get adminGroupEdit => 'Редактировать группу';
+
+  @override
+  String get adminGroupDelete => 'Удалить группу';
+
+  @override
+  String get adminGroupAddStudents => 'Добавить студентов в группу';
+
+  @override
+  String get adminGroupAssignCurator => 'Назначить куратора';
+
+  @override
+  String get adminSectionSubjects => 'Управление предметами';
+
+  @override
+  String get adminSubjectAdd => 'Добавить предмет';
+
+  @override
+  String get adminSubjectEdit => 'Редактировать предмет';
+
+  @override
+  String get adminSubjectDelete => 'Удалить предмет';
+
+  @override
+  String get adminSubjectAssignTeacher => 'Назначить преподавателя';
+
+  @override
+  String get adminSubjectList => 'Список предметов';
+
+  @override
+  String get adminSectionSchedule => 'Расписание';
+
+  @override
+  String get adminScheduleCreate => 'Создать расписание';
+
+  @override
+  String get adminScheduleEdit => 'Редактировать расписание';
+
+  @override
+  String get adminScheduleDelete => 'Удалить расписание';
+
+  @override
+  String get adminScheduleAssignRoom => 'Назначить аудиторию';
+
+  @override
+  String get adminScheduleAssignTeacher => 'Назначить преподавателя';
+
+  @override
+  String get adminScheduleView => 'Просмотр расписания';
+
+  @override
+  String get adminSectionPerformance => 'Успеваемость';
+
+  @override
+  String get adminPerfViewGrades => 'Просмотр оценок';
+
+  @override
+  String get adminPerfGpaStats => 'Статистика GPA';
+
+  @override
+  String get adminPerfAnalytics => 'Аналитика успеваемости';
+
+  @override
+  String get adminPerfStudentReport => 'Отчет по студентам';
+
+  @override
+  String get adminPerfExportReports => 'Экспорт отчетов';
+
+  @override
+  String get adminSectionAttendance => 'Посещаемость';
+
+  @override
+  String get adminAttView => 'Просмотр посещаемости';
+
+  @override
+  String get adminAttReport => 'Отчет посещаемости';
+
+  @override
+  String get adminAttAbsenceStats => 'Статистика пропусков';
+
+  @override
+  String get adminSectionNotifications => 'Уведомления';
+
+  @override
+  String get adminNotifCreate => 'Создать уведомление';
+
+  @override
+  String get adminNotifSendMessage => 'Отправить сообщение';
+
+  @override
+  String get adminNotifBulk => 'Массовая рассылка';
+
+  @override
+  String get adminNotifHistory => 'История уведомлений';
+
+  @override
+  String get adminSectionSecurity => 'Безопасность';
+
+  @override
+  String get adminSecRoles => 'Управление ролями';
+
+  @override
+  String get adminSecResetPassword => 'Сброс пароля';
+
+  @override
+  String get adminSecBlockUser => 'Блокировка пользователя';
+
+  @override
+  String get adminSecLoginHistory => 'История входов';
+
+  @override
+  String get adminSecSettings => 'Настройки безопасности';
+
+  @override
+  String get teacherGreeting => 'Здравствуйте, преподаватель';
+
+  @override
+  String get teacherHomeSubtitle => 'Рабочее место преподавателя';
+
+  @override
+  String get teacherTodayClasses => 'Занятий сегодня';
+
+  @override
+  String get teacherPendingReviews => 'Работ к проверке';
+
+  @override
+  String get teacherSectionShortcuts => 'Быстрые действия';
+
+  @override
+  String get teacherShortcutMyGroups => 'Мои группы';
+
+  @override
+  String get teacherShortcutMySchedule => 'Мое расписание';
+
+  @override
+  String get teacherShortcutAssignments => 'Задания';
+
+  @override
+  String get teacherShortcutGrades => 'Оценки';
+
+  @override
+  String get teacherShortcutAttendance => 'Посещаемость';
+
+  @override
+  String get teacherGroupsTitle => 'Мои группы';
+
+  @override
+  String get teacherSectionMyGroups => 'Группы';
+
+  @override
+  String get teacherGroupCs101 => 'CS-101 · 28 студентов';
+
+  @override
+  String get teacherGroupMath202 => 'MATH-202 · 22 студента';
+
+  @override
+  String get teacherGroupPhysicsLab => 'PHYS-LAB · 18 студентов';
+
+  @override
+  String get teacherScheduleTitle => 'Мое расписание';
+
+  @override
+  String get teacherScheduleSubtitle => 'Сегодня';
+
+  @override
+  String get teacherScheduleItem1Time => '09:00 – 10:30';
+
+  @override
+  String get teacherScheduleItem1Title => 'Высшая математика';
+
+  @override
+  String get teacherScheduleItem1Room => 'Ауд. 402';
+
+  @override
+  String get teacherScheduleItem2Time => '11:00 – 12:30';
+
+  @override
+  String get teacherScheduleItem2Title => 'Практикум по программированию';
+
+  @override
+  String get teacherScheduleItem2Room => 'Комп. класс 1';
+
+  @override
+  String get teacherScheduleItem3Time => '14:00 – 15:30';
+
+  @override
+  String get teacherScheduleItem3Title => 'Физика';
+
+  @override
+  String get teacherScheduleItem3Room => 'Ауд. 210';
+
+  @override
+  String get teacherWorkTitle => 'Преподавание';
+
+  @override
+  String get teacherSectionAssignments => 'Задания и проверка';
+
+  @override
+  String get teacherAssignments => 'Задания';
+
+  @override
+  String get teacherCheckWork => 'Проверка работ';
+
+  @override
+  String get teacherSectionGradesAttendance => 'Оценки и посещаемость';
+
+  @override
+  String get teacherGrades => 'Оценки';
+
+  @override
+  String get teacherAttendance => 'Посещаемость';
+
+  @override
+  String get teacherRoleBadge => 'Преподаватель';
+
+  @override
+  String get teacherSectionMore => 'Сообщения и профиль';
+
+  @override
+  String get teacherMessages => 'Сообщения';
+
+  @override
+  String get teacherAnalytics => 'Аналитика';
+
+  @override
+  String get teacherProfileSettings => 'Настройки профиля';
+
+  @override
+  String get teacherDashOverviewTitle => 'Обзор дня';
+
+  @override
+  String get teacherStatReachLabel => 'Студенты (ваши группы)';
+
+  @override
+  String get teacherStatGpaLabel => 'Средний GPA (макет)';
+
+  @override
+  String get teacherOfficeHoursLabel => 'Консультации';
+
+  @override
+  String get teacherLoadMockTitle => 'Часы за неделю (макет)';
+
+  @override
+  String get teacherFeedT1 => 'CS-101 · 8 лабораторных на проверке';
+
+  @override
+  String get teacherFeedT2 => 'MTH-202 · тест проверен · ср. 78%';
+
+  @override
+  String get teacherFeedT3 => 'PHY-LAB · посещаемость за сегодня отмечена';
+
+  @override
+  String get teacherRosterPreview => 'Состав (пример)';
+
+  @override
+  String get teacherGroupSampleStu1 => 'Алекс Иванов · сдано';
+
+  @override
+  String get teacherGroupSampleStu2 => 'Мария Ким · ожидает';
+
+  @override
+  String get teacherGroupSampleStu3 => 'Данияр Оспан · опоздал';
+
+  @override
+  String get teacherGroupsNextClass => 'Следующая пара';
+
+  @override
+  String get teacherScheduleBusyTitle => 'Загрузка по дням (макет)';
+
+  @override
+  String get teacherWorkDueTitle => 'Скоро дедлайн';
+
+  @override
+  String get teacherMockTaskLine1 => 'Лаб. 4 · CS-101';
+
+  @override
+  String get teacherMockTaskSub1 => 'Завтра · 28 студентов';
+
+  @override
+  String get teacherMockTaskLine2 => 'Пересдача · MTH-202';
+
+  @override
+  String get teacherMockTaskSub2 => 'Через 2 дня · 22 студента';
+
+  @override
+  String get teacherMockTaskLine3 => 'Отчёт · PHY-LAB';
+
+  @override
+  String get teacherMockTaskSub3 => '18 мая · 18 студентов';
+
+  @override
+  String get teacherGradeBlockTitle => 'Оценки · срез';
+
+  @override
+  String get teacherMockGradeLine1 => 'CS-101 · ср. балл 4.1';
+
+  @override
+  String get teacherMockGradeLine2 => 'MTH-202 · ср. балл 3.7';
+
+  @override
+  String get teacherAttYourGroupsTitle => 'Посещаемость · ваши группы (макет)';
+
+  @override
+  String get teacherProfileQuickTitle => 'Быстрые действия';
+
+  @override
+  String get teacherGroupOpenMock => 'Открыть группу (макет)';
+
+  @override
+  String get adminSystemOverviewTitle => 'Обзор системы';
+
+  @override
+  String get adminHealthGood => 'Все сервисы в норме';
+
+  @override
+  String get adminHealthMeta => 'Резервная копия сегодня · 04:32';
+
+  @override
+  String get adminMetricCpu => 'CPU';
+
+  @override
+  String get adminMetricMemory => 'ОЗУ';
+
+  @override
+  String get adminMetricApi => 'API';
+
+  @override
+  String get adminActivitySection => 'Последняя активность';
+
+  @override
+  String get adminFeed1 => 'Новая запись · ИИТ-21';
+
+  @override
+  String get adminFeed2 => 'Опубликовано расписание · неделя 14';
+
+  @override
+  String get adminFeed3 => 'Проверка безопасности · без замечаний';
+
+  @override
+  String get adminQuickActionsTitle => 'Быстрые действия';
+
+  @override
+  String get adminLoadOverviewTitle => 'Недельная нагрузка (макет)';
+
+  @override
+  String get adminPeopleSummaryStudents => 'Студентов в справочнике';
+
+  @override
+  String get adminPeopleSummaryTeachers => 'Преподавателей';
+
+  @override
+  String adminTrendPositive(String value) {
+    return '+$value% за месяц';
+  }
+
+  @override
+  String get adminAcademicFeaturedGroups => 'Группы';
+
+  @override
+  String get adminMockGroup1 => 'ИИТ-21 · 32 студента';
+
+  @override
+  String get adminMockGroup2 => 'МТН-09 · 28 студентов';
+
+  @override
+  String get adminMockGroup3 => 'ФИЗ-ЛАБ · 18 студентов';
+
+  @override
+  String get adminSubjectsActiveLabel => 'Активных предметов';
+
+  @override
+  String get adminScheduleNextHint => 'Следующая публикация через 2 дня';
+
+  @override
+  String get adminInsightsPassRate => 'Доля успеваемости';
+
+  @override
+  String get adminInsightsAttendance => 'Средняя посещаемость';
+
+  @override
+  String get adminInsightsNotifications => 'Уведомления (7 дн.)';
+
+  @override
+  String get adminProfileSecurityScore => 'Оценка безопасности';
+
+  @override
+  String get adminMockSubjectCount => '42 предмета';
+
+  @override
+  String get adminPeopleSearchHint => 'Поиск по имени или ID';
+
+  @override
+  String get adminPeopleStudentsSample => 'Студенты (пример)';
+
+  @override
+  String get adminPeopleTeachersSample => 'Преподаватели (пример)';
+
+  @override
+  String get adminPeopleOpenMock => 'Открыть (макет)';
+
+  @override
+  String get adminMockStudentLine1 => 'Алекс Иванов · ИИТ-21 · 220104032';
+
+  @override
+  String get adminMockStudentLine2 => 'Мария Ким · МТН-09 · 220108011';
+
+  @override
+  String get adminMockStudentLine3 => 'Данияр Оспан · ФИЗ-ЛАБ · 219902004';
+
+  @override
+  String get adminMockStudentLine4 => 'Софи Ли · ИИТ-21 · 221001015';
+
+  @override
+  String get adminMockTeacherLine1 => 'Иванов И. И. · Высшая математика';
+
+  @override
+  String get adminMockTeacherLine2 => 'Нурпейсова А. · Программирование';
+
+  @override
+  String get adminGroupManageTitle => 'Управление группами';
+
+  @override
+  String adminGroupMembers(int count) {
+    return '$count студентов';
+  }
+
+  @override
+  String get adminMockCuratorShort => 'Куратор назначен';
+
+  @override
+  String get adminAttWeekTitle => 'Посещаемость за неделю (макет)';
+
+  @override
+  String get adminAttTodayList => 'Сегодня (пример)';
+
+  @override
+  String get adminMockAttLine1 => 'Алекс Иванов · Присутствует';
+
+  @override
+  String get adminMockAttLine2 => 'Мария Ким · Опоздание 8 мин';
+
+  @override
+  String get adminMockAttLine3 => 'Данияр Оспан · Присутствует';
+
+  @override
+  String get adminMockAttLine4 => 'Софи Ли · Отсутствует';
+
+  @override
+  String get profileStudentCardName => 'Дана Каримова';
+
+  @override
+  String get profileStudentCardId => '220887015';
+
+  @override
+  String get profileStudentCardEmail => 'dana.karimova@student.university.edu';
+
+  @override
+  String get loginDemoHint =>
+      'Демо: aruka@gmail.com (студент), admin@student.manager (админ), teacher@student.manager (преподаватель) — пароль: password123';
 }

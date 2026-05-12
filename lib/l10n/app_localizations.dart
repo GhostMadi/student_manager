@@ -1131,6 +1131,1104 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Enter your name'**
   String get enterName;
+
+  /// No description provided for @adminGreeting.
+  ///
+  /// In en, this message translates to:
+  /// **'Hello, Administrator'**
+  String get adminGreeting;
+
+  /// No description provided for @adminHomeSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'System overview and quick access'**
+  String get adminHomeSubtitle;
+
+  /// No description provided for @adminPeopleTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'People management'**
+  String get adminPeopleTitle;
+
+  /// No description provided for @adminAcademicTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Academic structure'**
+  String get adminAcademicTitle;
+
+  /// No description provided for @adminInsightsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Analytics and communications'**
+  String get adminInsightsTitle;
+
+  /// No description provided for @adminRoleBadge.
+  ///
+  /// In en, this message translates to:
+  /// **'Administrator'**
+  String get adminRoleBadge;
+
+  /// No description provided for @adminSectionDashboard.
+  ///
+  /// In en, this message translates to:
+  /// **'Dashboard'**
+  String get adminSectionDashboard;
+
+  /// No description provided for @adminDashHome.
+  ///
+  /// In en, this message translates to:
+  /// **'Home'**
+  String get adminDashHome;
+
+  /// No description provided for @adminDashSystemStats.
+  ///
+  /// In en, this message translates to:
+  /// **'System statistics'**
+  String get adminDashSystemStats;
+
+  /// No description provided for @adminDashStudentsCount.
+  ///
+  /// In en, this message translates to:
+  /// **'Number of students'**
+  String get adminDashStudentsCount;
+
+  /// No description provided for @adminDashTeachersCount.
+  ///
+  /// In en, this message translates to:
+  /// **'Number of teachers'**
+  String get adminDashTeachersCount;
+
+  /// No description provided for @adminDashGroupsCount.
+  ///
+  /// In en, this message translates to:
+  /// **'Number of groups'**
+  String get adminDashGroupsCount;
+
+  /// No description provided for @adminDashUserActivity.
+  ///
+  /// In en, this message translates to:
+  /// **'User activity'**
+  String get adminDashUserActivity;
+
+  /// No description provided for @adminDashRecentNotifications.
+  ///
+  /// In en, this message translates to:
+  /// **'Recent notifications'**
+  String get adminDashRecentNotifications;
+
+  /// No description provided for @adminSectionStudents.
+  ///
+  /// In en, this message translates to:
+  /// **'Student management'**
+  String get adminSectionStudents;
+
+  /// No description provided for @adminStudentAdd.
+  ///
+  /// In en, this message translates to:
+  /// **'Add student'**
+  String get adminStudentAdd;
+
+  /// No description provided for @adminStudentEdit.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit student'**
+  String get adminStudentEdit;
+
+  /// No description provided for @adminStudentDelete.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete student'**
+  String get adminStudentDelete;
+
+  /// No description provided for @adminStudentSearch.
+  ///
+  /// In en, this message translates to:
+  /// **'Search students'**
+  String get adminStudentSearch;
+
+  /// No description provided for @adminStudentList.
+  ///
+  /// In en, this message translates to:
+  /// **'Student list'**
+  String get adminStudentList;
+
+  /// No description provided for @adminStudentImport.
+  ///
+  /// In en, this message translates to:
+  /// **'Import students'**
+  String get adminStudentImport;
+
+  /// No description provided for @adminStudentExport.
+  ///
+  /// In en, this message translates to:
+  /// **'Export data'**
+  String get adminStudentExport;
+
+  /// No description provided for @adminSectionTeachers.
+  ///
+  /// In en, this message translates to:
+  /// **'Teacher management'**
+  String get adminSectionTeachers;
+
+  /// No description provided for @adminTeacherAdd.
+  ///
+  /// In en, this message translates to:
+  /// **'Add teacher'**
+  String get adminTeacherAdd;
+
+  /// No description provided for @adminTeacherEdit.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit teacher'**
+  String get adminTeacherEdit;
+
+  /// No description provided for @adminTeacherDelete.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete teacher'**
+  String get adminTeacherDelete;
+
+  /// No description provided for @adminTeacherAssignSubject.
+  ///
+  /// In en, this message translates to:
+  /// **'Assign subject'**
+  String get adminTeacherAssignSubject;
+
+  /// No description provided for @adminTeacherList.
+  ///
+  /// In en, this message translates to:
+  /// **'Teacher list'**
+  String get adminTeacherList;
+
+  /// No description provided for @adminTeacherSearch.
+  ///
+  /// In en, this message translates to:
+  /// **'Search teacher'**
+  String get adminTeacherSearch;
+
+  /// No description provided for @adminSectionGroups.
+  ///
+  /// In en, this message translates to:
+  /// **'Group management'**
+  String get adminSectionGroups;
+
+  /// No description provided for @adminGroupCreate.
+  ///
+  /// In en, this message translates to:
+  /// **'Create group'**
+  String get adminGroupCreate;
+
+  /// No description provided for @adminGroupEdit.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit group'**
+  String get adminGroupEdit;
+
+  /// No description provided for @adminGroupDelete.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete group'**
+  String get adminGroupDelete;
+
+  /// No description provided for @adminGroupAddStudents.
+  ///
+  /// In en, this message translates to:
+  /// **'Add students to group'**
+  String get adminGroupAddStudents;
+
+  /// No description provided for @adminGroupAssignCurator.
+  ///
+  /// In en, this message translates to:
+  /// **'Assign curator'**
+  String get adminGroupAssignCurator;
+
+  /// No description provided for @adminSectionSubjects.
+  ///
+  /// In en, this message translates to:
+  /// **'Subject management'**
+  String get adminSectionSubjects;
+
+  /// No description provided for @adminSubjectAdd.
+  ///
+  /// In en, this message translates to:
+  /// **'Add subject'**
+  String get adminSubjectAdd;
+
+  /// No description provided for @adminSubjectEdit.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit subject'**
+  String get adminSubjectEdit;
+
+  /// No description provided for @adminSubjectDelete.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete subject'**
+  String get adminSubjectDelete;
+
+  /// No description provided for @adminSubjectAssignTeacher.
+  ///
+  /// In en, this message translates to:
+  /// **'Assign teacher'**
+  String get adminSubjectAssignTeacher;
+
+  /// No description provided for @adminSubjectList.
+  ///
+  /// In en, this message translates to:
+  /// **'Subject list'**
+  String get adminSubjectList;
+
+  /// No description provided for @adminSectionSchedule.
+  ///
+  /// In en, this message translates to:
+  /// **'Schedule'**
+  String get adminSectionSchedule;
+
+  /// No description provided for @adminScheduleCreate.
+  ///
+  /// In en, this message translates to:
+  /// **'Create schedule'**
+  String get adminScheduleCreate;
+
+  /// No description provided for @adminScheduleEdit.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit schedule'**
+  String get adminScheduleEdit;
+
+  /// No description provided for @adminScheduleDelete.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete schedule'**
+  String get adminScheduleDelete;
+
+  /// No description provided for @adminScheduleAssignRoom.
+  ///
+  /// In en, this message translates to:
+  /// **'Assign room'**
+  String get adminScheduleAssignRoom;
+
+  /// No description provided for @adminScheduleAssignTeacher.
+  ///
+  /// In en, this message translates to:
+  /// **'Assign teacher'**
+  String get adminScheduleAssignTeacher;
+
+  /// No description provided for @adminScheduleView.
+  ///
+  /// In en, this message translates to:
+  /// **'View schedule'**
+  String get adminScheduleView;
+
+  /// No description provided for @adminSectionPerformance.
+  ///
+  /// In en, this message translates to:
+  /// **'Performance'**
+  String get adminSectionPerformance;
+
+  /// No description provided for @adminPerfViewGrades.
+  ///
+  /// In en, this message translates to:
+  /// **'View grades'**
+  String get adminPerfViewGrades;
+
+  /// No description provided for @adminPerfGpaStats.
+  ///
+  /// In en, this message translates to:
+  /// **'GPA statistics'**
+  String get adminPerfGpaStats;
+
+  /// No description provided for @adminPerfAnalytics.
+  ///
+  /// In en, this message translates to:
+  /// **'Performance analytics'**
+  String get adminPerfAnalytics;
+
+  /// No description provided for @adminPerfStudentReport.
+  ///
+  /// In en, this message translates to:
+  /// **'Student report'**
+  String get adminPerfStudentReport;
+
+  /// No description provided for @adminPerfExportReports.
+  ///
+  /// In en, this message translates to:
+  /// **'Export reports'**
+  String get adminPerfExportReports;
+
+  /// No description provided for @adminSectionAttendance.
+  ///
+  /// In en, this message translates to:
+  /// **'Attendance'**
+  String get adminSectionAttendance;
+
+  /// No description provided for @adminAttView.
+  ///
+  /// In en, this message translates to:
+  /// **'View attendance'**
+  String get adminAttView;
+
+  /// No description provided for @adminAttReport.
+  ///
+  /// In en, this message translates to:
+  /// **'Attendance report'**
+  String get adminAttReport;
+
+  /// No description provided for @adminAttAbsenceStats.
+  ///
+  /// In en, this message translates to:
+  /// **'Absence statistics'**
+  String get adminAttAbsenceStats;
+
+  /// No description provided for @adminSectionNotifications.
+  ///
+  /// In en, this message translates to:
+  /// **'Notifications'**
+  String get adminSectionNotifications;
+
+  /// No description provided for @adminNotifCreate.
+  ///
+  /// In en, this message translates to:
+  /// **'Create notification'**
+  String get adminNotifCreate;
+
+  /// No description provided for @adminNotifSendMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Send message'**
+  String get adminNotifSendMessage;
+
+  /// No description provided for @adminNotifBulk.
+  ///
+  /// In en, this message translates to:
+  /// **'Bulk mailing'**
+  String get adminNotifBulk;
+
+  /// No description provided for @adminNotifHistory.
+  ///
+  /// In en, this message translates to:
+  /// **'Notification history'**
+  String get adminNotifHistory;
+
+  /// No description provided for @adminSectionSecurity.
+  ///
+  /// In en, this message translates to:
+  /// **'Security'**
+  String get adminSectionSecurity;
+
+  /// No description provided for @adminSecRoles.
+  ///
+  /// In en, this message translates to:
+  /// **'Manage roles'**
+  String get adminSecRoles;
+
+  /// No description provided for @adminSecResetPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Reset password'**
+  String get adminSecResetPassword;
+
+  /// No description provided for @adminSecBlockUser.
+  ///
+  /// In en, this message translates to:
+  /// **'Block user'**
+  String get adminSecBlockUser;
+
+  /// No description provided for @adminSecLoginHistory.
+  ///
+  /// In en, this message translates to:
+  /// **'Login history'**
+  String get adminSecLoginHistory;
+
+  /// No description provided for @adminSecSettings.
+  ///
+  /// In en, this message translates to:
+  /// **'Security settings'**
+  String get adminSecSettings;
+
+  /// No description provided for @teacherGreeting.
+  ///
+  /// In en, this message translates to:
+  /// **'Hello, Teacher'**
+  String get teacherGreeting;
+
+  /// No description provided for @teacherHomeSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Your teaching workspace'**
+  String get teacherHomeSubtitle;
+
+  /// No description provided for @teacherTodayClasses.
+  ///
+  /// In en, this message translates to:
+  /// **'Classes today'**
+  String get teacherTodayClasses;
+
+  /// No description provided for @teacherPendingReviews.
+  ///
+  /// In en, this message translates to:
+  /// **'Works to review'**
+  String get teacherPendingReviews;
+
+  /// No description provided for @teacherSectionShortcuts.
+  ///
+  /// In en, this message translates to:
+  /// **'Quick actions'**
+  String get teacherSectionShortcuts;
+
+  /// No description provided for @teacherShortcutMyGroups.
+  ///
+  /// In en, this message translates to:
+  /// **'My groups'**
+  String get teacherShortcutMyGroups;
+
+  /// No description provided for @teacherShortcutMySchedule.
+  ///
+  /// In en, this message translates to:
+  /// **'My schedule'**
+  String get teacherShortcutMySchedule;
+
+  /// No description provided for @teacherShortcutAssignments.
+  ///
+  /// In en, this message translates to:
+  /// **'Assignments'**
+  String get teacherShortcutAssignments;
+
+  /// No description provided for @teacherShortcutGrades.
+  ///
+  /// In en, this message translates to:
+  /// **'Grades'**
+  String get teacherShortcutGrades;
+
+  /// No description provided for @teacherShortcutAttendance.
+  ///
+  /// In en, this message translates to:
+  /// **'Attendance'**
+  String get teacherShortcutAttendance;
+
+  /// No description provided for @teacherGroupsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'My groups'**
+  String get teacherGroupsTitle;
+
+  /// No description provided for @teacherSectionMyGroups.
+  ///
+  /// In en, this message translates to:
+  /// **'Groups'**
+  String get teacherSectionMyGroups;
+
+  /// No description provided for @teacherGroupCs101.
+  ///
+  /// In en, this message translates to:
+  /// **'CS-101 · 28 students'**
+  String get teacherGroupCs101;
+
+  /// No description provided for @teacherGroupMath202.
+  ///
+  /// In en, this message translates to:
+  /// **'MATH-202 · 22 students'**
+  String get teacherGroupMath202;
+
+  /// No description provided for @teacherGroupPhysicsLab.
+  ///
+  /// In en, this message translates to:
+  /// **'PHYS-LAB · 18 students'**
+  String get teacherGroupPhysicsLab;
+
+  /// No description provided for @teacherScheduleTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'My schedule'**
+  String get teacherScheduleTitle;
+
+  /// No description provided for @teacherScheduleSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Today'**
+  String get teacherScheduleSubtitle;
+
+  /// No description provided for @teacherScheduleItem1Time.
+  ///
+  /// In en, this message translates to:
+  /// **'09:00 – 10:30'**
+  String get teacherScheduleItem1Time;
+
+  /// No description provided for @teacherScheduleItem1Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Higher Mathematics'**
+  String get teacherScheduleItem1Title;
+
+  /// No description provided for @teacherScheduleItem1Room.
+  ///
+  /// In en, this message translates to:
+  /// **'Aud. 402'**
+  String get teacherScheduleItem1Room;
+
+  /// No description provided for @teacherScheduleItem2Time.
+  ///
+  /// In en, this message translates to:
+  /// **'11:00 – 12:30'**
+  String get teacherScheduleItem2Time;
+
+  /// No description provided for @teacherScheduleItem2Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Programming workshop'**
+  String get teacherScheduleItem2Title;
+
+  /// No description provided for @teacherScheduleItem2Room.
+  ///
+  /// In en, this message translates to:
+  /// **'Comp. lab 1'**
+  String get teacherScheduleItem2Room;
+
+  /// No description provided for @teacherScheduleItem3Time.
+  ///
+  /// In en, this message translates to:
+  /// **'14:00 – 15:30'**
+  String get teacherScheduleItem3Time;
+
+  /// No description provided for @teacherScheduleItem3Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Physics'**
+  String get teacherScheduleItem3Title;
+
+  /// No description provided for @teacherScheduleItem3Room.
+  ///
+  /// In en, this message translates to:
+  /// **'Aud. 210'**
+  String get teacherScheduleItem3Room;
+
+  /// No description provided for @teacherWorkTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Teaching'**
+  String get teacherWorkTitle;
+
+  /// No description provided for @teacherSectionAssignments.
+  ///
+  /// In en, this message translates to:
+  /// **'Assignments and grading'**
+  String get teacherSectionAssignments;
+
+  /// No description provided for @teacherAssignments.
+  ///
+  /// In en, this message translates to:
+  /// **'Assignments'**
+  String get teacherAssignments;
+
+  /// No description provided for @teacherCheckWork.
+  ///
+  /// In en, this message translates to:
+  /// **'Review submissions'**
+  String get teacherCheckWork;
+
+  /// No description provided for @teacherSectionGradesAttendance.
+  ///
+  /// In en, this message translates to:
+  /// **'Grades and attendance'**
+  String get teacherSectionGradesAttendance;
+
+  /// No description provided for @teacherGrades.
+  ///
+  /// In en, this message translates to:
+  /// **'Grades'**
+  String get teacherGrades;
+
+  /// No description provided for @teacherAttendance.
+  ///
+  /// In en, this message translates to:
+  /// **'Attendance'**
+  String get teacherAttendance;
+
+  /// No description provided for @teacherRoleBadge.
+  ///
+  /// In en, this message translates to:
+  /// **'Teacher'**
+  String get teacherRoleBadge;
+
+  /// No description provided for @teacherSectionMore.
+  ///
+  /// In en, this message translates to:
+  /// **'Communication and profile'**
+  String get teacherSectionMore;
+
+  /// No description provided for @teacherMessages.
+  ///
+  /// In en, this message translates to:
+  /// **'Messages'**
+  String get teacherMessages;
+
+  /// No description provided for @teacherAnalytics.
+  ///
+  /// In en, this message translates to:
+  /// **'Analytics'**
+  String get teacherAnalytics;
+
+  /// No description provided for @teacherProfileSettings.
+  ///
+  /// In en, this message translates to:
+  /// **'Profile settings'**
+  String get teacherProfileSettings;
+
+  /// No description provided for @teacherDashOverviewTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Today\'s overview'**
+  String get teacherDashOverviewTitle;
+
+  /// No description provided for @teacherStatReachLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Students (your groups)'**
+  String get teacherStatReachLabel;
+
+  /// No description provided for @teacherStatGpaLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Avg. GPA (mock)'**
+  String get teacherStatGpaLabel;
+
+  /// No description provided for @teacherOfficeHoursLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Office hours'**
+  String get teacherOfficeHoursLabel;
+
+  /// No description provided for @teacherLoadMockTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Weekly teaching hours (mock)'**
+  String get teacherLoadMockTitle;
+
+  /// No description provided for @teacherFeedT1.
+  ///
+  /// In en, this message translates to:
+  /// **'CS-101 · 8 lab submissions awaiting review'**
+  String get teacherFeedT1;
+
+  /// No description provided for @teacherFeedT2.
+  ///
+  /// In en, this message translates to:
+  /// **'MTH-202 · Quiz graded · avg 78%'**
+  String get teacherFeedT2;
+
+  /// No description provided for @teacherFeedT3.
+  ///
+  /// In en, this message translates to:
+  /// **'PHY-LAB · Attendance marked for today'**
+  String get teacherFeedT3;
+
+  /// No description provided for @teacherRosterPreview.
+  ///
+  /// In en, this message translates to:
+  /// **'Roster preview (sample)'**
+  String get teacherRosterPreview;
+
+  /// No description provided for @teacherGroupSampleStu1.
+  ///
+  /// In en, this message translates to:
+  /// **'Alex Ivanov · submitted'**
+  String get teacherGroupSampleStu1;
+
+  /// No description provided for @teacherGroupSampleStu2.
+  ///
+  /// In en, this message translates to:
+  /// **'Maria Kim · pending'**
+  String get teacherGroupSampleStu2;
+
+  /// No description provided for @teacherGroupSampleStu3.
+  ///
+  /// In en, this message translates to:
+  /// **'Daniyar Ospan · late'**
+  String get teacherGroupSampleStu3;
+
+  /// No description provided for @teacherGroupsNextClass.
+  ///
+  /// In en, this message translates to:
+  /// **'Next class'**
+  String get teacherGroupsNextClass;
+
+  /// No description provided for @teacherScheduleBusyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Load by day (mock)'**
+  String get teacherScheduleBusyTitle;
+
+  /// No description provided for @teacherWorkDueTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Due soon'**
+  String get teacherWorkDueTitle;
+
+  /// No description provided for @teacherMockTaskLine1.
+  ///
+  /// In en, this message translates to:
+  /// **'Lab 4 · CS-101'**
+  String get teacherMockTaskLine1;
+
+  /// No description provided for @teacherMockTaskSub1.
+  ///
+  /// In en, this message translates to:
+  /// **'Due tomorrow · 28 students'**
+  String get teacherMockTaskSub1;
+
+  /// No description provided for @teacherMockTaskLine2.
+  ///
+  /// In en, this message translates to:
+  /// **'Quiz retake · MTH-202'**
+  String get teacherMockTaskLine2;
+
+  /// No description provided for @teacherMockTaskSub2.
+  ///
+  /// In en, this message translates to:
+  /// **'In 2 days · 22 students'**
+  String get teacherMockTaskSub2;
+
+  /// No description provided for @teacherMockTaskLine3.
+  ///
+  /// In en, this message translates to:
+  /// **'Course report · PHY-LAB'**
+  String get teacherMockTaskLine3;
+
+  /// No description provided for @teacherMockTaskSub3.
+  ///
+  /// In en, this message translates to:
+  /// **'May 18 · 18 students'**
+  String get teacherMockTaskSub3;
+
+  /// No description provided for @teacherGradeBlockTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Grades snapshot'**
+  String get teacherGradeBlockTitle;
+
+  /// No description provided for @teacherMockGradeLine1.
+  ///
+  /// In en, this message translates to:
+  /// **'CS-101 · class avg 4.1'**
+  String get teacherMockGradeLine1;
+
+  /// No description provided for @teacherMockGradeLine2.
+  ///
+  /// In en, this message translates to:
+  /// **'MTH-202 · class avg 3.7'**
+  String get teacherMockGradeLine2;
+
+  /// No description provided for @teacherAttYourGroupsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Attendance · your groups (mock)'**
+  String get teacherAttYourGroupsTitle;
+
+  /// No description provided for @teacherProfileQuickTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Shortcuts'**
+  String get teacherProfileQuickTitle;
+
+  /// No description provided for @teacherGroupOpenMock.
+  ///
+  /// In en, this message translates to:
+  /// **'Open group (mock)'**
+  String get teacherGroupOpenMock;
+
+  /// No description provided for @adminSystemOverviewTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'System overview'**
+  String get adminSystemOverviewTitle;
+
+  /// No description provided for @adminHealthGood.
+  ///
+  /// In en, this message translates to:
+  /// **'All systems operational'**
+  String get adminHealthGood;
+
+  /// No description provided for @adminHealthMeta.
+  ///
+  /// In en, this message translates to:
+  /// **'Last backup today · 04:32'**
+  String get adminHealthMeta;
+
+  /// No description provided for @adminMetricCpu.
+  ///
+  /// In en, this message translates to:
+  /// **'CPU'**
+  String get adminMetricCpu;
+
+  /// No description provided for @adminMetricMemory.
+  ///
+  /// In en, this message translates to:
+  /// **'RAM'**
+  String get adminMetricMemory;
+
+  /// No description provided for @adminMetricApi.
+  ///
+  /// In en, this message translates to:
+  /// **'API'**
+  String get adminMetricApi;
+
+  /// No description provided for @adminActivitySection.
+  ///
+  /// In en, this message translates to:
+  /// **'Recent activity'**
+  String get adminActivitySection;
+
+  /// No description provided for @adminFeed1.
+  ///
+  /// In en, this message translates to:
+  /// **'New enrollment · IIT-21'**
+  String get adminFeed1;
+
+  /// No description provided for @adminFeed2.
+  ///
+  /// In en, this message translates to:
+  /// **'Timetable published · week 14'**
+  String get adminFeed2;
+
+  /// No description provided for @adminFeed3.
+  ///
+  /// In en, this message translates to:
+  /// **'Security scan · no issues'**
+  String get adminFeed3;
+
+  /// No description provided for @adminQuickActionsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Quick actions'**
+  String get adminQuickActionsTitle;
+
+  /// No description provided for @adminLoadOverviewTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Weekly load (mock)'**
+  String get adminLoadOverviewTitle;
+
+  /// No description provided for @adminPeopleSummaryStudents.
+  ///
+  /// In en, this message translates to:
+  /// **'Students in directory'**
+  String get adminPeopleSummaryStudents;
+
+  /// No description provided for @adminPeopleSummaryTeachers.
+  ///
+  /// In en, this message translates to:
+  /// **'Teaching staff'**
+  String get adminPeopleSummaryTeachers;
+
+  /// No description provided for @adminTrendPositive.
+  ///
+  /// In en, this message translates to:
+  /// **'+{value}% this month'**
+  String adminTrendPositive(String value);
+
+  /// No description provided for @adminAcademicFeaturedGroups.
+  ///
+  /// In en, this message translates to:
+  /// **'Featured groups'**
+  String get adminAcademicFeaturedGroups;
+
+  /// No description provided for @adminMockGroup1.
+  ///
+  /// In en, this message translates to:
+  /// **'IIT-21 · 32 students'**
+  String get adminMockGroup1;
+
+  /// No description provided for @adminMockGroup2.
+  ///
+  /// In en, this message translates to:
+  /// **'MTH-09 · 28 students'**
+  String get adminMockGroup2;
+
+  /// No description provided for @adminMockGroup3.
+  ///
+  /// In en, this message translates to:
+  /// **'PHY-LAB · 18 students'**
+  String get adminMockGroup3;
+
+  /// No description provided for @adminSubjectsActiveLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Active subjects'**
+  String get adminSubjectsActiveLabel;
+
+  /// No description provided for @adminScheduleNextHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Next publish in 2 days'**
+  String get adminScheduleNextHint;
+
+  /// No description provided for @adminInsightsPassRate.
+  ///
+  /// In en, this message translates to:
+  /// **'Pass rate'**
+  String get adminInsightsPassRate;
+
+  /// No description provided for @adminInsightsAttendance.
+  ///
+  /// In en, this message translates to:
+  /// **'Avg. attendance'**
+  String get adminInsightsAttendance;
+
+  /// No description provided for @adminInsightsNotifications.
+  ///
+  /// In en, this message translates to:
+  /// **'Notifications (7d)'**
+  String get adminInsightsNotifications;
+
+  /// No description provided for @adminProfileSecurityScore.
+  ///
+  /// In en, this message translates to:
+  /// **'Security score'**
+  String get adminProfileSecurityScore;
+
+  /// No description provided for @adminMockSubjectCount.
+  ///
+  /// In en, this message translates to:
+  /// **'42 subjects'**
+  String get adminMockSubjectCount;
+
+  /// No description provided for @adminPeopleSearchHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Search by name or ID'**
+  String get adminPeopleSearchHint;
+
+  /// No description provided for @adminPeopleStudentsSample.
+  ///
+  /// In en, this message translates to:
+  /// **'Students (sample)'**
+  String get adminPeopleStudentsSample;
+
+  /// No description provided for @adminPeopleTeachersSample.
+  ///
+  /// In en, this message translates to:
+  /// **'Teachers (sample)'**
+  String get adminPeopleTeachersSample;
+
+  /// No description provided for @adminPeopleOpenMock.
+  ///
+  /// In en, this message translates to:
+  /// **'Open (mock)'**
+  String get adminPeopleOpenMock;
+
+  /// No description provided for @adminMockStudentLine1.
+  ///
+  /// In en, this message translates to:
+  /// **'Alex Ivanov · IIT-21 · 220104032'**
+  String get adminMockStudentLine1;
+
+  /// No description provided for @adminMockStudentLine2.
+  ///
+  /// In en, this message translates to:
+  /// **'Maria Kim · MTH-09 · 220108011'**
+  String get adminMockStudentLine2;
+
+  /// No description provided for @adminMockStudentLine3.
+  ///
+  /// In en, this message translates to:
+  /// **'Daniyar Ospan · PHY-LAB · 219902004'**
+  String get adminMockStudentLine3;
+
+  /// No description provided for @adminMockStudentLine4.
+  ///
+  /// In en, this message translates to:
+  /// **'Sophie Lee · IIT-21 · 221001015'**
+  String get adminMockStudentLine4;
+
+  /// No description provided for @adminMockTeacherLine1.
+  ///
+  /// In en, this message translates to:
+  /// **'Ivanov I. I. · Higher mathematics'**
+  String get adminMockTeacherLine1;
+
+  /// No description provided for @adminMockTeacherLine2.
+  ///
+  /// In en, this message translates to:
+  /// **'Nurpeisova A. · Programming'**
+  String get adminMockTeacherLine2;
+
+  /// No description provided for @adminGroupManageTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Group management'**
+  String get adminGroupManageTitle;
+
+  /// No description provided for @adminGroupMembers.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} members'**
+  String adminGroupMembers(int count);
+
+  /// No description provided for @adminMockCuratorShort.
+  ///
+  /// In en, this message translates to:
+  /// **'Curator assigned'**
+  String get adminMockCuratorShort;
+
+  /// No description provided for @adminAttWeekTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Attendance this week (mock)'**
+  String get adminAttWeekTitle;
+
+  /// No description provided for @adminAttTodayList.
+  ///
+  /// In en, this message translates to:
+  /// **'Today (sample)'**
+  String get adminAttTodayList;
+
+  /// No description provided for @adminMockAttLine1.
+  ///
+  /// In en, this message translates to:
+  /// **'Alex Ivanov · Present'**
+  String get adminMockAttLine1;
+
+  /// No description provided for @adminMockAttLine2.
+  ///
+  /// In en, this message translates to:
+  /// **'Maria Kim · Late 8 min'**
+  String get adminMockAttLine2;
+
+  /// No description provided for @adminMockAttLine3.
+  ///
+  /// In en, this message translates to:
+  /// **'Daniyar Ospan · Present'**
+  String get adminMockAttLine3;
+
+  /// No description provided for @adminMockAttLine4.
+  ///
+  /// In en, this message translates to:
+  /// **'Sophie Lee · Absent'**
+  String get adminMockAttLine4;
+
+  /// No description provided for @profileStudentCardName.
+  ///
+  /// In en, this message translates to:
+  /// **'Dana Karimova'**
+  String get profileStudentCardName;
+
+  /// No description provided for @profileStudentCardId.
+  ///
+  /// In en, this message translates to:
+  /// **'220887015'**
+  String get profileStudentCardId;
+
+  /// No description provided for @profileStudentCardEmail.
+  ///
+  /// In en, this message translates to:
+  /// **'dana.karimova@student.university.edu'**
+  String get profileStudentCardEmail;
+
+  /// No description provided for @loginDemoHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Demo: aruka@gmail.com (student), admin@student.manager (admin), teacher@student.manager (teacher) — password: password123'**
+  String get loginDemoHint;
 }
 
 class _AppLocalizationsDelegate

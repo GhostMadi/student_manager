@@ -551,4 +551,558 @@ class AppLocalizationsKk extends AppLocalizations {
 
   @override
   String get enterName => 'Аты-жөніңізді енгізіңіз';
+
+  @override
+  String get adminGreeting => 'Сәлеметсіз бе, әкімші';
+
+  @override
+  String get adminHomeSubtitle => 'Жүйенің шолуы және жылдам қол жеткізу';
+
+  @override
+  String get adminPeopleTitle => 'Пайдаланушыларды басқару';
+
+  @override
+  String get adminAcademicTitle => 'Оқу құрылымы';
+
+  @override
+  String get adminInsightsTitle => 'Талдау және байланыс';
+
+  @override
+  String get adminRoleBadge => 'Әкімші';
+
+  @override
+  String get adminSectionDashboard => 'Басты панель';
+
+  @override
+  String get adminDashHome => 'Басты бет';
+
+  @override
+  String get adminDashSystemStats => 'Жүйе статистикасы';
+
+  @override
+  String get adminDashStudentsCount => 'Студенттер саны';
+
+  @override
+  String get adminDashTeachersCount => 'Оқытушылар саны';
+
+  @override
+  String get adminDashGroupsCount => 'Топтар саны';
+
+  @override
+  String get adminDashUserActivity => 'Пайдаланушылар белсенділігі';
+
+  @override
+  String get adminDashRecentNotifications => 'Соңғы хабарландырулар';
+
+  @override
+  String get adminSectionStudents => 'Студенттерді басқару';
+
+  @override
+  String get adminStudentAdd => 'Студент қосу';
+
+  @override
+  String get adminStudentEdit => 'Студентті өңдеу';
+
+  @override
+  String get adminStudentDelete => 'Студентті жою';
+
+  @override
+  String get adminStudentSearch => 'Студенттерді іздеу';
+
+  @override
+  String get adminStudentList => 'Студенттер тізімі';
+
+  @override
+  String get adminStudentImport => 'Студенттерді импорттау';
+
+  @override
+  String get adminStudentExport => 'Деректерді экспорттау';
+
+  @override
+  String get adminSectionTeachers => 'Оқытушыларды басқару';
+
+  @override
+  String get adminTeacherAdd => 'Оқытушы қосу';
+
+  @override
+  String get adminTeacherEdit => 'Оқытушыны өңдеу';
+
+  @override
+  String get adminTeacherDelete => 'Оқытушыны жою';
+
+  @override
+  String get adminTeacherAssignSubject => 'Пән тағайындау';
+
+  @override
+  String get adminTeacherList => 'Оқытушылар тізімі';
+
+  @override
+  String get adminTeacherSearch => 'Оқытушыны іздеу';
+
+  @override
+  String get adminSectionGroups => 'Топтарды басқару';
+
+  @override
+  String get adminGroupCreate => 'Топ құру';
+
+  @override
+  String get adminGroupEdit => 'Топты өңдеу';
+
+  @override
+  String get adminGroupDelete => 'Топты жою';
+
+  @override
+  String get adminGroupAddStudents => 'Топқа студент қосу';
+
+  @override
+  String get adminGroupAssignCurator => 'Куратор тағайындау';
+
+  @override
+  String get adminSectionSubjects => 'Пәндерді басқару';
+
+  @override
+  String get adminSubjectAdd => 'Пән қосу';
+
+  @override
+  String get adminSubjectEdit => 'Пәнді өңдеу';
+
+  @override
+  String get adminSubjectDelete => 'Пәнді жою';
+
+  @override
+  String get adminSubjectAssignTeacher => 'Оқытушы тағайындау';
+
+  @override
+  String get adminSubjectList => 'Пәндер тізімі';
+
+  @override
+  String get adminSectionSchedule => 'Сабақ кестесі';
+
+  @override
+  String get adminScheduleCreate => 'Кесте құру';
+
+  @override
+  String get adminScheduleEdit => 'Кестені өңдеу';
+
+  @override
+  String get adminScheduleDelete => 'Кестені жою';
+
+  @override
+  String get adminScheduleAssignRoom => 'Аудитория тағайындау';
+
+  @override
+  String get adminScheduleAssignTeacher => 'Оқытушы тағайындау';
+
+  @override
+  String get adminScheduleView => 'Кестені қарау';
+
+  @override
+  String get adminSectionPerformance => 'Оқу үлгерімі';
+
+  @override
+  String get adminPerfViewGrades => 'Бағаларды қарау';
+
+  @override
+  String get adminPerfGpaStats => 'GPA статистикасы';
+
+  @override
+  String get adminPerfAnalytics => 'Оқу үлгерімі талдауы';
+
+  @override
+  String get adminPerfStudentReport => 'Студенттер бойынша есеп';
+
+  @override
+  String get adminPerfExportReports => 'Есептерді экспорттау';
+
+  @override
+  String get adminSectionAttendance => 'Қатысу';
+
+  @override
+  String get adminAttView => 'Қатысуды қарау';
+
+  @override
+  String get adminAttReport => 'Қатысу есебі';
+
+  @override
+  String get adminAttAbsenceStats => 'Қатыспау статистикасы';
+
+  @override
+  String get adminSectionNotifications => 'Хабарландырулар';
+
+  @override
+  String get adminNotifCreate => 'Хабарландыру құру';
+
+  @override
+  String get adminNotifSendMessage => 'Хабарлама жіберу';
+
+  @override
+  String get adminNotifBulk => 'Жаппай жіберу';
+
+  @override
+  String get adminNotifHistory => 'Хабарландыру тарихы';
+
+  @override
+  String get adminSectionSecurity => 'Қауіпсіздік';
+
+  @override
+  String get adminSecRoles => 'Рөлдерді басқару';
+
+  @override
+  String get adminSecResetPassword => 'Құпия сөзді қалпына келтіру';
+
+  @override
+  String get adminSecBlockUser => 'Пайдаланушыны бұғаттау';
+
+  @override
+  String get adminSecLoginHistory => 'Кіру тарихы';
+
+  @override
+  String get adminSecSettings => 'Қауіпсіздік баптаулары';
+
+  @override
+  String get teacherGreeting => 'Сәлеметсіз бе, оқытушы';
+
+  @override
+  String get teacherHomeSubtitle => 'Оқытушы жұмыс орны';
+
+  @override
+  String get teacherTodayClasses => 'Бүгінгі сабақтар';
+
+  @override
+  String get teacherPendingReviews => 'Тексерілетін жұмыстар';
+
+  @override
+  String get teacherSectionShortcuts => 'Жылдам әрекеттер';
+
+  @override
+  String get teacherShortcutMyGroups => 'Менің топтарым';
+
+  @override
+  String get teacherShortcutMySchedule => 'Менің кестем';
+
+  @override
+  String get teacherShortcutAssignments => 'Тапсырмалар';
+
+  @override
+  String get teacherShortcutGrades => 'Бағалар';
+
+  @override
+  String get teacherShortcutAttendance => 'Қатысу';
+
+  @override
+  String get teacherGroupsTitle => 'Менің топтарым';
+
+  @override
+  String get teacherSectionMyGroups => 'Топтар';
+
+  @override
+  String get teacherGroupCs101 => 'CS-101 · 28 студент';
+
+  @override
+  String get teacherGroupMath202 => 'MATH-202 · 22 студент';
+
+  @override
+  String get teacherGroupPhysicsLab => 'PHYS-LAB · 18 студент';
+
+  @override
+  String get teacherScheduleTitle => 'Менің кестем';
+
+  @override
+  String get teacherScheduleSubtitle => 'Бүгін';
+
+  @override
+  String get teacherScheduleItem1Time => '09:00 – 10:30';
+
+  @override
+  String get teacherScheduleItem1Title => 'Жоғары математика';
+
+  @override
+  String get teacherScheduleItem1Room => 'Ауд. 402';
+
+  @override
+  String get teacherScheduleItem2Time => '11:00 – 12:30';
+
+  @override
+  String get teacherScheduleItem2Title => 'Бағдарламалау семинары';
+
+  @override
+  String get teacherScheduleItem2Room => 'Комп. сынып 1';
+
+  @override
+  String get teacherScheduleItem3Time => '14:00 – 15:30';
+
+  @override
+  String get teacherScheduleItem3Title => 'Физика';
+
+  @override
+  String get teacherScheduleItem3Room => 'Ауд. 210';
+
+  @override
+  String get teacherWorkTitle => 'Оқыту';
+
+  @override
+  String get teacherSectionAssignments => 'Тапсырмалар және тексеру';
+
+  @override
+  String get teacherAssignments => 'Тапсырмалар';
+
+  @override
+  String get teacherCheckWork => 'Жұмыстарды тексеру';
+
+  @override
+  String get teacherSectionGradesAttendance => 'Бағалар және қатысу';
+
+  @override
+  String get teacherGrades => 'Бағалар';
+
+  @override
+  String get teacherAttendance => 'Қатысу';
+
+  @override
+  String get teacherRoleBadge => 'Оқытушы';
+
+  @override
+  String get teacherSectionMore => 'Хабарламалар және профиль';
+
+  @override
+  String get teacherMessages => 'Хабарламалар';
+
+  @override
+  String get teacherAnalytics => 'Талдау';
+
+  @override
+  String get teacherProfileSettings => 'Профиль баптаулары';
+
+  @override
+  String get teacherDashOverviewTitle => 'Бүгінгі шолу';
+
+  @override
+  String get teacherStatReachLabel => 'Студенттер (сіздің топтарыңыз)';
+
+  @override
+  String get teacherStatGpaLabel => 'Орта GPA (макет)';
+
+  @override
+  String get teacherOfficeHoursLabel => 'Кеңес сағаттары';
+
+  @override
+  String get teacherLoadMockTitle => 'Апталық сабақ сағаттары (макет)';
+
+  @override
+  String get teacherFeedT1 => 'CS-101 · 8 зертханалық тексеруде';
+
+  @override
+  String get teacherFeedT2 => 'MTH-202 · тест тексерілді · орта 78%';
+
+  @override
+  String get teacherFeedT3 => 'PHY-LAB · бүгінгі қатысу белгіленді';
+
+  @override
+  String get teacherRosterPreview => 'Тізім (мысал)';
+
+  @override
+  String get teacherGroupSampleStu1 => 'Алекс Иванов · тапсырды';
+
+  @override
+  String get teacherGroupSampleStu2 => 'Мария Ким · күтуде';
+
+  @override
+  String get teacherGroupSampleStu3 => 'Данияр Оспан · кешікті';
+
+  @override
+  String get teacherGroupsNextClass => 'Келесі сабақ';
+
+  @override
+  String get teacherScheduleBusyTitle => 'Күн бойынша жүктеме (макет)';
+
+  @override
+  String get teacherWorkDueTitle => 'Мерзімі жақын';
+
+  @override
+  String get teacherMockTaskLine1 => 'Зертх. 4 · CS-101';
+
+  @override
+  String get teacherMockTaskSub1 => 'Ертең · 28 студент';
+
+  @override
+  String get teacherMockTaskLine2 => 'Қайта тест · MTH-202';
+
+  @override
+  String get teacherMockTaskSub2 => '2 күннен кейін · 22 студент';
+
+  @override
+  String get teacherMockTaskLine3 => 'Курс есебі · PHY-LAB';
+
+  @override
+  String get teacherMockTaskSub3 => '18 мамыр · 18 студент';
+
+  @override
+  String get teacherGradeBlockTitle => 'Бағалар · қысқаша';
+
+  @override
+  String get teacherMockGradeLine1 => 'CS-101 · топ орт. 4.1';
+
+  @override
+  String get teacherMockGradeLine2 => 'MTH-202 · топ орт. 3.7';
+
+  @override
+  String get teacherAttYourGroupsTitle => 'Қатысу · сіздің топтарыңыз (макет)';
+
+  @override
+  String get teacherProfileQuickTitle => 'Жылдам әрекеттер';
+
+  @override
+  String get teacherGroupOpenMock => 'Топты ашу (макет)';
+
+  @override
+  String get adminSystemOverviewTitle => 'Жүйе шолуы';
+
+  @override
+  String get adminHealthGood => 'Барлық қызметтер дайын';
+
+  @override
+  String get adminHealthMeta => 'Соңғы сақтық көшірме бүгін · 04:32';
+
+  @override
+  String get adminMetricCpu => 'CPU';
+
+  @override
+  String get adminMetricMemory => 'ЖЖҚ';
+
+  @override
+  String get adminMetricApi => 'API';
+
+  @override
+  String get adminActivitySection => 'Соңғы белсенділік';
+
+  @override
+  String get adminFeed1 => 'Жаңа тіркелу · АТ-21';
+
+  @override
+  String get adminFeed2 => 'Сабақ кестесі жарияланды · 14 апта';
+
+  @override
+  String get adminFeed3 => 'Қауіпсіздік тексеруі · мәселе жоқ';
+
+  @override
+  String get adminQuickActionsTitle => 'Жылдам әрекеттер';
+
+  @override
+  String get adminLoadOverviewTitle => 'Апталық жүктеме (макет)';
+
+  @override
+  String get adminPeopleSummaryStudents => 'Анықтамалықтағы студенттер';
+
+  @override
+  String get adminPeopleSummaryTeachers => 'Оқытушылар';
+
+  @override
+  String adminTrendPositive(String value) {
+    return 'Осы айда +$value%';
+  }
+
+  @override
+  String get adminAcademicFeaturedGroups => 'Топтар';
+
+  @override
+  String get adminMockGroup1 => 'АТ-21 · 32 студент';
+
+  @override
+  String get adminMockGroup2 => 'МТ-09 · 28 студент';
+
+  @override
+  String get adminMockGroup3 => 'ФИЗ-ЛАБ · 18 студент';
+
+  @override
+  String get adminSubjectsActiveLabel => 'Белсенді пәндер';
+
+  @override
+  String get adminScheduleNextHint => 'Келесі жариялау 2 күннен кейін';
+
+  @override
+  String get adminInsightsPassRate => 'Сәтті оқу үлесі';
+
+  @override
+  String get adminInsightsAttendance => 'Орташа қатысу';
+
+  @override
+  String get adminInsightsNotifications => 'Хабарландырулар (7 күн)';
+
+  @override
+  String get adminProfileSecurityScore => 'Қауіпсіздік бағасы';
+
+  @override
+  String get adminMockSubjectCount => '42 пән';
+
+  @override
+  String get adminPeopleSearchHint => 'Аты немесе ID бойынша іздеу';
+
+  @override
+  String get adminPeopleStudentsSample => 'Студенттер (мысал)';
+
+  @override
+  String get adminPeopleTeachersSample => 'Оқытушылар (мысал)';
+
+  @override
+  String get adminPeopleOpenMock => 'Ашу (макет)';
+
+  @override
+  String get adminMockStudentLine1 => 'Алекс Иванов · АТ-21 · 220104032';
+
+  @override
+  String get adminMockStudentLine2 => 'Мария Ким · МТ-09 · 220108011';
+
+  @override
+  String get adminMockStudentLine3 => 'Данияр Оспан · ФИЗ-ЛАБ · 219902004';
+
+  @override
+  String get adminMockStudentLine4 => 'Софи Ли · АТ-21 · 221001015';
+
+  @override
+  String get adminMockTeacherLine1 => 'Иванов И. И. · Жоғары математика';
+
+  @override
+  String get adminMockTeacherLine2 => 'Нұрпейісова А. · Бағдарламалау';
+
+  @override
+  String get adminGroupManageTitle => 'Топтарды басқару';
+
+  @override
+  String adminGroupMembers(int count) {
+    return '$count студент';
+  }
+
+  @override
+  String get adminMockCuratorShort => 'Куратор тағайындалған';
+
+  @override
+  String get adminAttWeekTitle => 'Апталық қатысу (макет)';
+
+  @override
+  String get adminAttTodayList => 'Бүгін (мысал)';
+
+  @override
+  String get adminMockAttLine1 => 'Алекс Иванов · Қатысты';
+
+  @override
+  String get adminMockAttLine2 => 'Мария Ким · 8 мин кешікті';
+
+  @override
+  String get adminMockAttLine3 => 'Данияр Оспан · Қатысты';
+
+  @override
+  String get adminMockAttLine4 => 'Софи Ли · Қатыспады';
+
+  @override
+  String get profileStudentCardName => 'Дана Каримова';
+
+  @override
+  String get profileStudentCardId => '220887015';
+
+  @override
+  String get profileStudentCardEmail => 'dana.karimova@student.university.edu';
+
+  @override
+  String get loginDemoHint =>
+      'Демо: aruka@gmail.com (студент), admin@student.manager (әкімші), teacher@student.manager (оқытушы) — құпия сөз: password123';
 }
