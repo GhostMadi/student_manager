@@ -90,6 +90,105 @@ class AppLocalizationsKk extends AppLocalizations {
   String get saveAndLogin => 'Сақтау және кіру';
 
   @override
+  String get registerSuccess => 'Аккаунт сәтті жасалды!';
+
+  @override
+  String get registerError => 'Аккаунт жасау мүмкін болмады';
+
+  @override
+  String get resetEmailSent =>
+      'Құпия сөзді қалпына келтіру хаты жіберілді. Поштаны тексеріңіз.';
+
+  @override
+  String get resetEmailSpamHint =>
+      'Хат 2–3 минут ішінде келмесе, Спам/Жарнама қалталарын тексеріңіз. Жіберуші: noreply@*.firebaseapp.com. Тіркелген email-ді қолданыңыз.';
+
+  @override
+  String get resetEmailSuccessTitle => 'Поштаны тексеріңіз';
+
+  @override
+  String resetEmailSuccessMessage(String email) {
+    return 'Құпия сөзді қалпына келтіру сілтемесін $email адресіне жібердік. Хатты ашып, жаңа құпия сөзді орнатыңыз.';
+  }
+
+  @override
+  String get backToLogin => 'Кіруге оралу';
+
+  @override
+  String get resetCodeHint =>
+      'Хаттағы сілтемеден қалпына келтіру кодын қойыңыз';
+
+  @override
+  String get resetCodeLabel => 'Қалпына келтіру коды';
+
+  @override
+  String get passwordResetSuccess => 'Құпия сөз сәтті жаңартылды!';
+
+  @override
+  String get invalidResetCode => 'Қате немесе мерзімі өткен код';
+
+  @override
+  String get emailAlreadyInUse => 'Бұл email тіркелген';
+
+  @override
+  String get emailAlreadyInUseOtherPassword =>
+      'Бұл email басқа құпия сөзбен тіркелген. Дұрыс құпия сөзді енгізіңіз немесе басқа email қолданыңыз.';
+
+  @override
+  String get cannotModifyAdmin => 'Әкімші есебін өзгертуге болмайды.';
+
+  @override
+  String get userNotFound => 'Бұл email бойынша аккаунт табылмады';
+
+  @override
+  String get authGenericError => 'Бірдеңе дұрыс болмады. Қайта көріңіз.';
+
+  @override
+  String get createAdminButton => 'Әкімшіні жасау';
+
+  @override
+  String get adminCreatedSuccess => 'Әкімші аккаунты сәтті жасалды';
+
+  @override
+  String get adminAlreadyExists =>
+      'Әкімші бар. Тек бір әкімшіге рұқсат етіледі.';
+
+  @override
+  String get adminUserAddedSuccess => 'Пайдаланушы жасалды';
+
+  @override
+  String get adminCuratorAssignedSuccess => 'Куратор топқа тағайындалды';
+
+  @override
+  String get adminNoStudents => 'Студенттер жоқ';
+
+  @override
+  String get adminNoTeachers => 'Кураторлар жоқ';
+
+  @override
+  String get adminAddStudentTitle => 'Студент қосу';
+
+  @override
+  String get adminAddCuratorTitle => 'Куратор қосу';
+
+  @override
+  String get adminSelectCuratorTitle => 'Кураторды таңдаңыз';
+
+  @override
+  String get adminCuratorNotAssigned => 'Куратор тағайындалмаған';
+
+  @override
+  String get adminDefaultPasswordHint => 'Әдепкі құпия сөз: Student123!';
+
+  @override
+  String get profileNotFound =>
+      'Пайдаланушы профилі табылмады. Әкімшіге хабарласыңыз.';
+
+  @override
+  String get firestorePermissionDenied =>
+      'Firestore қолжетімділігі жоқ. Firebase ережелерін тексеріп, жариялаңыз.';
+
+  @override
   String get scheduleTitle => 'Сабақ кестесі';
 
   @override
@@ -264,6 +363,120 @@ class AppLocalizationsKk extends AppLocalizations {
 
   @override
   String get overallGpa => 'Жалпы GPA';
+
+  @override
+  String get noGradesYet =>
+      'Бағалар әлі жоқ. Оқытушы тапсырмаларды тексергеннен кейін қояды.';
+
+  @override
+  String get gradeAddedSuccess => 'Баға сақталды';
+
+  @override
+  String get assignmentsTitle => 'Тапсырмалар';
+
+  @override
+  String get studentNoGroupAssigned => 'Сіз әлі топқа қосылмағансыз';
+
+  @override
+  String get noAssignmentsYet => 'Тапсырмалар әлі жоқ';
+
+  @override
+  String get submissionGraded => 'Бағаланды';
+
+  @override
+  String get submissionSubmitted => 'Тапсырылды';
+
+  @override
+  String get submissionDraft => 'Тапсырылмаған';
+
+  @override
+  String get workSubmittedSuccess => 'Жұмыс сәтті жіберілді';
+
+  @override
+  String get noDescription => 'Сипаттama жоқ';
+
+  @override
+  String get teacherFeedback => 'Оқытушы пікірі';
+
+  @override
+  String get yourAnswerLabel => 'Сіздің жауабыңыз';
+
+  @override
+  String get submitWorkButton => 'Жұмысты тапсыру';
+
+  @override
+  String get emptyAnswerError => 'Жауапты енгізіңіз';
+
+  @override
+  String get teacherCreateAssignmentTitle => 'Тапсырма жасау';
+
+  @override
+  String get teacherPendingSubmissionsTitle => 'Тексерудегі жұмыстар';
+
+  @override
+  String get assignmentCreatedSuccess => 'Тапсырма жасалды';
+
+  @override
+  String get assignmentTitleLabel => 'Тапсырма атауы';
+
+  @override
+  String get assignmentDescriptionLabel => 'Сипаттама';
+
+  @override
+  String get assignmentDueDateLabel => 'Мерзімі';
+
+  @override
+  String get feedbackLabel => 'Пікір';
+
+  @override
+  String get createAssignmentButton => 'Тапсырма жасау';
+
+  @override
+  String get gradeSubmissionButton => 'Баға қою';
+
+  @override
+  String get noPendingSubmissions => 'Тексерудегі жұмыстар жоқ';
+
+  @override
+  String gradeSubmissionFor(String name) {
+    return '$name үшін баға';
+  }
+
+  @override
+  String get viewAnswerLabel => 'Студент жауабы';
+
+  @override
+  String get gradeWorkNameLabel => 'Тапсырма атауы (міндетті емес)';
+
+  @override
+  String get teacherAddGrade => 'Баға қою';
+
+  @override
+  String teacherAddGradeFor(String name) {
+    return '$name үшін баға';
+  }
+
+  @override
+  String get teacherNoGroupsAssigned =>
+      'Сізге топтар тағайындалмаған. Әкімшіден куратор ретінде тағайындауды сұраңыз.';
+
+  @override
+  String get teacherCuratorYouBadge => 'Сіз осы топтың кураторысыз';
+
+  @override
+  String get teacherSelectGroup => 'Топты таңдаңыз';
+
+  @override
+  String get adminAddStudentToGroup => 'Топқа студент қосу';
+
+  @override
+  String get adminAllStudentsAssigned => 'Барлық студенттер осы топта';
+
+  @override
+  String get adminStudentAssignedSuccess => 'Студент топқа қосылды';
+
+  @override
+  String get adminStudentRemovedSuccess => 'Студент топтан алынды';
 
   @override
   String get topPercentage => 'Топ 5%';
@@ -506,36 +719,36 @@ class AppLocalizationsKk extends AppLocalizations {
   String get enterEmail => 'Поштаны енгізіңіз';
 
   @override
-  String get enterCode => 'Enter the code sent to your email';
+  String get enterCode => 'Поштаңызға жіберілген кодты енгізіңіз';
 
   @override
-  String get enterNewPassword => 'Enter your new password';
+  String get enterNewPassword => 'Жаңа құпия сөзді енгізіңіз';
 
   @override
-  String get confirmNewPassword => 'Confirm your new password';
+  String get confirmNewPassword => 'Жаңа құпия сөзді растаңыз';
 
   @override
-  String get sendCode => 'Send code';
+  String get sendCode => 'Кодты жіберу';
 
   @override
-  String get confirm => 'Confirm';
+  String get confirm => 'Растау';
 
   @override
-  String get emailValidationError => 'Please enter a valid email address';
+  String get emailValidationError => 'Дұрыс email енгізіңіз';
 
   @override
   String get passwordValidationError =>
-      'Password must be at least 8 characters long and include a number and a special character';
+      'Құпия сөз кемінде 8 таңбадан тұруы және сандар мен арнайы таңбаларды қамтуы керек';
 
   @override
-  String get confirmPasswordValidationError => 'Passwords do not match';
+  String get confirmPasswordValidationError => 'Құпия сөздер сәйкес келмейді';
 
   @override
-  String get fullNameValidationError => 'Please enter your full name';
+  String get fullNameValidationError => 'Толық аты-жөніңізді енгізіңіз';
 
   @override
   String get unexpectedError =>
-      'An unexpected error occurred. Please try again later.';
+      'Күтпеген қате орын алды. Кейінірек қайталап көріңіз.';
 
   @override
   String get invalidEmailFormat => 'Почта форматы дұрыс емес';
@@ -656,6 +869,35 @@ class AppLocalizationsKk extends AppLocalizations {
 
   @override
   String get adminGroupAssignCurator => 'Куратор тағайындау';
+
+  @override
+  String get adminGroupNameLabel => 'Топ атауы';
+
+  @override
+  String get adminGroupNameRequired => 'Топ атауын енгізіңіз';
+
+  @override
+  String get adminGroupCreatedSuccess => 'Топ құрылды';
+
+  @override
+  String get adminGroupUpdatedSuccess => 'Топ жаңартылды';
+
+  @override
+  String get adminGroupDeletedSuccess => 'Топ жойылды';
+
+  @override
+  String get adminCuratorRemovedSuccess => 'Куратор топтан алынды';
+
+  @override
+  String get adminRemoveCurator => 'Кураторды алу';
+
+  @override
+  String get adminNoGroups => 'Топтар әлі жоқ. «Топ құру» батырмасын басыңыз.';
+
+  @override
+  String adminDeleteGroupConfirm(String name) {
+    return '«$name» тобын жою керек пе? Студенттер топтан босатылады.';
+  }
 
   @override
   String get adminSectionSubjects => 'Пәндерді басқару';

@@ -683,6 +683,7 @@ class AdminGroupManagementCard extends StatelessWidget {
     required this.onCurator,
     required this.onDelete,
     this.highlight = false,
+    this.showCuratorButton = true,
   });
 
   final String title;
@@ -697,6 +698,7 @@ class AdminGroupManagementCard extends StatelessWidget {
   final VoidCallback onCurator;
   final VoidCallback onDelete;
   final bool highlight;
+  final bool showCuratorButton;
 
   @override
   Widget build(BuildContext context) {
@@ -761,7 +763,8 @@ class AdminGroupManagementCard extends StatelessWidget {
               children: [
                 _actionBtn(icon: Icons.edit_outlined, label: editLabel, onTap: onEdit, highlight: highlight),
                 _actionBtn(icon: Icons.group_add_outlined, label: rosterLabel, onTap: onRoster, highlight: highlight),
-                _actionBtn(icon: Icons.supervisor_account_outlined, label: curatorLabel, onTap: onCurator, highlight: highlight),
+                if (showCuratorButton)
+                  _actionBtn(icon: Icons.supervisor_account_outlined, label: curatorLabel, onTap: onCurator, highlight: highlight),
                 _actionBtn(icon: Icons.delete_outline_rounded, label: deleteLabel, onTap: onDelete, highlight: highlight),
               ],
             ),

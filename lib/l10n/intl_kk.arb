@@ -26,6 +26,43 @@
     "newPasswordField": "Жаңа құпия сөз",
     "repeatPasswordField": "Құпия сөзді қайталаңыз",
     "saveAndLogin": "Сақтау және кіру",
+    "registerSuccess": "Аккаунт сәтті жасалды!",
+    "registerError": "Аккаунт жасау мүмкін болмады",
+    "resetEmailSent": "Құпия сөзді қалпына келтіру хаты жіберілді. Поштаны тексеріңіз.",
+    "resetEmailSpamHint": "Хат 2–3 минут ішінде келмесе, Спам/Жарнама қалталарын тексеріңіз. Жіберуші: noreply@*.firebaseapp.com. Тіркелген email-ді қолданыңыз.",
+    "resetEmailSuccessTitle": "Поштаны тексеріңіз",
+    "resetEmailSuccessMessage": "Құпия сөзді қалпына келтіру сілтемесін {email} адресіне жібердік. Хатты ашып, жаңа құпия сөзді орнатыңыз.",
+    "@resetEmailSuccessMessage": {
+        "placeholders": {
+            "email": {
+                "type": "String"
+            }
+        }
+    },
+    "backToLogin": "Кіруге оралу",
+    "resetCodeHint": "Хаттағы сілтемеден қалпына келтіру кодын қойыңыз",
+    "resetCodeLabel": "Қалпына келтіру коды",
+    "passwordResetSuccess": "Құпия сөз сәтті жаңартылды!",
+    "invalidResetCode": "Қате немесе мерзімі өткен код",
+    "emailAlreadyInUse": "Бұл email тіркелген",
+    "emailAlreadyInUseOtherPassword": "Бұл email басқа құпия сөзбен тіркелген. Дұрыс құпия сөзді енгізіңіз немесе басқа email қолданыңыз.",
+    "cannotModifyAdmin": "Әкімші есебін өзгертуге болмайды.",
+    "userNotFound": "Бұл email бойынша аккаунт табылмады",
+    "authGenericError": "Бірдеңе дұрыс болмады. Қайта көріңіз.",
+    "createAdminButton": "Әкімшіні жасау",
+    "adminCreatedSuccess": "Әкімші аккаунты сәтті жасалды",
+    "adminAlreadyExists": "Әкімші бар. Тек бір әкімшіге рұқсат етіледі.",
+    "adminUserAddedSuccess": "Пайдаланушы жасалды",
+    "adminCuratorAssignedSuccess": "Куратор топқа тағайындалды",
+    "adminNoStudents": "Студенттер жоқ",
+    "adminNoTeachers": "Кураторлар жоқ",
+    "adminAddStudentTitle": "Студент қосу",
+    "adminAddCuratorTitle": "Куратор қосу",
+    "adminSelectCuratorTitle": "Кураторды таңдаңыз",
+    "adminCuratorNotAssigned": "Куратор тағайындалмаған",
+    "adminDefaultPasswordHint": "Әдепкі құпия сөз: Student123!",
+    "profileNotFound": "Пайдаланушы профилі табылмады. Әкімшіге хабарласыңыз.",
+    "firestorePermissionDenied": "Firestore қолжетімділігі жоқ. Firebase ережелерін тексеріп, жариялаңыз.",
     "scheduleTitle": "Сабақ кестесі",
     "editText": "Өңдеу",
     "deleteText": "Өшіру",
@@ -83,6 +120,56 @@
     "security": "Қауіпсіздік",
     "logOut": "Жүйеден шығу",
     "overallGpa": "Жалпы GPA",
+    "noGradesYet": "Бағалар әлі жоқ. Оқытушы тапсырмаларды тексергеннен кейін қояды.",
+    "gradeAddedSuccess": "Баға сақталды",
+    "assignmentsTitle": "Тапсырмалар",
+    "studentNoGroupAssigned": "Сіз әлі топқа қосылмағансыз",
+    "noAssignmentsYet": "Тапсырмалар әлі жоқ",
+    "submissionGraded": "Бағаланды",
+    "submissionSubmitted": "Тапсырылды",
+    "submissionDraft": "Тапсырылмаған",
+    "workSubmittedSuccess": "Жұмыс сәтті жіберілді",
+    "noDescription": "Сипаттama жоқ",
+    "teacherFeedback": "Оқытушы пікірі",
+    "yourAnswerLabel": "Сіздің жауабыңыз",
+    "submitWorkButton": "Жұмысты тапсыру",
+    "emptyAnswerError": "Жауапты енгізіңіз",
+    "teacherCreateAssignmentTitle": "Тапсырма жасау",
+    "teacherPendingSubmissionsTitle": "Тексерудегі жұмыстар",
+    "assignmentCreatedSuccess": "Тапсырма жасалды",
+    "assignmentTitleLabel": "Тапсырма атауы",
+    "assignmentDescriptionLabel": "Сипаттама",
+    "assignmentDueDateLabel": "Мерзімі",
+    "feedbackLabel": "Пікір",
+    "createAssignmentButton": "Тапсырма жасау",
+    "gradeSubmissionButton": "Баға қою",
+    "noPendingSubmissions": "Тексерудегі жұмыстар жоқ",
+    "gradeSubmissionFor": "{name} үшін баға",
+    "@gradeSubmissionFor": {
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "viewAnswerLabel": "Студент жауабы",
+    "gradeWorkNameLabel": "Тапсырма атауы (міндетті емес)",
+    "teacherAddGrade": "Баға қою",
+    "teacherAddGradeFor": "{name} үшін баға",
+    "@teacherAddGradeFor": {
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "teacherNoGroupsAssigned": "Сізге топтар тағайындалмаған. Әкімшіден куратор ретінде тағайындауды сұраңыз.",
+    "teacherCuratorYouBadge": "Сіз осы топтың кураторысыз",
+    "teacherSelectGroup": "Топты таңдаңыз",
+    "adminAddStudentToGroup": "Топқа студент қосу",
+    "adminAllStudentsAssigned": "Барлық студенттер осы топта",
+    "adminStudentAssignedSuccess": "Студент топқа қосылды",
+    "adminStudentRemovedSuccess": "Студент топтан алынды",
     "topPercentage": "Топ 5%",
     "idLabel": "ID: {id}",
     "nameLabel": "Есімі",
@@ -212,6 +299,16 @@
         }
     },
     "enterEmail":"Поштаны енгізіңіз",
+    "enterCode":"Поштаңызға жіберілген кодты енгізіңіз",
+    "enterNewPassword":"Жаңа құпия сөзді енгізіңіз",
+    "confirmNewPassword":"Жаңа құпия сөзді растаңыз",
+    "sendCode":"Кодты жіберу",
+    "confirm":"Растау",
+    "emailValidationError":"Дұрыс email енгізіңіз",
+    "passwordValidationError":"Құпия сөз кемінде 8 таңбадан тұруы және сандар мен арнайы таңбаларды қамтуы керек",
+    "confirmPasswordValidationError":"Құпия сөздер сәйкес келмейді",
+    "fullNameValidationError":"Толық аты-жөніңізді енгізіңіз",
+    "unexpectedError":"Күтпеген қате орын алды. Кейінірек қайталап көріңіз.",
     "enterPassword":"Құпия сөзді енгізіңіз",
     "enterFullName":"Толық аты-жөніңізді енгізіңіз",
     "enterConfirmPassword":"Құпия сөзді растаңыз",
@@ -219,7 +316,6 @@
     "enterDeadline":"Дедлайнды енгізіңіз (мысалы: 2024-12-31)",
     "enterScore":"Баллды енгізіңіз (0-100)" ,
        "invalidEmailFormat":"Почта форматы дұрыс емес",
-    "enterPassword":"Құпия сөзді енгізіңіз",
     "passwordTooShort":"Құпия сөз тым қысқа",
     "passwordsDoNotMatch":"Құпия сөздер сәйкес келмейді",
     "enterName": "Аты-жөніңізді енгізіңіз",
@@ -258,6 +354,22 @@
     "adminGroupDelete": "Топты жою",
     "adminGroupAddStudents": "Топқа студент қосу",
     "adminGroupAssignCurator": "Куратор тағайындау",
+    "adminGroupNameLabel": "Топ атауы",
+    "adminGroupNameRequired": "Топ атауын енгізіңіз",
+    "adminGroupCreatedSuccess": "Топ құрылды",
+    "adminGroupUpdatedSuccess": "Топ жаңартылды",
+    "adminGroupDeletedSuccess": "Топ жойылды",
+    "adminCuratorRemovedSuccess": "Куратор топтан алынды",
+    "adminRemoveCurator": "Кураторды алу",
+    "adminNoGroups": "Топтар әлі жоқ. «Топ құру» батырмасын басыңыз.",
+    "adminDeleteGroupConfirm": "«{name}» тобын жою керек пе? Студенттер топтан босатылады.",
+    "@adminDeleteGroupConfirm": {
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
     "adminSectionSubjects": "Пәндерді басқару",
     "adminSubjectAdd": "Пән қосу",
     "adminSubjectEdit": "Пәнді өңдеу",

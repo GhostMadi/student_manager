@@ -90,6 +90,103 @@ class AppLocalizationsEn extends AppLocalizations {
   String get saveAndLogin => 'Save and login';
 
   @override
+  String get registerSuccess => 'Account created successfully!';
+
+  @override
+  String get registerError => 'Could not create account';
+
+  @override
+  String get resetEmailSent => 'Password reset email sent. Check your inbox.';
+
+  @override
+  String get resetEmailSpamHint =>
+      'If you don\'t see it in 2–3 minutes, check Spam/Promotions. Look for an email from noreply@*.firebaseapp.com. Use the exact email you registered with.';
+
+  @override
+  String get resetEmailSuccessTitle => 'Check your email';
+
+  @override
+  String resetEmailSuccessMessage(String email) {
+    return 'We sent a password reset link to $email. Open the email and follow the link to set a new password.';
+  }
+
+  @override
+  String get backToLogin => 'Back to login';
+
+  @override
+  String get resetCodeHint => 'Paste the reset code from the email link';
+
+  @override
+  String get resetCodeLabel => 'Reset code';
+
+  @override
+  String get passwordResetSuccess => 'Password updated successfully!';
+
+  @override
+  String get invalidResetCode => 'Invalid or expired reset code';
+
+  @override
+  String get emailAlreadyInUse => 'This email is already registered';
+
+  @override
+  String get emailAlreadyInUseOtherPassword =>
+      'This email is already registered with a different password. Use the correct password or another email.';
+
+  @override
+  String get cannotModifyAdmin => 'Cannot change the administrator account.';
+
+  @override
+  String get userNotFound => 'No account found with this email';
+
+  @override
+  String get authGenericError => 'Something went wrong. Please try again.';
+
+  @override
+  String get createAdminButton => 'Create admin account';
+
+  @override
+  String get adminCreatedSuccess => 'Admin account created successfully';
+
+  @override
+  String get adminAlreadyExists =>
+      'Admin already exists. Only one administrator is allowed.';
+
+  @override
+  String get adminUserAddedSuccess => 'User created successfully';
+
+  @override
+  String get adminCuratorAssignedSuccess => 'Curator assigned to group';
+
+  @override
+  String get adminNoStudents => 'No students yet';
+
+  @override
+  String get adminNoTeachers => 'No curators yet';
+
+  @override
+  String get adminAddStudentTitle => 'Add student';
+
+  @override
+  String get adminAddCuratorTitle => 'Add curator';
+
+  @override
+  String get adminSelectCuratorTitle => 'Select curator';
+
+  @override
+  String get adminCuratorNotAssigned => 'Curator not assigned';
+
+  @override
+  String get adminDefaultPasswordHint => 'Default password: Student123!';
+
+  @override
+  String get profileNotFound =>
+      'User profile not found. Contact administrator.';
+
+  @override
+  String get firestorePermissionDenied =>
+      'Firestore access denied. Check Firebase rules and publish them.';
+
+  @override
   String get scheduleTitle => 'Schedule';
 
   @override
@@ -264,6 +361,121 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get overallGpa => 'Overall GPA';
+
+  @override
+  String get noGradesYet =>
+      'No grades yet. Your teacher will add them after assignments are graded.';
+
+  @override
+  String get gradeAddedSuccess => 'Grade saved successfully';
+
+  @override
+  String get assignmentsTitle => 'Assignments';
+
+  @override
+  String get studentNoGroupAssigned => 'You are not assigned to a group yet';
+
+  @override
+  String get noAssignmentsYet => 'No assignments yet';
+
+  @override
+  String get submissionGraded => 'Graded';
+
+  @override
+  String get submissionSubmitted => 'Submitted';
+
+  @override
+  String get submissionDraft => 'Not submitted';
+
+  @override
+  String get workSubmittedSuccess => 'Work submitted successfully';
+
+  @override
+  String get noDescription => 'No description';
+
+  @override
+  String get teacherFeedback => 'Teacher feedback';
+
+  @override
+  String get yourAnswerLabel => 'Your answer';
+
+  @override
+  String get submitWorkButton => 'Submit work';
+
+  @override
+  String get emptyAnswerError => 'Please enter your answer';
+
+  @override
+  String get teacherCreateAssignmentTitle => 'Create assignment';
+
+  @override
+  String get teacherPendingSubmissionsTitle => 'Pending submissions';
+
+  @override
+  String get assignmentCreatedSuccess => 'Assignment created';
+
+  @override
+  String get assignmentTitleLabel => 'Assignment title';
+
+  @override
+  String get assignmentDescriptionLabel => 'Description';
+
+  @override
+  String get assignmentDueDateLabel => 'Due date';
+
+  @override
+  String get feedbackLabel => 'Feedback';
+
+  @override
+  String get createAssignmentButton => 'Create assignment';
+
+  @override
+  String get gradeSubmissionButton => 'Grade';
+
+  @override
+  String get noPendingSubmissions => 'No pending submissions';
+
+  @override
+  String gradeSubmissionFor(String name) {
+    return 'Grade $name';
+  }
+
+  @override
+  String get viewAnswerLabel => 'Student answer';
+
+  @override
+  String get gradeWorkNameLabel => 'Assignment name (optional)';
+
+  @override
+  String get teacherAddGrade => 'Add grade';
+
+  @override
+  String teacherAddGradeFor(String name) {
+    return 'Grade for $name';
+  }
+
+  @override
+  String get teacherNoGroupsAssigned =>
+      'No groups assigned to you yet. Ask the administrator to assign you as a curator.';
+
+  @override
+  String get teacherCuratorYouBadge => 'You are the curator of this group';
+
+  @override
+  String get teacherSelectGroup => 'Select group';
+
+  @override
+  String get adminAddStudentToGroup => 'Add student to group';
+
+  @override
+  String get adminAllStudentsAssigned =>
+      'All students are already in this group';
+
+  @override
+  String get adminStudentAssignedSuccess => 'Student added to group';
+
+  @override
+  String get adminStudentRemovedSuccess => 'Student removed from group';
 
   @override
   String get topPercentage => 'Top 5%';
@@ -659,6 +871,35 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get adminGroupAssignCurator => 'Assign curator';
+
+  @override
+  String get adminGroupNameLabel => 'Group name';
+
+  @override
+  String get adminGroupNameRequired => 'Enter group name';
+
+  @override
+  String get adminGroupCreatedSuccess => 'Group created';
+
+  @override
+  String get adminGroupUpdatedSuccess => 'Group updated';
+
+  @override
+  String get adminGroupDeletedSuccess => 'Group deleted';
+
+  @override
+  String get adminCuratorRemovedSuccess => 'Curator removed from group';
+
+  @override
+  String get adminRemoveCurator => 'Remove curator';
+
+  @override
+  String get adminNoGroups => 'No groups yet. Tap \"Create group\" to add one.';
+
+  @override
+  String adminDeleteGroupConfirm(String name) {
+    return 'Delete group \"$name\"? Students will be unassigned from this group.';
+  }
 
   @override
   String get adminSectionSubjects => 'Subject management';

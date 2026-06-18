@@ -2,13 +2,14 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:student_manager/core/auth/logout_helper.dart';
 import 'package:student_manager/core/colors/app_colors.dart';
 import 'package:student_manager/core/extension/context.dart';
 import 'package:student_manager/core/router/app_router.dart';
-import 'package:student_manager/core/storage/storage_service.dart';
 import 'package:student_manager/core/style/app_text_style.dart';
 import 'package:student_manager/core/widgets/button.dart';
 import 'package:student_manager/feature/language/language_cubit.dart';
+import 'package:student_manager/feature/student/grades/presentation/cubit/student_grades_cubit.dart';
 
 @RoutePage()
 class ProfilePage extends StatefulWidget {
@@ -21,12 +22,7 @@ class ProfilePage extends StatefulWidget {
 class _ProfilePageState extends State<ProfilePage> {
   static const _avatarUrl = 'https://picsum.photos/seed/studentprofile/400/400';
 
-  void _handleLogout() async {
-    await StorageService.instance.logout();
-    if (!mounted) return;
-
-    context.router.replace(const LoginRoute());
-  }
+  Future<void> _handleLogout() => logoutAndGoToLogin(context);
 
   void _showLanguageSelector() {
     final cubit = context.read<LanguageCubit>();
@@ -158,36 +154,41 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget _buildGpaCard() {
     final l10n = context.l10n;
 
-    return GestureDetector(
-      onTap: () {
-        context.tabsRouter.setActiveIndex(1);
-      },
-      child: Container(
-        width: double.infinity,
-        padding: const EdgeInsets.all(20),
-        decoration: BoxDecoration(color: AppColors.deepBlack, borderRadius: BorderRadius.circular(24)),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+    return BlocBuilder<StudentGradesCubit, StudentGradesState>(
+      builder: (context, gradesState) {
+        return GestureDetector(
+          onTap: () => context.tabsRouter.setActiveIndex(1),
+          child: Container(
+            width: double.infinity,
+            padding: const EdgeInsets.all(20),
+            decoration: BoxDecoration(color: AppColors.deepBlack, borderRadius: BorderRadius.circular(24)),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(l10n.overallGpa, style: AppTextStyles.caption.copyWith(color: Colors.white70)),
-                const SizedBox(height: 4),
-                Text('4.46', style: AppTextStyles.h1.copyWith(color: Colors.white, fontSize: 32)),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(l10n.overallGpa, style: AppTextStyles.caption.copyWith(color: Colors.white70)),
+                    const SizedBox(height: 4),
+                    Text(
+                      gradesState.overallGpa.toStringAsFixed(2),
+                      style: AppTextStyles.h1.copyWith(color: Colors.white, fontSize: 32),
+                    ),
+                  ],
+                ),
+                Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                  decoration: BoxDecoration(
+                    color: AppColors.primaryOrange,
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Text(l10n.topPercentage, style: AppTextStyles.button.copyWith(fontSize: 12)),
+                ),
               ],
             ),
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-              decoration: BoxDecoration(
-                color: AppColors.primaryOrange,
-                borderRadius: BorderRadius.circular(12),
-              ),
-              child: Text(l10n.topPercentage, style: AppTextStyles.button.copyWith(fontSize: 12)),
-            ),
-          ],
-        ),
-      ),
+          ),
+        );
+      },
     );
   }
 

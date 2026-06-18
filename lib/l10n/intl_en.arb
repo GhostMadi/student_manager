@@ -26,6 +26,43 @@
     "newPasswordField": "New password",
     "repeatPasswordField": "Repeat password",
     "saveAndLogin": "Save and login",
+    "registerSuccess": "Account created successfully!",
+    "registerError": "Could not create account",
+    "resetEmailSent": "Password reset email sent. Check your inbox.",
+    "resetEmailSpamHint": "If you don't see it in 2–3 minutes, check Spam/Promotions. Look for an email from noreply@*.firebaseapp.com. Use the exact email you registered with.",
+    "resetEmailSuccessTitle": "Check your email",
+    "resetEmailSuccessMessage": "We sent a password reset link to {email}. Open the email and follow the link to set a new password.",
+    "@resetEmailSuccessMessage": {
+        "placeholders": {
+            "email": {
+                "type": "String"
+            }
+        }
+    },
+    "backToLogin": "Back to login",
+    "resetCodeHint": "Paste the reset code from the email link",
+    "resetCodeLabel": "Reset code",
+    "passwordResetSuccess": "Password updated successfully!",
+    "invalidResetCode": "Invalid or expired reset code",
+    "emailAlreadyInUse": "This email is already registered",
+    "emailAlreadyInUseOtherPassword": "This email is already registered with a different password. Use the correct password or another email.",
+    "cannotModifyAdmin": "Cannot change the administrator account.",
+    "userNotFound": "No account found with this email",
+    "authGenericError": "Something went wrong. Please try again.",
+    "createAdminButton": "Create admin account",
+    "adminCreatedSuccess": "Admin account created successfully",
+    "adminAlreadyExists": "Admin already exists. Only one administrator is allowed.",
+    "adminUserAddedSuccess": "User created successfully",
+    "adminCuratorAssignedSuccess": "Curator assigned to group",
+    "adminNoStudents": "No students yet",
+    "adminNoTeachers": "No curators yet",
+    "adminAddStudentTitle": "Add student",
+    "adminAddCuratorTitle": "Add curator",
+    "adminSelectCuratorTitle": "Select curator",
+    "adminCuratorNotAssigned": "Curator not assigned",
+    "adminDefaultPasswordHint": "Default password: Student123!",
+    "profileNotFound": "User profile not found. Contact administrator.",
+    "firestorePermissionDenied": "Firestore access denied. Check Firebase rules and publish them.",
     "scheduleTitle": "Schedule",
     "editText": "Edit",
     "deleteText": "Delete",
@@ -84,6 +121,56 @@
     "security": "Security",
     "logOut": "Log out",
     "overallGpa": "Overall GPA",
+    "noGradesYet": "No grades yet. Your teacher will add them after assignments are graded.",
+    "gradeAddedSuccess": "Grade saved successfully",
+    "assignmentsTitle": "Assignments",
+    "studentNoGroupAssigned": "You are not assigned to a group yet",
+    "noAssignmentsYet": "No assignments yet",
+    "submissionGraded": "Graded",
+    "submissionSubmitted": "Submitted",
+    "submissionDraft": "Not submitted",
+    "workSubmittedSuccess": "Work submitted successfully",
+    "noDescription": "No description",
+    "teacherFeedback": "Teacher feedback",
+    "yourAnswerLabel": "Your answer",
+    "submitWorkButton": "Submit work",
+    "emptyAnswerError": "Please enter your answer",
+    "teacherCreateAssignmentTitle": "Create assignment",
+    "teacherPendingSubmissionsTitle": "Pending submissions",
+    "assignmentCreatedSuccess": "Assignment created",
+    "assignmentTitleLabel": "Assignment title",
+    "assignmentDescriptionLabel": "Description",
+    "assignmentDueDateLabel": "Due date",
+    "feedbackLabel": "Feedback",
+    "createAssignmentButton": "Create assignment",
+    "gradeSubmissionButton": "Grade",
+    "noPendingSubmissions": "No pending submissions",
+    "gradeSubmissionFor": "Grade {name}",
+    "@gradeSubmissionFor": {
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "viewAnswerLabel": "Student answer",
+    "gradeWorkNameLabel": "Assignment name (optional)",
+    "teacherAddGrade": "Add grade",
+    "teacherAddGradeFor": "Grade for {name}",
+    "@teacherAddGradeFor": {
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "teacherNoGroupsAssigned": "No groups assigned to you yet. Ask the administrator to assign you as a curator.",
+    "teacherCuratorYouBadge": "You are the curator of this group",
+    "teacherSelectGroup": "Select group",
+    "adminAddStudentToGroup": "Add student to group",
+    "adminAllStudentsAssigned": "All students are already in this group",
+    "adminStudentAssignedSuccess": "Student added to group",
+    "adminStudentRemovedSuccess": "Student removed from group",
     "topPercentage": "Top 5%",
     "idLabel": "ID: {id}",
     "nameLabel": "Name",
@@ -267,6 +354,22 @@
     "adminGroupDelete": "Delete group",
     "adminGroupAddStudents": "Add students to group",
     "adminGroupAssignCurator": "Assign curator",
+    "adminGroupNameLabel": "Group name",
+    "adminGroupNameRequired": "Enter group name",
+    "adminGroupCreatedSuccess": "Group created",
+    "adminGroupUpdatedSuccess": "Group updated",
+    "adminGroupDeletedSuccess": "Group deleted",
+    "adminCuratorRemovedSuccess": "Curator removed from group",
+    "adminRemoveCurator": "Remove curator",
+    "adminNoGroups": "No groups yet. Tap \"Create group\" to add one.",
+    "adminDeleteGroupConfirm": "Delete group \"{name}\"? Students will be unassigned from this group.",
+    "@adminDeleteGroupConfirm": {
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
     "adminSectionSubjects": "Subject management",
     "adminSubjectAdd": "Add subject",
     "adminSubjectEdit": "Edit subject",

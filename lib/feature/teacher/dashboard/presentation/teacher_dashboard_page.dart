@@ -1,9 +1,12 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:student_manager/core/colors/app_colors.dart';
 import 'package:student_manager/core/router/app_router.dart';
 import 'package:student_manager/core/widgets/dashboard_capsule.dart';
+import 'package:student_manager/feature/teacher/grades/presentation/cubit/teacher_grades_cubit.dart';
 
 @RoutePage()
 class TeacherDashboardPage extends StatelessWidget {
@@ -19,32 +22,37 @@ class TeacherDashboardPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AutoTabsRouter(
-      routes: const [
-        TeacherHomeRoute(),
-        TeacherGroupsRoute(),
-        TeacherScheduleRoute(),
-        TeacherWorkRoute(),
-        TeacherProfileRoute(),
-      ],
-      builder: (context, child) {
-        final tabsRouter = AutoTabsRouter.of(context);
-        return Scaffold(
-          extendBody: true,
-          backgroundColor: AppColors.scaffoldBackground,
-          body: Stack(
-            children: [
-              child,
-              Positioned(
-                bottom: 30,
-                left: 60,
-                right: 60,
-                child: DashboardCapsule(tabsRouter: tabsRouter, icons: _icons),
-              ),
-            ],
-          ),
-        );
-      },
+    final teacherId = FirebaseAuth.instance.currentUser?.uid ?? '';
+
+    return BlocProvider(
+      create: (_) => TeacherGradesCubit(teacherId: teacherId)..loadGroups(),
+      child: AutoTabsRouter(
+        routes: const [
+          TeacherHomeRoute(),
+          TeacherGroupsRoute(),
+          TeacherScheduleRoute(),
+          TeacherWorkRoute(),
+          TeacherProfileRoute(),
+        ],
+        builder: (context, child) {
+          final tabsRouter = AutoTabsRouter.of(context);
+          return Scaffold(
+            extendBody: true,
+            backgroundColor: AppColors.scaffoldBackground,
+            body: Stack(
+              children: [
+                child,
+                Positioned(
+                  bottom: 30,
+                  left: 60,
+                  right: 60,
+                  child: DashboardCapsule(tabsRouter: tabsRouter, icons: _icons),
+                ),
+              ],
+            ),
+          );
+        },
+      ),
     );
   }
 }

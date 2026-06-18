@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:student_manager/core/colors/app_colors.dart';
 import 'package:student_manager/core/router/app_router.dart';
 import 'package:student_manager/core/router/role_dashboard_route.dart';
-import 'package:student_manager/core/storage/storage_service.dart';
 import 'package:student_manager/core/style/app_text_style.dart';
+import 'package:student_manager/feature/login_page/data/repository/auth_repository.dart';
 
 @RoutePage()
 class SplashPage extends StatefulWidget {
@@ -19,6 +19,7 @@ class SplashPage extends StatefulWidget {
 class _SplashPageState extends State<SplashPage> {
   bool _visible = false;
   double _scale = 0.8;
+  final _authRepository = AuthRepository();
 
   @override
   void initState() {
@@ -28,7 +29,6 @@ class _SplashPageState extends State<SplashPage> {
   }
 
   void _startAnimation() {
- 
     Future.delayed(const Duration(milliseconds: 200), () {
       if (mounted) {
         setState(() {
@@ -40,14 +40,16 @@ class _SplashPageState extends State<SplashPage> {
   }
 
   void _checkAuthStatus() {
- 
-    Timer(const Duration(seconds: 2), () {
+    Timer(const Duration(seconds: 2), () async {
       if (!mounted) return;
 
-      if (StorageService.instance.isLoggedIn) {
+      final user = await _authRepository.restoreSession();
+
+      if (!mounted) return;
+
+      if (user != null) {
         context.router.replace(dashboardRouteForStoredRole());
       } else {
- 
         context.router.replace(const LoginRoute());
       }
     });
@@ -56,7 +58,7 @@ class _SplashPageState extends State<SplashPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.deepBlack, 
+      backgroundColor: AppColors.deepBlack,
       body: Center(
         child: AnimatedScale(
           duration: const Duration(milliseconds: 1000),
@@ -68,7 +70,6 @@ class _SplashPageState extends State<SplashPage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
- 
                 Container(
                   height: 100,
                   width: 100,

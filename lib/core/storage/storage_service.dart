@@ -56,38 +56,3 @@ class StorageService {
     await _prefs.remove(_keyUserName);
   }
 }
-
-class AuthService {
-  static const String _studentEmail = 'student@gmail.com';
-  static const String _adminEmail = 'admin@gmail.com';
-  static const String _teacherEmail = 'teacher@gmail.com';
-  static const String _mockPassword = 'password123';
-
-  static Future<UserRole?> login(String email, String password) async {
-    await Future.delayed(const Duration(milliseconds: 800));
-
-    final normalized = email.trim().toLowerCase();
-    if (password != _mockPassword) return null;
-
-    if (normalized == _studentEmail) {
-      await _persistSession(UserRole.student, 'Alex Student', 'mock_jwt_student');
-      return UserRole.student;
-    }
-    if (normalized == _adminEmail) {
-      await _persistSession(UserRole.admin, 'System Administrator', 'mock_jwt_admin');
-      return UserRole.admin;
-    }
-    if (normalized == _teacherEmail) {
-      await _persistSession(UserRole.teacher, 'Maria Teacher', 'mock_jwt_teacher');
-      return UserRole.teacher;
-    }
-    return null;
-  }
-
-  static Future<void> _persistSession(UserRole role, String displayName, String token) async {
-    await StorageService.instance.setLoggedIn(true);
-    await StorageService.instance.setUserRole(role);
-    await StorageService.instance.setUserName(displayName);
-    await StorageService.instance.setToken(token);
-  }
-}

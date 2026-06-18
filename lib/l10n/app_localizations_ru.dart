@@ -90,6 +90,105 @@ class AppLocalizationsRu extends AppLocalizations {
   String get saveAndLogin => 'Сохранить и войти';
 
   @override
+  String get registerSuccess => 'Аккаунт успешно создан!';
+
+  @override
+  String get registerError => 'Не удалось создать аккаунт';
+
+  @override
+  String get resetEmailSent =>
+      'Письмо для сброса пароля отправлено. Проверьте почту.';
+
+  @override
+  String get resetEmailSpamHint =>
+      'Если письмо не пришло за 2–3 минуты, проверьте Спам/Промоакции. Отправитель: noreply@*.firebaseapp.com. Используйте тот же email, что при регистрации.';
+
+  @override
+  String get resetEmailSuccessTitle => 'Проверьте почту';
+
+  @override
+  String resetEmailSuccessMessage(String email) {
+    return 'Мы отправили ссылку для сброса пароля на $email. Откройте письмо и перейдите по ссылке, чтобы задать новый пароль.';
+  }
+
+  @override
+  String get backToLogin => 'Вернуться ко входу';
+
+  @override
+  String get resetCodeHint => 'Вставьте код сброса из ссылки в письме';
+
+  @override
+  String get resetCodeLabel => 'Код сброса';
+
+  @override
+  String get passwordResetSuccess => 'Пароль успешно обновлён!';
+
+  @override
+  String get invalidResetCode => 'Неверный или просроченный код';
+
+  @override
+  String get emailAlreadyInUse => 'Этот email уже зарегистрирован';
+
+  @override
+  String get emailAlreadyInUseOtherPassword =>
+      'Этот email уже зарегистрирован с другим паролем. Укажите верный пароль или другой email.';
+
+  @override
+  String get cannotModifyAdmin =>
+      'Нельзя изменить учётную запись администратора.';
+
+  @override
+  String get userNotFound => 'Аккаунт с таким email не найден';
+
+  @override
+  String get authGenericError => 'Что-то пошло не так. Попробуйте снова.';
+
+  @override
+  String get createAdminButton => 'Создать администратора';
+
+  @override
+  String get adminCreatedSuccess => 'Аккаунт администратора создан';
+
+  @override
+  String get adminAlreadyExists =>
+      'Администратор уже существует. Допускается только один.';
+
+  @override
+  String get adminUserAddedSuccess => 'Пользователь создан';
+
+  @override
+  String get adminCuratorAssignedSuccess => 'Куратор назначен на группу';
+
+  @override
+  String get adminNoStudents => 'Студентов пока нет';
+
+  @override
+  String get adminNoTeachers => 'Кураторов пока нет';
+
+  @override
+  String get adminAddStudentTitle => 'Добавить студента';
+
+  @override
+  String get adminAddCuratorTitle => 'Добавить куратора';
+
+  @override
+  String get adminSelectCuratorTitle => 'Выберите куратора';
+
+  @override
+  String get adminCuratorNotAssigned => 'Куратор не назначен';
+
+  @override
+  String get adminDefaultPasswordHint => 'Пароль по умолчанию: Student123!';
+
+  @override
+  String get profileNotFound =>
+      'Профиль пользователя не найден. Обратитесь к администратору.';
+
+  @override
+  String get firestorePermissionDenied =>
+      'Нет доступа к Firestore. Проверьте и опубликуйте правила в Firebase Console.';
+
+  @override
   String get scheduleTitle => 'Расписание';
 
   @override
@@ -264,6 +363,120 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get overallGpa => 'Общий GPA';
+
+  @override
+  String get noGradesYet =>
+      'Оценок пока нет. Преподаватель добавит их после проверки работ.';
+
+  @override
+  String get gradeAddedSuccess => 'Оценка сохранена';
+
+  @override
+  String get assignmentsTitle => 'Задания';
+
+  @override
+  String get studentNoGroupAssigned => 'Вы пока не добавлены в группу';
+
+  @override
+  String get noAssignmentsYet => 'Заданий пока нет';
+
+  @override
+  String get submissionGraded => 'Оценено';
+
+  @override
+  String get submissionSubmitted => 'Сдано';
+
+  @override
+  String get submissionDraft => 'Не сдано';
+
+  @override
+  String get workSubmittedSuccess => 'Работа успешно отправлена';
+
+  @override
+  String get noDescription => 'Без описания';
+
+  @override
+  String get teacherFeedback => 'Комментарий преподавателя';
+
+  @override
+  String get yourAnswerLabel => 'Ваш ответ';
+
+  @override
+  String get submitWorkButton => 'Сдать работу';
+
+  @override
+  String get emptyAnswerError => 'Введите ответ';
+
+  @override
+  String get teacherCreateAssignmentTitle => 'Создать задание';
+
+  @override
+  String get teacherPendingSubmissionsTitle => 'Работы на проверке';
+
+  @override
+  String get assignmentCreatedSuccess => 'Задание создано';
+
+  @override
+  String get assignmentTitleLabel => 'Название задания';
+
+  @override
+  String get assignmentDescriptionLabel => 'Описание';
+
+  @override
+  String get assignmentDueDateLabel => 'Срок сдачи';
+
+  @override
+  String get feedbackLabel => 'Комментарий';
+
+  @override
+  String get createAssignmentButton => 'Создать задание';
+
+  @override
+  String get gradeSubmissionButton => 'Оценить';
+
+  @override
+  String get noPendingSubmissions => 'Нет работ на проверке';
+
+  @override
+  String gradeSubmissionFor(String name) {
+    return 'Оценка для $name';
+  }
+
+  @override
+  String get viewAnswerLabel => 'Ответ студента';
+
+  @override
+  String get gradeWorkNameLabel => 'Название работы (необязательно)';
+
+  @override
+  String get teacherAddGrade => 'Выставить оценку';
+
+  @override
+  String teacherAddGradeFor(String name) {
+    return 'Оценка для $name';
+  }
+
+  @override
+  String get teacherNoGroupsAssigned =>
+      'Вам ещё не назначены группы. Попросите администратора назначить вас куратором.';
+
+  @override
+  String get teacherCuratorYouBadge => 'Вы куратор этой группы';
+
+  @override
+  String get teacherSelectGroup => 'Выберите группу';
+
+  @override
+  String get adminAddStudentToGroup => 'Добавить студента в группу';
+
+  @override
+  String get adminAllStudentsAssigned => 'Все студенты уже в этой группе';
+
+  @override
+  String get adminStudentAssignedSuccess => 'Студент добавлен в группу';
+
+  @override
+  String get adminStudentRemovedSuccess => 'Студент удалён из группы';
 
   @override
   String get topPercentage => 'Топ 5%';
@@ -506,36 +719,36 @@ class AppLocalizationsRu extends AppLocalizations {
   String get enterEmail => 'Введите вашу почту';
 
   @override
-  String get enterCode => 'Enter the code sent to your email';
+  String get enterCode => 'Введите код, отправленный на вашу почту';
 
   @override
-  String get enterNewPassword => 'Enter your new password';
+  String get enterNewPassword => 'Введите новый пароль';
 
   @override
-  String get confirmNewPassword => 'Confirm your new password';
+  String get confirmNewPassword => 'Подтвердите новый пароль';
 
   @override
-  String get sendCode => 'Send code';
+  String get sendCode => 'Отправить код';
 
   @override
-  String get confirm => 'Confirm';
+  String get confirm => 'Подтвердить';
 
   @override
-  String get emailValidationError => 'Please enter a valid email address';
+  String get emailValidationError => 'Введите корректный email';
 
   @override
   String get passwordValidationError =>
-      'Password must be at least 8 characters long and include a number and a special character';
+      'Пароль должен быть не короче 8 символов и содержать цифру и спецсимвол';
 
   @override
-  String get confirmPasswordValidationError => 'Passwords do not match';
+  String get confirmPasswordValidationError => 'Пароли не совпадают';
 
   @override
-  String get fullNameValidationError => 'Please enter your full name';
+  String get fullNameValidationError => 'Введите ваше полное имя';
 
   @override
   String get unexpectedError =>
-      'An unexpected error occurred. Please try again later.';
+      'Произошла непредвиденная ошибка. Попробуйте позже.';
 
   @override
   String get invalidEmailFormat => 'Неверный формат почты';
@@ -656,6 +869,35 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get adminGroupAssignCurator => 'Назначить куратора';
+
+  @override
+  String get adminGroupNameLabel => 'Название группы';
+
+  @override
+  String get adminGroupNameRequired => 'Введите название группы';
+
+  @override
+  String get adminGroupCreatedSuccess => 'Группа создана';
+
+  @override
+  String get adminGroupUpdatedSuccess => 'Группа обновлена';
+
+  @override
+  String get adminGroupDeletedSuccess => 'Группа удалена';
+
+  @override
+  String get adminCuratorRemovedSuccess => 'Куратор снят с группы';
+
+  @override
+  String get adminRemoveCurator => 'Снять куратора';
+
+  @override
+  String get adminNoGroups => 'Групп пока нет. Нажмите «Создать группу».';
+
+  @override
+  String adminDeleteGroupConfirm(String name) {
+    return 'Удалить группу «$name»? Студенты будут откреплены от группы.';
+  }
 
   @override
   String get adminSectionSubjects => 'Управление предметами';

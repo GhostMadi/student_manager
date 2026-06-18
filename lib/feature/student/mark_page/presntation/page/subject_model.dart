@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:student_manager/core/academic/gpa_calculator.dart';
 import 'package:student_manager/core/colors/app_colors.dart';
 
 class SubjectMarks {
-  String id;
-  String name;
-  List<int> marks;
+  const SubjectMarks({required this.id, required this.name, required this.marks});
 
-  SubjectMarks({required this.id, required this.name, required this.marks});
+  final String id;
+  final String name;
+  final List<int> marks;
 
   double get average => marks.isEmpty ? 0 : marks.reduce((a, b) => a + b) / marks.length;
 
@@ -17,11 +18,5 @@ class SubjectMarks {
     return Colors.redAccent;
   }
 
-  double get gpaContribution {
-    if (average >= 90) return 4.0;
-    if (average >= 80) return 3.0;
-    if (average >= 70) return 2.0;
-    if (average >= 50) return 1.0;
-    return 0.0;
-  }
+  double get gpaContribution => GpaCalculator.contribution(average);
 }

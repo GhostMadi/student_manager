@@ -256,6 +256,186 @@ abstract class AppLocalizations {
   /// **'Save and login'**
   String get saveAndLogin;
 
+  /// No description provided for @registerSuccess.
+  ///
+  /// In en, this message translates to:
+  /// **'Account created successfully!'**
+  String get registerSuccess;
+
+  /// No description provided for @registerError.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not create account'**
+  String get registerError;
+
+  /// No description provided for @resetEmailSent.
+  ///
+  /// In en, this message translates to:
+  /// **'Password reset email sent. Check your inbox.'**
+  String get resetEmailSent;
+
+  /// No description provided for @resetEmailSpamHint.
+  ///
+  /// In en, this message translates to:
+  /// **'If you don\'t see it in 2–3 minutes, check Spam/Promotions. Look for an email from noreply@*.firebaseapp.com. Use the exact email you registered with.'**
+  String get resetEmailSpamHint;
+
+  /// No description provided for @resetEmailSuccessTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Check your email'**
+  String get resetEmailSuccessTitle;
+
+  /// No description provided for @resetEmailSuccessMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'We sent a password reset link to {email}. Open the email and follow the link to set a new password.'**
+  String resetEmailSuccessMessage(String email);
+
+  /// No description provided for @backToLogin.
+  ///
+  /// In en, this message translates to:
+  /// **'Back to login'**
+  String get backToLogin;
+
+  /// No description provided for @resetCodeHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Paste the reset code from the email link'**
+  String get resetCodeHint;
+
+  /// No description provided for @resetCodeLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Reset code'**
+  String get resetCodeLabel;
+
+  /// No description provided for @passwordResetSuccess.
+  ///
+  /// In en, this message translates to:
+  /// **'Password updated successfully!'**
+  String get passwordResetSuccess;
+
+  /// No description provided for @invalidResetCode.
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid or expired reset code'**
+  String get invalidResetCode;
+
+  /// No description provided for @emailAlreadyInUse.
+  ///
+  /// In en, this message translates to:
+  /// **'This email is already registered'**
+  String get emailAlreadyInUse;
+
+  /// No description provided for @emailAlreadyInUseOtherPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'This email is already registered with a different password. Use the correct password or another email.'**
+  String get emailAlreadyInUseOtherPassword;
+
+  /// No description provided for @cannotModifyAdmin.
+  ///
+  /// In en, this message translates to:
+  /// **'Cannot change the administrator account.'**
+  String get cannotModifyAdmin;
+
+  /// No description provided for @userNotFound.
+  ///
+  /// In en, this message translates to:
+  /// **'No account found with this email'**
+  String get userNotFound;
+
+  /// No description provided for @authGenericError.
+  ///
+  /// In en, this message translates to:
+  /// **'Something went wrong. Please try again.'**
+  String get authGenericError;
+
+  /// No description provided for @createAdminButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Create admin account'**
+  String get createAdminButton;
+
+  /// No description provided for @adminCreatedSuccess.
+  ///
+  /// In en, this message translates to:
+  /// **'Admin account created successfully'**
+  String get adminCreatedSuccess;
+
+  /// No description provided for @adminAlreadyExists.
+  ///
+  /// In en, this message translates to:
+  /// **'Admin already exists. Only one administrator is allowed.'**
+  String get adminAlreadyExists;
+
+  /// No description provided for @adminUserAddedSuccess.
+  ///
+  /// In en, this message translates to:
+  /// **'User created successfully'**
+  String get adminUserAddedSuccess;
+
+  /// No description provided for @adminCuratorAssignedSuccess.
+  ///
+  /// In en, this message translates to:
+  /// **'Curator assigned to group'**
+  String get adminCuratorAssignedSuccess;
+
+  /// No description provided for @adminNoStudents.
+  ///
+  /// In en, this message translates to:
+  /// **'No students yet'**
+  String get adminNoStudents;
+
+  /// No description provided for @adminNoTeachers.
+  ///
+  /// In en, this message translates to:
+  /// **'No curators yet'**
+  String get adminNoTeachers;
+
+  /// No description provided for @adminAddStudentTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Add student'**
+  String get adminAddStudentTitle;
+
+  /// No description provided for @adminAddCuratorTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Add curator'**
+  String get adminAddCuratorTitle;
+
+  /// No description provided for @adminSelectCuratorTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Select curator'**
+  String get adminSelectCuratorTitle;
+
+  /// No description provided for @adminCuratorNotAssigned.
+  ///
+  /// In en, this message translates to:
+  /// **'Curator not assigned'**
+  String get adminCuratorNotAssigned;
+
+  /// No description provided for @adminDefaultPasswordHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Default password: Student123!'**
+  String get adminDefaultPasswordHint;
+
+  /// No description provided for @profileNotFound.
+  ///
+  /// In en, this message translates to:
+  /// **'User profile not found. Contact administrator.'**
+  String get profileNotFound;
+
+  /// No description provided for @firestorePermissionDenied.
+  ///
+  /// In en, this message translates to:
+  /// **'Firestore access denied. Check Firebase rules and publish them.'**
+  String get firestorePermissionDenied;
+
   /// No description provided for @scheduleTitle.
   ///
   /// In en, this message translates to:
@@ -597,6 +777,222 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Overall GPA'**
   String get overallGpa;
+
+  /// No description provided for @noGradesYet.
+  ///
+  /// In en, this message translates to:
+  /// **'No grades yet. Your teacher will add them after assignments are graded.'**
+  String get noGradesYet;
+
+  /// No description provided for @gradeAddedSuccess.
+  ///
+  /// In en, this message translates to:
+  /// **'Grade saved successfully'**
+  String get gradeAddedSuccess;
+
+  /// No description provided for @assignmentsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Assignments'**
+  String get assignmentsTitle;
+
+  /// No description provided for @studentNoGroupAssigned.
+  ///
+  /// In en, this message translates to:
+  /// **'You are not assigned to a group yet'**
+  String get studentNoGroupAssigned;
+
+  /// No description provided for @noAssignmentsYet.
+  ///
+  /// In en, this message translates to:
+  /// **'No assignments yet'**
+  String get noAssignmentsYet;
+
+  /// No description provided for @submissionGraded.
+  ///
+  /// In en, this message translates to:
+  /// **'Graded'**
+  String get submissionGraded;
+
+  /// No description provided for @submissionSubmitted.
+  ///
+  /// In en, this message translates to:
+  /// **'Submitted'**
+  String get submissionSubmitted;
+
+  /// No description provided for @submissionDraft.
+  ///
+  /// In en, this message translates to:
+  /// **'Not submitted'**
+  String get submissionDraft;
+
+  /// No description provided for @workSubmittedSuccess.
+  ///
+  /// In en, this message translates to:
+  /// **'Work submitted successfully'**
+  String get workSubmittedSuccess;
+
+  /// No description provided for @noDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'No description'**
+  String get noDescription;
+
+  /// No description provided for @teacherFeedback.
+  ///
+  /// In en, this message translates to:
+  /// **'Teacher feedback'**
+  String get teacherFeedback;
+
+  /// No description provided for @yourAnswerLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Your answer'**
+  String get yourAnswerLabel;
+
+  /// No description provided for @submitWorkButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Submit work'**
+  String get submitWorkButton;
+
+  /// No description provided for @emptyAnswerError.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter your answer'**
+  String get emptyAnswerError;
+
+  /// No description provided for @teacherCreateAssignmentTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Create assignment'**
+  String get teacherCreateAssignmentTitle;
+
+  /// No description provided for @teacherPendingSubmissionsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Pending submissions'**
+  String get teacherPendingSubmissionsTitle;
+
+  /// No description provided for @assignmentCreatedSuccess.
+  ///
+  /// In en, this message translates to:
+  /// **'Assignment created'**
+  String get assignmentCreatedSuccess;
+
+  /// No description provided for @assignmentTitleLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Assignment title'**
+  String get assignmentTitleLabel;
+
+  /// No description provided for @assignmentDescriptionLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Description'**
+  String get assignmentDescriptionLabel;
+
+  /// No description provided for @assignmentDueDateLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Due date'**
+  String get assignmentDueDateLabel;
+
+  /// No description provided for @feedbackLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Feedback'**
+  String get feedbackLabel;
+
+  /// No description provided for @createAssignmentButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Create assignment'**
+  String get createAssignmentButton;
+
+  /// No description provided for @gradeSubmissionButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Grade'**
+  String get gradeSubmissionButton;
+
+  /// No description provided for @noPendingSubmissions.
+  ///
+  /// In en, this message translates to:
+  /// **'No pending submissions'**
+  String get noPendingSubmissions;
+
+  /// No description provided for @gradeSubmissionFor.
+  ///
+  /// In en, this message translates to:
+  /// **'Grade {name}'**
+  String gradeSubmissionFor(String name);
+
+  /// No description provided for @viewAnswerLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Student answer'**
+  String get viewAnswerLabel;
+
+  /// No description provided for @gradeWorkNameLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Assignment name (optional)'**
+  String get gradeWorkNameLabel;
+
+  /// No description provided for @teacherAddGrade.
+  ///
+  /// In en, this message translates to:
+  /// **'Add grade'**
+  String get teacherAddGrade;
+
+  /// No description provided for @teacherAddGradeFor.
+  ///
+  /// In en, this message translates to:
+  /// **'Grade for {name}'**
+  String teacherAddGradeFor(String name);
+
+  /// No description provided for @teacherNoGroupsAssigned.
+  ///
+  /// In en, this message translates to:
+  /// **'No groups assigned to you yet. Ask the administrator to assign you as a curator.'**
+  String get teacherNoGroupsAssigned;
+
+  /// No description provided for @teacherCuratorYouBadge.
+  ///
+  /// In en, this message translates to:
+  /// **'You are the curator of this group'**
+  String get teacherCuratorYouBadge;
+
+  /// No description provided for @teacherSelectGroup.
+  ///
+  /// In en, this message translates to:
+  /// **'Select group'**
+  String get teacherSelectGroup;
+
+  /// No description provided for @adminAddStudentToGroup.
+  ///
+  /// In en, this message translates to:
+  /// **'Add student to group'**
+  String get adminAddStudentToGroup;
+
+  /// No description provided for @adminAllStudentsAssigned.
+  ///
+  /// In en, this message translates to:
+  /// **'All students are already in this group'**
+  String get adminAllStudentsAssigned;
+
+  /// No description provided for @adminStudentAssignedSuccess.
+  ///
+  /// In en, this message translates to:
+  /// **'Student added to group'**
+  String get adminStudentAssignedSuccess;
+
+  /// No description provided for @adminStudentRemovedSuccess.
+  ///
+  /// In en, this message translates to:
+  /// **'Student removed from group'**
+  String get adminStudentRemovedSuccess;
 
   /// No description provided for @topPercentage.
   ///
@@ -1341,6 +1737,60 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Assign curator'**
   String get adminGroupAssignCurator;
+
+  /// No description provided for @adminGroupNameLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Group name'**
+  String get adminGroupNameLabel;
+
+  /// No description provided for @adminGroupNameRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter group name'**
+  String get adminGroupNameRequired;
+
+  /// No description provided for @adminGroupCreatedSuccess.
+  ///
+  /// In en, this message translates to:
+  /// **'Group created'**
+  String get adminGroupCreatedSuccess;
+
+  /// No description provided for @adminGroupUpdatedSuccess.
+  ///
+  /// In en, this message translates to:
+  /// **'Group updated'**
+  String get adminGroupUpdatedSuccess;
+
+  /// No description provided for @adminGroupDeletedSuccess.
+  ///
+  /// In en, this message translates to:
+  /// **'Group deleted'**
+  String get adminGroupDeletedSuccess;
+
+  /// No description provided for @adminCuratorRemovedSuccess.
+  ///
+  /// In en, this message translates to:
+  /// **'Curator removed from group'**
+  String get adminCuratorRemovedSuccess;
+
+  /// No description provided for @adminRemoveCurator.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove curator'**
+  String get adminRemoveCurator;
+
+  /// No description provided for @adminNoGroups.
+  ///
+  /// In en, this message translates to:
+  /// **'No groups yet. Tap \"Create group\" to add one.'**
+  String get adminNoGroups;
+
+  /// No description provided for @adminDeleteGroupConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete group \"{name}\"? Students will be unassigned from this group.'**
+  String adminDeleteGroupConfirm(String name);
 
   /// No description provided for @adminSectionSubjects.
   ///

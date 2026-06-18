@@ -7,7 +7,7 @@ import 'package:student_manager/feature/admin/people/presentation/admin_people_p
 import 'package:student_manager/feature/admin/profile/presentation/admin_profile_page.dart';
 import 'package:student_manager/feature/dashboard/admin_dashboard_page.dart';
 import 'package:student_manager/feature/dashboard/dashboard_page.dart';
-import 'package:student_manager/feature/forget_password/forget_password_page.dart';
+import 'package:student_manager/feature/forget_password/presentation/page/forget_password_page.dart';
 import 'package:student_manager/feature/student/page/home_page.dart';
 import 'package:student_manager/feature/student/mark_page/presntation/page/mark_page.dart';
 import 'package:student_manager/feature/notification_page/notifciation_page.dart';
@@ -19,7 +19,6 @@ import 'package:student_manager/feature/student/schedule_page/presntation/page/l
 import 'package:student_manager/feature/student/schedule_page/presntation/page/schedule_page.dart';
 import 'package:student_manager/feature/splash/splash_screen.dart';
 import 'package:student_manager/feature/student/task_page/presntation/page/task_details_page.dart';
-import 'package:student_manager/feature/student/task_page/presntation/page/task_model.dart';
 import 'package:student_manager/feature/student/task_page/presntation/page/task_page.dart';
 import 'package:student_manager/feature/teacher/dashboard/presentation/teacher_dashboard_page.dart';
 import 'package:student_manager/feature/teacher/groups/presentation/teacher_groups_page.dart';
@@ -28,7 +27,7 @@ import 'package:student_manager/feature/teacher/profile/presentation/teacher_pro
 import 'package:student_manager/feature/teacher/schedule/presentation/teacher_schedule_page.dart';
 import 'package:student_manager/feature/teacher/work/presentation/teacher_work_page.dart';
 
-import '../../feature/login_page/login_page.dart';
+import 'package:student_manager/feature/login_page/presentation/page/login_page.dart';
 
 part 'app_router.gr.dart';
 

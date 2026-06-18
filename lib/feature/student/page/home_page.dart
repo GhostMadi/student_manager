@@ -1,12 +1,16 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:student_manager/core/academic/assignment_model.dart';
 import 'package:student_manager/core/colors/app_colors.dart';
 import 'package:student_manager/core/extension/context.dart';
 import 'package:student_manager/core/router/app_router.dart';
 import 'package:student_manager/core/style/app_text_style.dart';
+import 'package:student_manager/feature/student/assignments/presentation/cubit/student_assignments_cubit.dart';
+
+import 'package:student_manager/feature/student/grades/presentation/cubit/student_grades_cubit.dart';
 import 'package:student_manager/feature/student/schedule_page/presntation/page/lesson_model.dart';
-import 'package:student_manager/feature/student/task_page/presntation/page/task_model.dart';
 
 @RoutePage()
 class HomePage extends StatefulWidget {
@@ -30,7 +34,6 @@ class _HomePageState extends State<HomePage> {
             children: [
               Padding(padding: const EdgeInsets.symmetric(horizontal: 24), child: _buildHeader()),
               const SizedBox(height: 32),
-
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 24),
                 child: _buildSectionHeader(l10n.upcomingLessons, () {
@@ -39,19 +42,16 @@ class _HomePageState extends State<HomePage> {
               ),
               const SizedBox(height: 16),
               _buildUpcomingLessons(),
-
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 24),
                 child: Column(
                   children: [
                     const SizedBox(height: 32),
-
                     _buildSectionHeader(l10n.currentTasks, () {
                       context.tabsRouter.setActiveIndex(3);
                     }),
                     const SizedBox(height: 16),
-                    _buildCurrentTasks(),
-
+                    _buildCurrentAssignments(),
                     const SizedBox(height: 100),
                   ],
                 ),
@@ -63,64 +63,106 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget _buildGPACard() {
-    final l10n = context.l10n;
-
-    return Container(
-      padding: const EdgeInsets.all(24),
-      decoration: BoxDecoration(color: AppColors.deepBlack, borderRadius: BorderRadius.circular(28)),
-      child: Row(
-        children: [
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(l10n.totalGPA, style: AppTextStyles.caption.copyWith(color: Colors.white60)),
-                const SizedBox(height: 4),
-                Text('4.46', style: AppTextStyles.h1.copyWith(color: Colors.white, fontSize: 32)),
-              ],
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
   Widget _buildHeader() {
     final l10n = context.l10n;
 
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(l10n.greeting, style: AppTextStyles.h1.copyWith(fontSize: 24)),
-            const SizedBox(height: 4),
-            Text(l10n.todayStudyDay, style: AppTextStyles.caption),
-          ],
-        ),
+    return BlocBuilder<StudentGradesCubit, StudentGradesState>(
+      builder: (context, gradesState) {
+        final gpaText = gradesState.overallGpa.toStringAsFixed(2);
 
-        GestureDetector(
-          onTap: () {
-            context.tabsRouter.setActiveIndex(1);
-          },
-          child: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-            decoration: BoxDecoration(color: AppColors.deepBlack, borderRadius: BorderRadius.circular(20)),
-            child: Column(
+        return Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('GPA', style: TextStyle(color: Colors.white.withOpacity(0.6), fontSize: 10)),
-                Text(
-                  '3.85',
-                  style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18),
-                ),
+                Text(l10n.greeting, style: AppTextStyles.h1.copyWith(fontSize: 24)),
+                const SizedBox(height: 4),
+                Text(l10n.todayStudyDay, style: AppTextStyles.caption),
               ],
             ),
-          ),
-        ),
-      ],
+            GestureDetector(
+              onTap: () => context.tabsRouter.setActiveIndex(1),
+              child: Container(
+                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                decoration: BoxDecoration(color: AppColors.deepBlack, borderRadius: BorderRadius.circular(20)),
+                child: Column(
+                  children: [
+                    Text('GPA', style: TextStyle(color: Colors.white.withValues(alpha: 0.6), fontSize: 10)),
+                    Text(
+                      gpaText,
+                      style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        );
+      },
     );
+  }
+
+  Widget _buildCurrentAssignments() {
+    return BlocBuilder<StudentAssignmentsCubit, StudentAssignmentsState>(
+      builder: (context, state) {
+        final items = state.assignments.take(2).toList();
+        if (items.isEmpty) {
+          return Text(context.l10n.noAssignmentsYet, style: AppTextStyles.caption);
+        }
+
+        return Column(
+          children: items.map((assignment) {
+            final submission = state.submissionFor(assignment.id);
+            return GestureDetector(
+              onTap: () => context.router.push(TaskDetailsRoute(assignmentId: assignment.id)),
+              child: Container(
+                margin: const EdgeInsets.only(bottom: 12),
+                padding: const EdgeInsets.all(16),
+                decoration: BoxDecoration(color: AppColors.surfaceWhite, borderRadius: BorderRadius.circular(24)),
+                child: Row(
+                  children: [
+                    Container(
+                      height: 48,
+                      width: 48,
+                      decoration: BoxDecoration(
+                        color: AppColors.scaffoldBackground,
+                        borderRadius: BorderRadius.circular(16),
+                      ),
+                      child: const Icon(CupertinoIcons.doc_text, color: AppColors.primaryOrange),
+                    ),
+                    const SizedBox(width: 16),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(assignment.title, style: AppTextStyles.body.copyWith(fontWeight: FontWeight.bold)),
+                          const SizedBox(height: 4),
+                          Text(
+                            _statusLabel(context, submission?.status ?? SubmissionStatus.draft),
+                            style: AppTextStyles.caption,
+                          ),
+                        ],
+                      ),
+                    ),
+                    const Icon(CupertinoIcons.chevron_right, size: 16, color: AppColors.textSecondary),
+                  ],
+                ),
+              ),
+            );
+          }).toList(),
+        );
+      },
+    );
+  }
+
+  String _statusLabel(BuildContext context, SubmissionStatus status) {
+    final l10n = context.l10n;
+    return switch (status) {
+      SubmissionStatus.graded => l10n.submissionGraded,
+      SubmissionStatus.submitted => l10n.submissionSubmitted,
+      SubmissionStatus.draft => l10n.submissionDraft,
+    };
   }
 
   Widget _buildSectionHeader(String title, VoidCallback onTap) {
@@ -141,7 +183,6 @@ class _HomePageState extends State<HomePage> {
       height: 140,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
-
         padding: const EdgeInsets.symmetric(horizontal: 24),
         itemCount: 3,
         itemBuilder: (context, index) {
@@ -208,64 +249,6 @@ class _HomePageState extends State<HomePage> {
           );
         },
       ),
-    );
-  }
-
-  Widget _buildCurrentTasks() {
-    final l10n = context.l10n;
-
-    return Column(
-      children: List.generate(2, (index) {
-        return GestureDetector(
-          onTap: () {
-            context.router.push(
-              TaskDetailsRoute(
-                task: TaskItem(
-                  title: 'Задача №${index + 1}',
-                  deadline: DateTime.now().add(const Duration(days: 1)),
-                  isDone: index == 0,
-                ),
-              ),
-            );
-          },
-          child: Container(
-            margin: const EdgeInsets.only(bottom: 12),
-            padding: const EdgeInsets.all(16),
-            decoration: BoxDecoration(color: AppColors.surfaceWhite, borderRadius: BorderRadius.circular(24)),
-            child: Row(
-              children: [
-                Container(
-                  height: 48,
-                  width: 48,
-                  decoration: BoxDecoration(
-                    color: AppColors.scaffoldBackground,
-                    borderRadius: BorderRadius.circular(16),
-                  ),
-                  child: const Icon(CupertinoIcons.doc_text, color: AppColors.primaryOrange),
-                ),
-                const SizedBox(width: 16),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        l10n.labTaskNumber(index + 3),
-                        style: AppTextStyles.body.copyWith(fontWeight: FontWeight.bold),
-                      ),
-                      const SizedBox(height: 4),
-                      Text(
-                        l10n.deadlineTomorrow,
-                        style: AppTextStyles.caption.copyWith(color: Colors.redAccent),
-                      ),
-                    ],
-                  ),
-                ),
-                const Icon(CupertinoIcons.chevron_right, size: 16, color: AppColors.textSecondary),
-              ],
-            ),
-          ),
-        );
-      }),
     );
   }
 }

@@ -1,236 +1,404 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:student_manager/core/colors/app_colors.dart';
 import 'package:student_manager/core/extension/context.dart';
 import 'package:student_manager/core/style/app_text_style.dart';
+import 'package:student_manager/core/utils/auth_error_mapper.dart';
+import 'package:student_manager/core/widgets/snack_bar.dart';
+import 'package:student_manager/feature/admin/academic/data/model/group_model.dart';
+import 'package:student_manager/feature/admin/academic/presentation/cubit/admin_academic_cubit.dart';
+import 'package:student_manager/feature/admin/academic/presentation/widgets/admin_group_sheet.dart';
 import 'package:student_manager/feature/admin/presentation/widgets/admin_components.dart';
+import 'package:student_manager/feature/login_page/data/model/user_model.dart';
 
 @RoutePage()
-class AdminAcademicPage extends StatelessWidget {
+class AdminAcademicPage extends StatefulWidget {
   const AdminAcademicPage({super.key});
+
+  @override
+  State<AdminAcademicPage> createState() => _AdminAcademicPageState();
+}
+
+class _AdminAcademicPageState extends State<AdminAcademicPage> {
+  @override
+  void initState() {
+    super.initState();
+    context.read<AdminAcademicCubit>().loadData();
+  }
+
+  Future<void> _openCreateGroupSheet() {
+    final cubit = context.read<AdminAcademicCubit>();
+    final l10n = context.l10n;
+
+    return showAdminGroupSheet(
+      context: context,
+      title: l10n.adminGroupCreate,
+      onSubmit: (name) async {
+        final success = await cubit.createGroup(name: name);
+        if (success && mounted) {
+          AppSnackBar.show(context, message: l10n.adminGroupCreatedSuccess, isError: false);
+        }
+        return success;
+      },
+    );
+  }
+
+  Future<void> _openEditGroupSheet(GroupModel group) {
+    final cubit = context.read<AdminAcademicCubit>();
+    final l10n = context.l10n;
+
+    return showAdminGroupSheet(
+      context: context,
+      title: l10n.adminGroupEdit,
+      initialName: group.name,
+      onSubmit: (name) async {
+        final success = await cubit.updateGroup(groupId: group.id, name: name);
+        if (success && mounted) {
+          AppSnackBar.show(context, message: l10n.adminGroupUpdatedSuccess, isError: false);
+        }
+        return success;
+      },
+    );
+  }
+
+  Future<void> _confirmDeleteGroup(GroupModel group) async {
+    final l10n = context.l10n;
+    final cubit = context.read<AdminAcademicCubit>();
+
+    final confirmed = await showDialog<bool>(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text(l10n.adminGroupDelete),
+        content: Text(l10n.adminDeleteGroupConfirm(group.name)),
+        actions: [
+          TextButton(onPressed: () => Navigator.pop(context, false), child: Text(l10n.cancelButton)),
+          TextButton(
+            onPressed: () => Navigator.pop(context, true),
+            child: Text(l10n.deleteText, style: const TextStyle(color: Colors.redAccent)),
+          ),
+        ],
+      ),
+    );
+
+    if (!mounted || confirmed != true) return;
+
+    final success = await cubit.deleteGroup(group: group);
+    if (!mounted) return;
+
+    if (success) {
+      AppSnackBar.show(context, message: l10n.adminGroupDeletedSuccess, isError: false);
+    }
+  }
+
+  Future<void> _showCuratorPicker(GroupModel group) async {
+    final l10n = context.l10n;
+    final cubit = context.read<AdminAcademicCubit>();
+    final teachers = cubit.state.teachers;
+
+    if (teachers.isEmpty && group.curatorId == null) {
+      AppSnackBar.show(context, message: l10n.adminNoTeachers, isError: true);
+      return;
+    }
+
+    final selected = await showModalBottomSheet<_CuratorPickerResult>(
+      context: context,
+      backgroundColor: AppColors.scaffoldBackground,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
+      ),
+      builder: (context) {
+        return SafeArea(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.fromLTRB(24, 20, 24, 8),
+                child: Text(l10n.adminSelectCuratorTitle, style: AppTextStyles.h1.copyWith(fontSize: 20)),
+              ),
+              if (group.curatorId != null)
+                ListTile(
+                  leading: const Icon(Icons.person_off_outlined, color: Colors.redAccent),
+                  title: Text(l10n.adminRemoveCurator),
+                  onTap: () => Navigator.of(context).pop(_CuratorPickerResult.remove()),
+                ),
+              Flexible(
+                child: ListView.separated(
+                  shrinkWrap: true,
+                  itemCount: teachers.length,
+                  separatorBuilder: (_, index) => const Divider(height: 1),
+                  itemBuilder: (context, index) {
+                    final teacher = teachers[index];
+                    final isCurrent = teacher.uid == group.curatorId;
+                    return ListTile(
+                      title: Text(teacher.displayName),
+                      subtitle: Text(teacher.email, style: AppTextStyles.caption),
+                      trailing: isCurrent
+                          ? const Icon(Icons.check_circle, color: AppColors.primaryOrange)
+                          : null,
+                      onTap: () => Navigator.of(context).pop(_CuratorPickerResult.select(teacher)),
+                    );
+                  },
+                ),
+              ),
+            ],
+          ),
+        );
+      },
+    );
+
+    if (!mounted || selected == null) return;
+
+    if (selected.removeCurator) {
+      final success = await cubit.removeCurator(groupId: group.id);
+      if (!mounted) return;
+      if (success) {
+        AppSnackBar.show(context, message: l10n.adminCuratorRemovedSuccess, isError: false);
+      }
+      return;
+    }
+
+    final teacher = selected.teacher;
+    if (teacher == null) return;
+
+    final success = await cubit.assignCurator(groupId: group.id, curator: teacher);
+    if (!mounted) return;
+
+    if (success) {
+      AppSnackBar.show(context, message: l10n.adminCuratorAssignedSuccess, isError: false);
+    }
+  }
+
+  Future<void> _showRosterSheet(GroupModel group) async {
+    final l10n = context.l10n;
+    final cubit = context.read<AdminAcademicCubit>();
+
+    await showModalBottomSheet<void>(
+      context: context,
+      isScrollControlled: true,
+      backgroundColor: AppColors.scaffoldBackground,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
+      ),
+      builder: (sheetContext) {
+        return BlocProvider.value(
+          value: cubit,
+          child: BlocBuilder<AdminAcademicCubit, AdminAcademicState>(
+            builder: (context, state) {
+              final currentGroup = state.groups.where((g) => g.id == group.id).isEmpty
+                  ? group
+                  : state.groups.firstWhere((g) => g.id == group.id);
+              final inGroup = state.students.where((s) => currentGroup.memberIds.contains(s.uid)).toList();
+              final available = state.students.where((s) => !currentGroup.memberIds.contains(s.uid)).toList();
+
+              return SafeArea(
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(24, 20, 24, 16),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text('${group.name} · ${l10n.adminStudentList}', style: AppTextStyles.h1.copyWith(fontSize: 20)),
+                      const SizedBox(height: 16),
+                      if (inGroup.isEmpty)
+                        Text(l10n.adminNoStudents, style: AppTextStyles.caption)
+                      else
+                        Flexible(
+                          child: ListView.separated(
+                            shrinkWrap: true,
+                            itemCount: inGroup.length,
+                            separatorBuilder: (_, index) => const Divider(height: 1),
+                            itemBuilder: (context, index) {
+                              final student = inGroup[index];
+                              return ListTile(
+                                title: Text(student.displayName),
+                                subtitle: Text(student.email, style: AppTextStyles.caption),
+                                trailing: IconButton(
+                                  icon: const Icon(Icons.remove_circle_outline, color: Colors.redAccent),
+                                  onPressed: state.isUpdatingRoster
+                                      ? null
+                                      : () async {
+                                          final ok = await cubit.removeStudentFromGroup(
+                                            groupId: group.id,
+                                            student: student,
+                                          );
+                                          if (ok && context.mounted) {
+                                            AppSnackBar.show(context, message: l10n.adminStudentRemovedSuccess, isError: false);
+                                          }
+                                        },
+                                ),
+                              );
+                            },
+                          ),
+                        ),
+                      const SizedBox(height: 12),
+                      Text(l10n.adminAddStudentToGroup, style: AppTextStyles.h2.copyWith(fontSize: 16)),
+                      const SizedBox(height: 8),
+                      if (available.isEmpty)
+                        Text(l10n.adminAllStudentsAssigned, style: AppTextStyles.caption)
+                      else
+                        Flexible(
+                          child: ListView.separated(
+                            shrinkWrap: true,
+                            itemCount: available.length,
+                            separatorBuilder: (_, index) => const Divider(height: 1),
+                            itemBuilder: (context, index) {
+                              final student = available[index];
+                              return ListTile(
+                                title: Text(student.displayName),
+                                subtitle: Text(student.email, style: AppTextStyles.caption),
+                                trailing: IconButton(
+                                  icon: const Icon(Icons.add_circle_outline, color: AppColors.primaryOrange),
+                                  onPressed: state.isUpdatingRoster
+                                      ? null
+                                      : () async {
+                                          final ok = await cubit.assignStudentToGroup(
+                                            groupId: group.id,
+                                            student: student,
+                                          );
+                                          if (ok && context.mounted) {
+                                            AppSnackBar.show(context, message: l10n.adminStudentAssignedSuccess, isError: false);
+                                          }
+                                        },
+                                ),
+                              );
+                            },
+                          ),
+                        ),
+                    ],
+                  ),
+                ),
+              );
+            },
+          ),
+        );
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
-    return Scaffold(
-      backgroundColor: AppColors.scaffoldBackground,
-      body: SafeArea(
-        child: SingleChildScrollView(
-          padding: kAdminPagePadding,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(l10n.adminAcademicTitle, style: AppTextStyles.h1.copyWith(fontSize: 24)),
-              const SizedBox(height: 6),
-              Text(l10n.adminHomeSubtitle, style: AppTextStyles.caption),
-              const SizedBox(height: 20),
-              AdminSectionHeader(title: l10n.adminAcademicFeaturedGroups),
-              SizedBox(
-                height: 148,
-                child: ListView(
-                  scrollDirection: Axis.horizontal,
-                  padding: const EdgeInsets.only(bottom: 4),
+    final isBusy = context.select<AdminAcademicCubit, bool>(
+      (cubit) => cubit.state.isAssigning || cubit.state.isUpdatingRoster || cubit.state.isSavingGroup,
+    );
+
+    return BlocConsumer<AdminAcademicCubit, AdminAcademicState>(
+      listenWhen: (previous, current) => previous.errorCode != current.errorCode,
+      listener: (context, state) {
+        if (state.errorCode != null) {
+          AppSnackBar.show(
+            context,
+            message: mapAuthErrorMessage(context, state.errorCode!),
+            isError: true,
+          );
+          context.read<AdminAcademicCubit>().clearError();
+        }
+      },
+      builder: (context, state) {
+        return Scaffold(
+          backgroundColor: AppColors.scaffoldBackground,
+          body: SafeArea(
+            child: RefreshIndicator(
+              onRefresh: () => context.read<AdminAcademicCubit>().loadData(),
+              child: SingleChildScrollView(
+                physics: const AlwaysScrollableScrollPhysics(),
+                padding: kAdminPagePadding,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    AdminGroupPreviewCard(
-                      title: l10n.adminMockGroup1,
-                      subtitle: l10n.adminSectionGroups,
-                      highlight: true,
-                      onTap: () => adminShowMock(context, l10n.adminMockGroup1),
+                    Text(l10n.adminAcademicTitle, style: AppTextStyles.h1.copyWith(fontSize: 24)),
+                    const SizedBox(height: 6),
+                    Text(l10n.adminHomeSubtitle, style: AppTextStyles.caption),
+                    const SizedBox(height: 20),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Expanded(child: AdminSectionHeader(title: l10n.adminAcademicFeaturedGroups)),
+                        TextButton.icon(
+                          onPressed: isBusy ? null : _openCreateGroupSheet,
+                          icon: const Icon(Icons.add_circle_outline, size: 20),
+                          label: Text(l10n.adminGroupCreate),
+                        ),
+                      ],
                     ),
-                    AdminGroupPreviewCard(
-                      title: l10n.adminMockGroup2,
-                      subtitle: l10n.adminSectionGroups,
-                      highlight: false,
-                      onTap: () => adminShowMock(context, l10n.adminMockGroup2),
-                    ),
-                    AdminGroupPreviewCard(
-                      title: l10n.adminMockGroup3,
-                      subtitle: l10n.adminSectionGroups,
-                      highlight: false,
-                      onTap: () => adminShowMock(context, l10n.adminMockGroup3),
-                    ),
+                    if (state.isLoading)
+                      const Padding(
+                        padding: EdgeInsets.symmetric(vertical: 24),
+                        child: Center(child: CircularProgressIndicator()),
+                      )
+                    else if (state.groups.isEmpty)
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 12),
+                        child: Text(l10n.adminNoGroups, style: AppTextStyles.caption),
+                      )
+                    else
+                      SizedBox(
+                        height: 148,
+                        child: ListView.separated(
+                          scrollDirection: Axis.horizontal,
+                          padding: const EdgeInsets.only(bottom: 4),
+                          itemCount: state.groups.length,
+                          separatorBuilder: (_, index) => const SizedBox(width: 12),
+                          itemBuilder: (context, index) {
+                            final group = state.groups[index];
+                            return AdminGroupPreviewCard(
+                              title: group.name,
+                              subtitle: group.curatorName ?? l10n.adminCuratorNotAssigned,
+                              highlight: index == 0,
+                              onTap: isBusy ? () {} : () => _openEditGroupSheet(group),
+                            );
+                          },
+                        ),
+                      ),
+                    const SizedBox(height: 22),
+                    AdminSectionHeader(title: l10n.adminGroupManageTitle),
+                    if (!state.isLoading && state.groups.isEmpty)
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 12),
+                        child: Text(l10n.adminNoGroups, style: AppTextStyles.caption),
+                      ),
+                    if (!state.isLoading)
+                      ...state.groups.asMap().entries.map((entry) {
+                        final index = entry.key;
+                        final group = entry.value;
+                        return AdminGroupManagementCard(
+                          title: group.name,
+                          membersLabel: l10n.adminGroupMembers(group.memberCount),
+                          curatorHint: group.curatorName == null
+                              ? l10n.adminCuratorNotAssigned
+                              : '${l10n.adminGroupAssignCurator}: ${group.curatorName}',
+                          editLabel: l10n.editText,
+                          rosterLabel: l10n.adminStudentList,
+                          curatorLabel: l10n.adminGroupAssignCurator,
+                          deleteLabel: l10n.deleteText,
+                          highlight: index == 0,
+                          onEdit: isBusy ? () {} : () => _openEditGroupSheet(group),
+                          onRoster: isBusy ? () {} : () => _showRosterSheet(group),
+                          onCurator: isBusy ? () {} : () => _showCuratorPicker(group),
+                          onDelete: isBusy ? () {} : () => _confirmDeleteGroup(group),
+                        );
+                      }),
+                    const SizedBox(height: 80),
                   ],
                 ),
               ),
-              const SizedBox(height: 8),
-              Row(
-                children: [
-                  Expanded(
-                    child: Container(
-                      padding: const EdgeInsets.all(18),
-                      decoration: BoxDecoration(
-                        color: AppColors.surfaceWhite,
-                        borderRadius: BorderRadius.circular(22),
-                        boxShadow: [
-                          BoxShadow(
-                            color: AppColors.deepBlack.withOpacity(0.05),
-                            blurRadius: 12,
-                            offset: const Offset(0, 6),
-                          ),
-                        ],
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Icon(Icons.auto_stories_outlined, color: AppColors.primaryOrange),
-                          const SizedBox(height: 12),
-                          Text('42', style: AppTextStyles.h1.copyWith(fontSize: 26)),
-                          const SizedBox(height: 4),
-                          Text(
-                            l10n.adminSubjectsActiveLabel,
-                            style: AppTextStyles.caption.copyWith(fontSize: 12),
-                          ),
-                          const SizedBox(height: 4),
-                          Text(
-                            l10n.adminMockSubjectCount,
-                            style: AppTextStyles.caption.copyWith(
-                              color: AppColors.textSecondary,
-                              fontSize: 11,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  const SizedBox(width: 12),
-                  Expanded(
-                    child: Container(
-                      padding: const EdgeInsets.all(18),
-                      decoration: BoxDecoration(
-                        color: AppColors.primaryOrange,
-                        borderRadius: BorderRadius.circular(22),
-                        boxShadow: [
-                          BoxShadow(
-                            color: AppColors.primaryOrange.withOpacity(0.35),
-                            blurRadius: 18,
-                            offset: const Offset(0, 10),
-                          ),
-                        ],
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Icon(Icons.event_note_rounded, color: Colors.white.withOpacity(0.9)),
-                          const SizedBox(height: 12),
-                          Text(
-                            l10n.adminSectionSchedule,
-                            style: AppTextStyles.body.copyWith(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          const SizedBox(height: 8),
-                          Text(
-                            l10n.adminScheduleNextHint,
-                            style: AppTextStyles.caption.copyWith(
-                              color: Colors.white.withOpacity(0.88),
-                              fontSize: 12,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 22),
-              AdminSectionHeader(title: l10n.adminGroupManageTitle),
-              AdminGroupManagementCard(
-                title: _groupTitle(l10n.adminMockGroup1),
-                membersLabel: l10n.adminGroupMembers(32),
-                curatorHint: l10n.adminMockCuratorShort,
-                editLabel: l10n.editText,
-                rosterLabel: l10n.adminStudentList,
-                curatorLabel: l10n.adminGroupAssignCurator,
-                deleteLabel: l10n.deleteText,
-                highlight: true,
-                onEdit: () => adminShowMock(context, '${l10n.adminMockGroup1} · ${l10n.editText}'),
-                onRoster: () => adminShowMock(context, '${l10n.adminMockGroup1} · ${l10n.adminStudentList}'),
-                onCurator: () =>
-                    adminShowMock(context, '${l10n.adminMockGroup1} · ${l10n.adminGroupAssignCurator}'),
-                onDelete: () => adminShowMock(context, '${l10n.adminMockGroup1} · ${l10n.deleteText}'),
-              ),
-              AdminGroupManagementCard(
-                title: _groupTitle(l10n.adminMockGroup2),
-                membersLabel: l10n.adminGroupMembers(28),
-                curatorHint: l10n.adminMockCuratorShort,
-                editLabel: l10n.editText,
-                rosterLabel: l10n.adminStudentList,
-                curatorLabel: l10n.adminGroupAssignCurator,
-                deleteLabel: l10n.deleteText,
-                onEdit: () => adminShowMock(context, '${l10n.adminMockGroup2} · ${l10n.editText}'),
-                onRoster: () => adminShowMock(context, '${l10n.adminMockGroup2} · ${l10n.adminStudentList}'),
-                onCurator: () =>
-                    adminShowMock(context, '${l10n.adminMockGroup2} · ${l10n.adminGroupAssignCurator}'),
-                onDelete: () => adminShowMock(context, '${l10n.adminMockGroup2} · ${l10n.deleteText}'),
-              ),
-              AdminGroupManagementCard(
-                title: _groupTitle(l10n.adminMockGroup3),
-                membersLabel: l10n.adminGroupMembers(18),
-                curatorHint: l10n.adminMockCuratorShort,
-                editLabel: l10n.editText,
-                rosterLabel: l10n.adminStudentList,
-                curatorLabel: l10n.adminGroupAssignCurator,
-                deleteLabel: l10n.deleteText,
-                onEdit: () => adminShowMock(context, '${l10n.adminMockGroup3} · ${l10n.editText}'),
-                onRoster: () => adminShowMock(context, '${l10n.adminMockGroup3} · ${l10n.adminStudentList}'),
-                onCurator: () =>
-                    adminShowMock(context, '${l10n.adminMockGroup3} · ${l10n.adminGroupAssignCurator}'),
-                onDelete: () => adminShowMock(context, '${l10n.adminMockGroup3} · ${l10n.deleteText}'),
-              ),
-              const SizedBox(height: 16),
-              AdminSectionHeader(title: l10n.adminSectionSubjects),
-              _actionStrip(context, [
-                (Icons.post_add_outlined, l10n.adminSubjectAdd),
-                (Icons.edit_outlined, l10n.adminSubjectEdit),
-                (Icons.remove_circle_outline_rounded, l10n.adminSubjectDelete),
-                (Icons.link_rounded, l10n.adminSubjectAssignTeacher),
-                (Icons.list_alt_rounded, l10n.adminSubjectList),
-              ]),
-              const SizedBox(height: 16),
-              AdminSectionHeader(title: l10n.adminSectionSchedule),
-              _actionStrip(context, [
-                (Icons.addchart_rounded, l10n.adminScheduleCreate),
-                (Icons.edit_calendar_outlined, l10n.adminScheduleEdit),
-                (Icons.delete_sweep_outlined, l10n.adminScheduleDelete),
-                (Icons.meeting_room_outlined, l10n.adminScheduleAssignRoom),
-                (Icons.person_search_rounded, l10n.adminScheduleAssignTeacher),
-                (Icons.visibility_outlined, l10n.adminScheduleView),
-              ]),
-            ],
+            ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
+}
 
-  String _groupTitle(String line) {
-    final i = line.indexOf('·');
-    return i > 0 ? line.substring(0, i).trim() : line.trim();
-  }
+class _CuratorPickerResult {
+  const _CuratorPickerResult._({this.teacher, this.removeCurator = false});
 
-  Widget _actionStrip(BuildContext context, List<(IconData, String)> items) {
-    return SingleChildScrollView(
-      scrollDirection: Axis.horizontal,
-      child: Row(
-        children: items
-            .map(
-              (e) => Padding(
-                padding: const EdgeInsets.only(right: 8),
-                child: ActionChip(
-                  avatar: Icon(e.$1, size: 18, color: AppColors.primaryOrange),
-                  label: Text(
-                    e.$2,
-                    style: AppTextStyles.caption.copyWith(fontWeight: FontWeight.w600, fontSize: 11),
-                  ),
-                  onPressed: () => adminShowMock(context, e.$2),
-                  backgroundColor: AppColors.surfaceWhite,
-                  side: BorderSide(color: AppColors.deepBlack.withOpacity(0.08)),
-                ),
-              ),
-            )
-            .toList(),
-      ),
-    );
-  }
+  final UserModel? teacher;
+  final bool removeCurator;
+
+  factory _CuratorPickerResult.select(UserModel teacher) => _CuratorPickerResult._(teacher: teacher);
+
+  factory _CuratorPickerResult.remove() => const _CuratorPickerResult._(removeCurator: true);
 }

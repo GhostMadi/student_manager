@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:student_manager/core/colors/app_colors.dart';
 import 'package:student_manager/core/extension/context.dart';
+import 'package:student_manager/core/auth/logout_helper.dart';
 import 'package:student_manager/core/router/app_router.dart';
 import 'package:student_manager/core/storage/storage_service.dart';
 import 'package:student_manager/core/style/app_text_style.dart';
@@ -21,11 +22,7 @@ class AdminProfilePage extends StatefulWidget {
 class _AdminProfilePageState extends State<AdminProfilePage> {
   final String userName = StorageService.instance.userName ?? 'Admin';
 
-  Future<void> _handleLogout() async {
-    await StorageService.instance.logout();
-    if (!mounted) return;
-    context.router.replace(const LoginRoute());
-  }
+  Future<void> _handleLogout() => logoutAndGoToLogin(context);
 
   void _showLanguageSelector() {
     final cubit = context.read<LanguageCubit>();

@@ -26,6 +26,43 @@
     "newPasswordField": "Новый пароль",
     "repeatPasswordField": "Повторите пароль",
     "saveAndLogin": "Сохранить и войти",
+    "registerSuccess": "Аккаунт успешно создан!",
+    "registerError": "Не удалось создать аккаунт",
+    "resetEmailSent": "Письмо для сброса пароля отправлено. Проверьте почту.",
+    "resetEmailSpamHint": "Если письмо не пришло за 2–3 минуты, проверьте Спам/Промоакции. Отправитель: noreply@*.firebaseapp.com. Используйте тот же email, что при регистрации.",
+    "resetEmailSuccessTitle": "Проверьте почту",
+    "resetEmailSuccessMessage": "Мы отправили ссылку для сброса пароля на {email}. Откройте письмо и перейдите по ссылке, чтобы задать новый пароль.",
+    "@resetEmailSuccessMessage": {
+        "placeholders": {
+            "email": {
+                "type": "String"
+            }
+        }
+    },
+    "backToLogin": "Вернуться ко входу",
+    "resetCodeHint": "Вставьте код сброса из ссылки в письме",
+    "resetCodeLabel": "Код сброса",
+    "passwordResetSuccess": "Пароль успешно обновлён!",
+    "invalidResetCode": "Неверный или просроченный код",
+    "emailAlreadyInUse": "Этот email уже зарегистрирован",
+    "emailAlreadyInUseOtherPassword": "Этот email уже зарегистрирован с другим паролем. Укажите верный пароль или другой email.",
+    "cannotModifyAdmin": "Нельзя изменить учётную запись администратора.",
+    "userNotFound": "Аккаунт с таким email не найден",
+    "authGenericError": "Что-то пошло не так. Попробуйте снова.",
+    "createAdminButton": "Создать администратора",
+    "adminCreatedSuccess": "Аккаунт администратора создан",
+    "adminAlreadyExists": "Администратор уже существует. Допускается только один.",
+    "adminUserAddedSuccess": "Пользователь создан",
+    "adminCuratorAssignedSuccess": "Куратор назначен на группу",
+    "adminNoStudents": "Студентов пока нет",
+    "adminNoTeachers": "Кураторов пока нет",
+    "adminAddStudentTitle": "Добавить студента",
+    "adminAddCuratorTitle": "Добавить куратора",
+    "adminSelectCuratorTitle": "Выберите куратора",
+    "adminCuratorNotAssigned": "Куратор не назначен",
+    "adminDefaultPasswordHint": "Пароль по умолчанию: Student123!",
+    "profileNotFound": "Профиль пользователя не найден. Обратитесь к администратору.",
+    "firestorePermissionDenied": "Нет доступа к Firestore. Проверьте и опубликуйте правила в Firebase Console.",
     "scheduleTitle": "Расписание",
     "editText": "Редактировать",
     "deleteText": "Удалить",
@@ -83,6 +120,56 @@
     "security": "Безопасность",
     "logOut": "Выйти из системы",
     "overallGpa": "Общий GPA",
+    "noGradesYet": "Оценок пока нет. Преподаватель добавит их после проверки работ.",
+    "gradeAddedSuccess": "Оценка сохранена",
+    "assignmentsTitle": "Задания",
+    "studentNoGroupAssigned": "Вы пока не добавлены в группу",
+    "noAssignmentsYet": "Заданий пока нет",
+    "submissionGraded": "Оценено",
+    "submissionSubmitted": "Сдано",
+    "submissionDraft": "Не сдано",
+    "workSubmittedSuccess": "Работа успешно отправлена",
+    "noDescription": "Без описания",
+    "teacherFeedback": "Комментарий преподавателя",
+    "yourAnswerLabel": "Ваш ответ",
+    "submitWorkButton": "Сдать работу",
+    "emptyAnswerError": "Введите ответ",
+    "teacherCreateAssignmentTitle": "Создать задание",
+    "teacherPendingSubmissionsTitle": "Работы на проверке",
+    "assignmentCreatedSuccess": "Задание создано",
+    "assignmentTitleLabel": "Название задания",
+    "assignmentDescriptionLabel": "Описание",
+    "assignmentDueDateLabel": "Срок сдачи",
+    "feedbackLabel": "Комментарий",
+    "createAssignmentButton": "Создать задание",
+    "gradeSubmissionButton": "Оценить",
+    "noPendingSubmissions": "Нет работ на проверке",
+    "gradeSubmissionFor": "Оценка для {name}",
+    "@gradeSubmissionFor": {
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "viewAnswerLabel": "Ответ студента",
+    "gradeWorkNameLabel": "Название работы (необязательно)",
+    "teacherAddGrade": "Выставить оценку",
+    "teacherAddGradeFor": "Оценка для {name}",
+    "@teacherAddGradeFor": {
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "teacherNoGroupsAssigned": "Вам ещё не назначены группы. Попросите администратора назначить вас куратором.",
+    "teacherCuratorYouBadge": "Вы куратор этой группы",
+    "teacherSelectGroup": "Выберите группу",
+    "adminAddStudentToGroup": "Добавить студента в группу",
+    "adminAllStudentsAssigned": "Все студенты уже в этой группе",
+    "adminStudentAssignedSuccess": "Студент добавлен в группу",
+    "adminStudentRemovedSuccess": "Студент удалён из группы",
     "topPercentage": "Топ 5%",
     "idLabel": "ID: {id}",
     "nameLabel": "Имя",
@@ -212,6 +299,16 @@
         }
     },
     "enterEmail":"Введите вашу почту",
+    "enterCode":"Введите код, отправленный на вашу почту",
+    "enterNewPassword":"Введите новый пароль",
+    "confirmNewPassword":"Подтвердите новый пароль",
+    "sendCode":"Отправить код",
+    "confirm":"Подтвердить",
+    "emailValidationError":"Введите корректный email",
+    "passwordValidationError":"Пароль должен быть не короче 8 символов и содержать цифру и спецсимвол",
+    "confirmPasswordValidationError":"Пароли не совпадают",
+    "fullNameValidationError":"Введите ваше полное имя",
+    "unexpectedError":"Произошла непредвиденная ошибка. Попробуйте позже.",
     "enterPassword":"Введите пароль",
     "enterFullName":"Введите ваше полное имя",
     "enterConfirmPassword":"Подтвердите пароль",
@@ -219,7 +316,6 @@
     "enterDeadline":"Введите дедлайн (например: 2024-12-31)",
     "enterScore":"Введите балл (0-100)",
     "invalidEmailFormat":"Неверный формат почты",
-    "enterPassword":"Введите пароль",
     "passwordTooShort":"Пароль слишком короткий",
     "passwordsDoNotMatch":"Пароли не совпадают",
     "enterName": "Введите ваше имя",
@@ -258,6 +354,22 @@
     "adminGroupDelete": "Удалить группу",
     "adminGroupAddStudents": "Добавить студентов в группу",
     "adminGroupAssignCurator": "Назначить куратора",
+    "adminGroupNameLabel": "Название группы",
+    "adminGroupNameRequired": "Введите название группы",
+    "adminGroupCreatedSuccess": "Группа создана",
+    "adminGroupUpdatedSuccess": "Группа обновлена",
+    "adminGroupDeletedSuccess": "Группа удалена",
+    "adminCuratorRemovedSuccess": "Куратор снят с группы",
+    "adminRemoveCurator": "Снять куратора",
+    "adminNoGroups": "Групп пока нет. Нажмите «Создать группу».",
+    "adminDeleteGroupConfirm": "Удалить группу «{name}»? Студенты будут откреплены от группы.",
+    "@adminDeleteGroupConfirm": {
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
     "adminSectionSubjects": "Управление предметами",
     "adminSubjectAdd": "Добавить предмет",
     "adminSubjectEdit": "Редактировать предмет",

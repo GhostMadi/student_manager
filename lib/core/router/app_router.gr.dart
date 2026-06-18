@@ -331,11 +331,11 @@ class SplashRoute extends PageRouteInfo<void> {
 class TaskDetailsRoute extends PageRouteInfo<TaskDetailsRouteArgs> {
   TaskDetailsRoute({
     Key? key,
-    required TaskItem task,
+    required String assignmentId,
     List<PageRouteInfo>? children,
   }) : super(
          TaskDetailsRoute.name,
-         args: TaskDetailsRouteArgs(key: key, task: task),
+         args: TaskDetailsRouteArgs(key: key, assignmentId: assignmentId),
          initialChildren: children,
        );
 
@@ -345,32 +345,32 @@ class TaskDetailsRoute extends PageRouteInfo<TaskDetailsRouteArgs> {
     name,
     builder: (data) {
       final args = data.argsAs<TaskDetailsRouteArgs>();
-      return TaskDetailsPage(key: args.key, task: args.task);
+      return TaskDetailsPage(key: args.key, assignmentId: args.assignmentId);
     },
   );
 }
 
 class TaskDetailsRouteArgs {
-  const TaskDetailsRouteArgs({this.key, required this.task});
+  const TaskDetailsRouteArgs({this.key, required this.assignmentId});
 
   final Key? key;
 
-  final TaskItem task;
+  final String assignmentId;
 
   @override
   String toString() {
-    return 'TaskDetailsRouteArgs{key: $key, task: $task}';
+    return 'TaskDetailsRouteArgs{key: $key, assignmentId: $assignmentId}';
   }
 
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
     if (other is! TaskDetailsRouteArgs) return false;
-    return key == other.key && task == other.task;
+    return key == other.key && assignmentId == other.assignmentId;
   }
 
   @override
-  int get hashCode => key.hashCode ^ task.hashCode;
+  int get hashCode => key.hashCode ^ assignmentId.hashCode;
 }
 
 /// generated route for

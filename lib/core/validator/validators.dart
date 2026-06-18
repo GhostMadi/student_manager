@@ -6,7 +6,7 @@ class AppValidators {
     if (value == null || value.isEmpty) {
       return context.l10n.enterEmail;
     }
-    final emailRegExp = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
+    final emailRegExp = RegExp(r'^[\w.\-+]+@([\w-]+\.)+[\w-]{2,}$');
     if (!emailRegExp.hasMatch(value)) {
       return context.l10n.invalidEmailFormat;
     }
