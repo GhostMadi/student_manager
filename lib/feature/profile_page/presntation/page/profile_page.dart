@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -6,6 +7,7 @@ import 'package:student_manager/core/auth/logout_helper.dart';
 import 'package:student_manager/core/colors/app_colors.dart';
 import 'package:student_manager/core/extension/context.dart';
 import 'package:student_manager/core/router/app_router.dart';
+import 'package:student_manager/core/storage/storage_service.dart';
 import 'package:student_manager/core/style/app_text_style.dart';
 import 'package:student_manager/core/widgets/button.dart';
 import 'package:student_manager/feature/language/language_cubit.dart';
@@ -21,6 +23,22 @@ class ProfilePage extends StatefulWidget {
 
 class _ProfilePageState extends State<ProfilePage> {
   static const _avatarUrl = 'https://picsum.photos/seed/studentprofile/400/400';
+
+  String get _userName {
+    final stored = StorageService.instance.userName?.trim();
+    if (stored != null && stored.isNotEmpty) return stored;
+
+    final firebaseUser = FirebaseAuth.instance.currentUser;
+    final firebaseName = firebaseUser?.displayName?.trim();
+    if (firebaseName != null && firebaseName.isNotEmpty) return firebaseName;
+
+    final email = firebaseUser?.email;
+    if (email != null && email.contains('@')) return email.split('@').first;
+
+    return 'Student';
+  }
+
+  String get _userEmail => FirebaseAuth.instance.currentUser?.email ?? '';
 
   Future<void> _handleLogout() => logoutAndGoToLogin(context);
 
@@ -104,8 +122,9 @@ class _ProfilePageState extends State<ProfilePage> {
                         ),
                       ),
                       const SizedBox(height: 16),
-                      Text(l10n.profileStudentCardName, style: AppTextStyles.h1.copyWith(fontSize: 24)),
-                      Text(l10n.idLabel(l10n.profileStudentCardId), style: AppTextStyles.caption),
+                      Text(_userName, style: AppTextStyles.h1.copyWith(fontSize: 24)),
+                      if (_userEmail.isNotEmpty)
+                        Text(_userEmail, style: AppTextStyles.caption),
                     ],
                   ),
                 ),

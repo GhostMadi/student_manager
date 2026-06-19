@@ -1,7 +1,9 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:student_manager/core/colors/app_colors.dart';
 import 'package:student_manager/core/extension/context.dart';
+import 'package:student_manager/core/storage/storage_service.dart';
 
 @RoutePage()
 class ProfileDetailPage extends StatefulWidget {
@@ -23,10 +25,19 @@ class _ProfileDetailPageState extends State<ProfileDetailPage> {
   void didChangeDependencies() {
     super.didChangeDependencies();
     if (_controllersReady) return;
-    final l10n = context.l10n;
-    _nameController = TextEditingController(text: l10n.profileStudentCardName);
-    _emailController = TextEditingController(text: l10n.profileStudentCardEmail);
-    _phoneController = TextEditingController(text: '+7 747 220 88 15');
+
+    final firebaseUser = FirebaseAuth.instance.currentUser;
+    final storedName = StorageService.instance.userName?.trim();
+    final firebaseName = firebaseUser?.displayName?.trim();
+    final name = (storedName != null && storedName.isNotEmpty)
+        ? storedName
+        : (firebaseName != null && firebaseName.isNotEmpty)
+        ? firebaseName
+        : (firebaseUser?.email?.split('@').first ?? '');
+
+    _nameController = TextEditingController(text: name);
+    _emailController = TextEditingController(text: firebaseUser?.email ?? '');
+    _phoneController = TextEditingController();
     _controllersReady = true;
   }
 
